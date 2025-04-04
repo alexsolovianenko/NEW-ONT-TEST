@@ -6,15 +6,13 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
 // Create local server
 const app = express();
 const port = 8000;
 dotenv.config();
-
-
 
 // Serve frontend files
 app.use(express.static(path.resolve(__dirname, '../Frontend')));
@@ -33,21 +31,45 @@ const s3 = new AWS.S3({
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-
-app.use(express.static(path.resolve(__dirname, '../Frontend')))
+app.use(express.static(path.resolve(__dirname, '../Frontend')));
 
 // Serve index.html correctly
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, 'Frontend', 'index.html'));
 });
 
-// Upload endpoint
+// Generate Pre-signed URL
+app.post('/generate-upload-url', async (req, res) => {
+  const { text, fileType } = req.body; // text will be used to name the file
+
+  if (!text || !fileType) {
+    return res.status(400).send({ error: 'Text and fileType are required!' });
+  }
+
+  // S3 upload params for pre-signed URL
+  const params = {
+    Bucket: process.env.S3_BUCKET_NAME,
+    Key: `${text}${path.extname(fileType)}`, // Using the user-provided text for the file name
+    Expires: 600, // URL expires in 10 minutes, adjust as needed
+    ContentType: fileType
+  };
+
+  try {
+    // Generate the pre-signed URL for upload
+    const uploadURL = await s3.getSignedUrlPromise('putObject', params);
+    res.json({ uploadURL });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ error: 'Error generating upload URL' });
+  }
+});
+
+// Upload endpoint (to handle successful uploads after pre-signed URL is used)
 app.post('/upload', upload.single('file'), async (req, res) => {
   if (!req.file || !req.body.text) {
     return res.status(400).send({ error: 'File and text are required!' });
   }
 
-  // AWS S3 upload parameters
   const params = {
     Bucket: process.env.S3_BUCKET_NAME,
     Key: `${req.body.text}${path.extname(req.file.originalname)}`,

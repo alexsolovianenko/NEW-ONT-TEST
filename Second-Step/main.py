@@ -1,5 +1,6 @@
 #Step 1: start | use python main.py
 
+
 # Step 2: import libraries
 import boto3
 import openai
@@ -7,6 +8,7 @@ import os
 from PyPDF2 import PdfReader
 from dotenv import load_dotenv
 from reportlab.pdfgen import canvas
+
 
 # Step 3: import aws credentials
 load_dotenv()
@@ -20,6 +22,7 @@ second_aws_region = os.getenv('SECOND_AWS_REGION')
 second_s3_bucket_name = os.getenv('SECOND_S3_BUCKET_NAME')
 openai_api_key = os.getenv('OPENAI_API_KEY')
 
+
 # start s3 client
 s3_client = boto3.client(
     's3',
@@ -28,7 +31,9 @@ s3_client = boto3.client(
 )
 
 
-# Step 5: Fetch the latest file from the S3 bucket
+
+
+# Step 4: Fetch the file from the S3 bucket
 response = s3_client.list_objects_v2(Bucket=first_s3_bucket_name)
 
 if 'Contents' in response:
@@ -43,10 +48,38 @@ if 'Contents' in response:
     file_response = s3_client.get_object(Bucket=first_s3_bucket_name, Key=object_key)
     file_content = file_response['Body'].read()
 
-    # Save the file locally
-    with open("downloaded_file.pdf", "wb") as file:
+    # Save the file locally with the same name as in the S3 bucket
+    with open(object_key, "wb") as file:
         file.write(file_content)
 
-    print("File downloaded successfully as 'downloaded_file.pdf'.")
+    print(f"File downloaded successfully as '{object_key}'.")
 else:
     print("No files found in the S3 bucket.")
+
+# Step 5: Read the PDF file
+def read_pdf(file_path):
+    reader = PdfReader(file_path)
+    text = ''
+    for page in reader.pages:
+        text += page.extract_text()
+    return text
+
+# Step 6: Read the PDF file
+pdf_text = read_pdf(object_key)
+
+print("PDF file read successfully.")
+
+
+# Step 7: Set up OpenAI API key
+openai.api_key = openai_api_key
+# Step 8: Generate a summary using OpenAI API
+def generate_summary(text):
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "user", "content": f"Please summarize the following text:\n\n{text}"}
+        ]
+    )
+    return response['choices'][0]['message']['content']
+
+

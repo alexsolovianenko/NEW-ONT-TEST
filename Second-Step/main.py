@@ -78,7 +78,7 @@ else:
 
 
 
-# Step 6: Read the PDF file
+# Step 6: Read the PDF file (I THINK WE WANT OPENAI TO READ AS WELL)
 def read_pdf(file_path):
     reader = PdfReader(file_path)
     text = ''
@@ -90,30 +90,28 @@ pdf_text = read_pdf(object_key)
 print("PDF file read successfully.")
 
 
+# Step 7: Send the extracted text to OpenAI API
+def process_with_openai(pdf_text, prompt):
+    """Process the extracted text with OpenAI GPT-4."""
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-4",  # Use GPT-4
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": prompt + "\n\n" + pdf_text}
+            ],
+            max_tokens=1500,  # Adjust max tokens for longer responses
+            temperature=0.7  # Adjust for creativity
+        )
+        return response['choices'][0]['message']['content']
+    except openai.error.OpenAIError as e:
+        print(f"Error processing with OpenAI: {e}")
+        return "Error: Unable to process the request."
 
-
-
-# Step 7: Generate new questions using OpenAI API
-
-
-
-def generate_questions(text):
-    prompt = f"Based on the following text, generate 2 questions with using the same subject(course) information:\n\n{text}"
-    
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "user", "content": prompt}
-        ]
-    )
-    print("Questions generated successfully.")
-    return response['choices'][0]['message']['content']
-    
-
-
-
-# Step 8: Create a new PDF using labpdf
-
-# Step 9: Paste the questions in the new PDF
-
-# Step 10: Upload the new PDF to the second S3 bucket
+# Example: Processing the PDF text with OpenAI
+user_prompt = """
+Based on the following text, create a practice test with 3 multiple-choice questions. 
+Each question should have 4 options (A, B, C, D) and indicate the correct answer at the end.
+"""
+openai_response = process_with_openai(pdf_text, user_prompt)
+print("OpenAI Response:", openai_response)

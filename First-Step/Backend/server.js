@@ -49,7 +49,7 @@ app.post('/generate-upload-url', async (req, res) => {
   // S3 upload params for pre-signed URL
   const params = {
     Bucket: process.env.S3_BUCKET_NAME,
-    Key: `${text}${path.extname(fileType)}`, // Using the user-provided text for the file name
+    Key: `${text}.pdf`, // Append ".pdf" to the user-provided text
     Expires: 600, // URL expires in 10 minutes, adjust as needed
     ContentType: fileType
   };
@@ -72,7 +72,7 @@ app.post('/upload', upload.single('file'), async (req, res) => {
 
   const params = {
     Bucket: process.env.S3_BUCKET_NAME,
-    Key: `${req.body.text}${path.extname(req.file.originalname)}`,
+    Key: `${req.body.text}.pdf`, // Append ".pdf" to the user-provided text
     Body: req.file.buffer,
     ContentType: req.file.mimetype
   };

@@ -2,13 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ontario Tests - File upload</title>
+    <link rel="stylesheet" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .bubble-link {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .bubble-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+    <header>
+        <a href="../../Third-Step/index.html" class="bubble-link">Software</a>
+    </header>
+
     <h1>Welcome to Ontario Tests</h1>
     <p>We are in an early development stage - File uploads are needed until further notice</p>
-</head>
-<body>
-
 
     <h2>Upload a PDF</h2>
     <form id="uploadForm">
@@ -16,7 +38,6 @@
         <label>Name your test: (Grade-Subject-Topic)<input type="text" id="textInput" name="text" placeholder="Grade-Subject-Topic" required /></label>
         <button type="submit">Upload</button>
     </form>
-
 
 <script src="script.js"></script>
 

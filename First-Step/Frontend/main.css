@@ -1,0 +1,191 @@
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Latica Bold';
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content to the top */
+    padding: 20px; /* Add padding for spacing */
+    overflow: auto; /* Enable scrolling if needed */
+    background-image: url(background.png);
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: left; /* Align text to the left */
+    margin: 20px 0;
+    margin-left: 20px; /* Add left margin */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #34495e;
+    text-align: left; /* Align text to the left */
+    margin: 15px 0;
+    margin-left: 20px; /* Add left margin */
+}
+
+p {
+    font-size: 1.2em;
+    color: #555;
+    text-align: left; /* Align text to the left */
+    margin: 10px 0;
+    margin-left: 20px; /* Add left margin */
+    max-width: 600px;
+    line-height: 1.8;
+}
+
+form {
+    background: #ffffff;
+    border-radius: 50px; /* Make the form a bubble */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    width: 90%; /* Adjust width to fit smaller screens */
+    max-width: 500px;
+    margin: 0 auto; /* Center horizontally */
+    margin-left: 20px; /* Shift form to the left */
+    text-align: left; /* Align form content to the left */
+    position: relative;
+}
+
+form label {
+    display: block;
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+form input[type="file"],
+form input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+form input[type="file"]:focus,
+form input[type="text"]:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+form button {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #3498db;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+form button:active {
+    transform: translateY(0);
+}
+
+footer {
+    margin-top: auto;
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+    padding: 10px 0;
+}
+
+footer a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+/* Add a decorative image or illustration */
+form::before {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 120px;
+    background: url('illustration.png') no-repeat center center/contain;
+    position: absolute;
+    top: 50%;
+    right: -150px; /* Move illustration to the right */
+    transform: translateY(-50%);
+}
+
+/* Add a header */
+header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2c3e50;
+    font-family: 'Latica Bold';
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+        margin-left: 10px; /* Adjust margins for smaller screens */
+    }
+
+    h2 {
+        font-size: 1.5em;
+        margin-left: 10px; /* Adjust margins for smaller screens */
+    }
+
+    p {
+        margin-left: 10px; /* Adjust margins for smaller screens */
+    }
+
+    form {
+        padding: 20px;
+        margin-left: 10px; /* Adjust form position */
+    }
+
+    form::before {
+        right: -100px; /* Adjust illustration position */
+    }
+}
+
+
+
+.bubble-link {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.bubble-link:hover {
+    background-color: #0056b3;
+}

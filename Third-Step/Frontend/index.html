@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ontario Tests - Home Page </title>
+    <link rel="stylesheet" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1>Area for header (Left side with button to change tabs)</h1>
+
+  <input type="text" id="subjectInput" placeholder="Search subject...">
+  <button onclick="showGradeOptions()">Submit</button>
+<div id="autocompleteSuggestions" class="autocomplete-container"></div>
+
+  <div id="gradeRadioContainer" style="margin-top: 20px;"></div>
+
+  <!-- Hidden confirm button for hhe grade -->
+  <div id="confirmGrade" style="display: none; margin-top: 10px;">
+    <button onclick="submitGrade()">Confirm Grade</button>
+  </div>
+
+
+  <!-- Hidden confirm button for the ytype for each -->
+  <div id="confirmGrade" style="display: none; margin-top: 10px;">
+    <button onclick="submitGrade()">Find Tests</button>
+  </div>
+
+  <p id="result"></p>
+
+  
+    <script src="script.js"></script>
+</body>
+</html>

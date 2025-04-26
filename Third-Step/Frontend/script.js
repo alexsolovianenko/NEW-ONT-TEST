@@ -1,128 +1,181 @@
 function showGradeOptions() {
   const input = document.getElementById('subjectInput').value.trim().toLowerCase();
   const container = document.getElementById('gradeRadioContainer');
-  const confirmGrade = document.getElementById('confirmGrade');
+  const searchSubjectButtonContainer = document.getElementById('searchSubjectButtonContainer');
+  const submitButtonContainer = document.getElementById('submitButtonContainer');
 
   container.innerHTML = ""; 
-  confirmGrade.style.display = "none"; 
+  submitButtonContainer.style.display = "none";
 
-  if (input === "math" || input === "biology") {
+  if (input === "math" || input === "functions" || input === "biology" || input === "accounting" || input === "computer science" || input === "religion" || input === "physics") {
     const grades = ["Grade 9", "Grade 10", "Grade 11", "Grade 12"];
     grades.forEach(grade => {
       const label = document.createElement("label");
       label.innerHTML = `
-        <input type="radio" name="grade" value="${grade}"> ${grade}
+        <input type="radio" name="grade" value="${grade}" class="grade-radio"> ${grade}
       `;
       container.appendChild(label);
       container.appendChild(document.createElement("br"));
     });
 
-    confirmGrade.style.display = "block";
+    searchSubjectButtonContainer.style.display = "none";
+    submitButtonContainer.style.display = "block";
+
+    container.addEventListener('change', (event) => {
+      if (event.target.name === "grade") {
+        showSubjectsForGrade(input, event.target.value);
+      }
+    });
   } else {
     container.innerHTML = "No grades available for that subject.";
   }
+}
 
-  if (input === "biology") {
-    let subjects = ["All", "Respiratory", "Circulatory", "Genetics", "Evolution", "Digestive"];
-    subjects.sort((a, b) => {
-      if (a === "All") return -1; 
-      if (b === "All") return 1;
-      return a.localeCompare(b);
-    });
-    subjects.forEach(subject => {
-      const label = document.createElement("label");
-      label.innerHTML = `
-        <input type="checkbox" name="mathSubject" value="${subject}"> ${subject}
-      `;
-      container.appendChild(label);
-      container.appendChild(document.createElement("br"));
-    });
+function showSubjectsForGrade(subject, grade) {
+  const subjectsContainer = document.getElementById('subjectsContainer');
+  const submitButtonContainer = document.getElementById('submitButtonContainer');
+  subjectsContainer.innerHTML = "";
+
+  if (grade === "Grade 9" || grade === "Grade 10" || grade === "Grade 12") {
+    subjectsContainer.innerHTML = "In process of development, will release later";
+    submitButtonContainer.style.display = "none"; // Hide the submit button
+    return;
   }
 
-  if (input === "accounting") {
-    let subjects = ["All", "Accounting Cycle for a Service Business", "Internal and Cash Controls"];
+  let subjects = [];
+  if (subject === "biology" && grade === "Grade 11") {
+    subjects = ["All", "Respiratory", "Circulatory", "Genetics", "Evolution", "Digestive"];
+  } else if (subject === "accounting" && grade === "Grade 11") {
+    subjects = ["All", "Accounting Cycle for a Service Business", "Internal and Cash Controls", "Business Structures and Accounting Implications", "Ethical Practices in Accounting", "Technology and Financial Statements"];
+  } else if (subject === "computer science" && grade === "Grade 11") {
+    subjects = ["All", "Computer Foundations", "Computing & Programming Basics", "Control Structures", "Functions & Loops", "Lists", "Emerging Areas of Computer Science"];
+  } else if (subject === "religion" && grade === "Grade 11") {
+    subjects = ["All", "Into to World Religions", "Indigenous Spirituality", "Judaism", "Christianity", "Islam", "Eastern Religions – Hinduism & Buddhism"];
+  } else if (subject === "physics" && grade === "Grade 11") {
+    subjects = ["All", "Kinematics", "Forces", "Energy and Society", "Waves and Sound", "Electricity and Magnetism"];
+  } else if (subject === "math" || subject === "functions") {
+    if (grade === "Grade 11") {
+      subjects = ["All", "Algebra", "Trigonometry", "Calculus", "Statistics"];
+    }
+  }
+
+  if (subjects.length > 0) {
     subjects.sort((a, b) => {
       if (a === "All") return -1;
       if (b === "All") return 1;
-      return a.localeCompare(b); 
+      return a.localeCompare(b);
     });
+
     subjects.forEach(subject => {
       const label = document.createElement("label");
       label.innerHTML = `
-        <input type="checkbox" name="mathSubject" value="${subject}"> ${subject}
+        <input type="checkbox" name="mathSubject" value="${subject}" class="subject-checkbox"> ${subject}
       `;
-      container.appendChild(label);
-      container.appendChild(document.createElement("br"));
+      subjectsContainer.appendChild(label);
+      subjectsContainer.appendChild(document.createElement("br"));
     });
-  }
 
+    submitButtonContainer.style.display = "block"; // Show the submit button for Grade 11
 
-  if (input === "computer science") {
-    let subjects = ["All", "Computer Foundations", "Computing & Programming Basics", "Control Structures", "Functions & Loops"];
-    subjects.sort((a, b) => {
-      if (a === "All") return -1; 
-      if (b === "All") return 1;
-      return a.localeCompare(b); 
+    subjectsContainer.addEventListener('change', (event) => {
+      const checkboxes = subjectsContainer.querySelectorAll('.subject-checkbox');
+      const allCheckbox = Array.from(checkboxes).find(cb => cb.value === "All");
+
+      if (event.target.value === "All") {
+        const isChecked = event.target.checked;
+        checkboxes.forEach(cb => {
+          cb.checked = isChecked;
+        });
+      } else {
+        const allChecked = Array.from(checkboxes).every(cb => cb.checked || cb.value === "All");
+        allCheckbox.checked = allChecked;
+      }
     });
-    subjects.forEach(subject => {
-      const label = document.createElement("label");
-      label.innerHTML = `
-        <input type="checkbox" name="mathSubject" value="${subject}"> ${subject}
-      `;
-      container.appendChild(label);
-      container.appendChild(document.createElement("br"));
-    });
+  } else {
+    subjectsContainer.innerHTML = "No subjects available for this grade.";
+    submitButtonContainer.style.display = "none"; // Hide the submit button if no subjects are available
   }
 }
 
 function setupAutocomplete() {
   const inputField = document.getElementById('subjectInput');
-  const suggestionsContainer = document.getElementById('autocompleteSuggestions');
-  const options = ["math", "biology", "science", "accounting", "computer science"];
+  const options = ["math", "biology", "science", "accounting", "computer science", "religion", "history", "geography", "english", "chemistry", "physics", "marketing"];
+  const gradeRadioContainer = document.getElementById('gradeRadioContainer');
+  const subjectsContainer = document.getElementById('subjectsContainer');
+  const submitButtonContainer = document.getElementById('submitButtonContainer');
+  const searchSubjectButtonContainer = document.getElementById('searchSubjectButtonContainer');
+
+  let currentSuggestion = "";
+  let isDeleting = false;
 
   inputField.addEventListener('input', () => {
-    const query = inputField.value.trim().toLowerCase();
-    suggestionsContainer.innerHTML = ""; // Clear previous suggestions
+    if (isDeleting) {
+      currentSuggestion = "";
+      return;
+    }
 
-    if (query) {
-      const filteredOptions = options.filter(option => option.startsWith(query));
-      filteredOptions.forEach(option => {
-        const suggestion = document.createElement('div');
-        suggestion.textContent = option;
-        suggestion.className = 'suggestion-item';
-        suggestion.addEventListener('click', () => {
-          inputField.value = option; // Set the input field to the selected suggestion
-          suggestionsContainer.innerHTML = ""; // Clear suggestions
-          showGradeOptions(); // Trigger the grade options logic
-        });
-        suggestionsContainer.appendChild(suggestion);
-      });
+    const query = inputField.value.trim().toLowerCase();
+    const cursorPosition = inputField.selectionStart;
+    currentSuggestion = "";
+
+    // Reset grades and subjects if the user starts typing again
+    gradeRadioContainer.innerHTML = "";
+    subjectsContainer.innerHTML = "";
+    submitButtonContainer.style.display = "none";
+    searchSubjectButtonContainer.style.display = "block";
+
+    if (query.length >= 3) {
+      const filteredOptions = options.filter(option => option.toLowerCase().startsWith(query));
+
+      if (filteredOptions.length > 0) {
+        currentSuggestion = filteredOptions[0];
+        inputField.value = query + currentSuggestion.slice(query.length);
+        inputField.setSelectionRange(cursorPosition, inputField.value.length);
+      }
+    }
+  });
+
+  inputField.addEventListener('keydown', (event) => {
+    if (event.key === "Tab" && currentSuggestion) {
+      event.preventDefault();
+      inputField.value = currentSuggestion;
+      inputField.setSelectionRange(inputField.value.length, inputField.value.length);
+      currentSuggestion = "";
+    } else if (event.key === "Enter") {
+      event.preventDefault();
+      currentSuggestion = "";
+      showGradeOptions();
+    } else if (event.key === "Backspace") {
+      isDeleting = true;
+    }
+  });
+
+  inputField.addEventListener('keyup', (event) => {
+    if (event.key === "Backspace") {
+      isDeleting = false;
     }
   });
 }
 
-// Call setupAutocomplete when the page loads
-document.addEventListener('DOMContentLoaded', setupAutocomplete);
-
-function submitGrade() {
-  const selectedGrade = document.querySelector('input[name="grade"]:checked');
-  const selectedSubjects = document.querySelectorAll('input[name="mathSubject"]:checked');
-  const result = document.getElementById('result');
-
-  let output = "";
-
-  if (selectedGrade) {
-    output += `Grade: ${selectedGrade.value}`;
-  } else {
-    output += "Please choose a grade.";
-  }
-
-  if (selectedSubjects.length > 0) {
-    const subjects = Array.from(selectedSubjects).map(subject => subject.value);
-    output += `, Subjects: ${subjects.join(", ")}`;
-  }
-
-  result.textContent = output;
+function redirectToResultsPage(subject, grade, selectedSubjects) {
+  const queryParams = new URLSearchParams({
+    subject,
+    grade,
+    selectedSubjects: selectedSubjects.join(',')
+  });
+  window.location.href = `results.html?${queryParams.toString()}`;
 }
 
+function submitAll() {
+  const grade = document.querySelector('input[name="grade"]:checked').value;
+  const subject = document.getElementById('subjectInput').value.trim().toLowerCase();
+  const selectedSubjects = Array.from(document.querySelectorAll('.subject-checkbox:checked')).map(cb => cb.value);
 
+  if (grade === "Grade 11" && selectedSubjects.length > 0) {
+    redirectToResultsPage(subject, grade, selectedSubjects);
+  } else {
+    alert("Please select Grade 11 and at least one subject.");
+  }
+}
+
+document.addEventListener('DOMContentLoaded', setupAutocomplete);

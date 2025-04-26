@@ -7,28 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<h1>Area for header (Left side with button to change tabs)</h1>
-
+<h1>Area for header (Left side with button to change tabs) </h1>
+<h2>-- Calean make them know its only for grade 11, u will see we only got stuff rn for gr11</h2>
+<p>current list: "math", "biology", "science", "accounting", "computer science", "religion", "history", "geography", "english", "chemistry", "physics", "marketing"</p>
   <input type="text" id="subjectInput" placeholder="Search subject...">
-  <button onclick="showGradeOptions()">Submit</button>
-<div id="autocompleteSuggestions" class="autocomplete-container"></div>
+  <div id="autocompleteSuggestions" class="autocomplete-container"></div>
+
+  <!-- Button to search for subject -->
+  <div id="searchSubjectButtonContainer" style="margin-top: 10px;">
+    <button onclick="showGradeOptions()">Search Subject</button>
+  </div>
 
   <div id="gradeRadioContainer" style="margin-top: 20px;"></div>
 
-  <!-- Hidden confirm button for hhe grade -->
-  <div id="confirmGrade" style="display: none; margin-top: 10px;">
-    <button onclick="submitGrade()">Confirm Grade</button>
-  </div>
+  <!-- New container for subjects -->
+  <div id="subjectsContainer" style="margin-top: 20px;"></div>
 
-
-  <!-- Hidden confirm button for the ytype for each -->
-  <div id="confirmGrade" style="display: none; margin-top: 10px;">
-    <button onclick="submitGrade()">Find Tests</button>
+  <!-- Button to submit after grades and subjects are visible -->
+  <div id="submitButtonContainer" style="margin-top: 20px; display: none;">
+    <button onclick="submitAll()">Submit</button>
   </div>
 
   <p id="result"></p>
 
-  
     <script src="script.js"></script>
 </body>
 </html>

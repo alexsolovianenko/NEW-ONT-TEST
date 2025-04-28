@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>Ontario Tests - Search Tests</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container mx-auto px-4 py-8 flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="mb-8 relative">
+      <nav>
+        <a href="index.html" class="bubble-link">
+          <i class="ri-code-line mr-2"></i>
+          <span>Software</span>
+        </a>
+        <a href="search.html" class="bubble-link ml-4">
+          <i class="ri-search-line mr-2"></i>
+          <span>Find Tests</span>
+        </a>
+        <a href="upload.html" class="bubble-link ml-4">
+          <i class="ri-upload-2-line mr-2"></i>
+          <span>Upload</span>
+        </a>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+      <div class="flex flex-col lg:flex-row items-start gap-8">
+        <div class="lg:w-1/2 w-full lg:sticky lg:top-8">
+          <div class="text-content">
+            <h1>Find Tests</h1>
+            <p class="subtitle">
+              Browse our collection of Ontario Tests by grade, subject, and topic.
+            </p>
+            <div class="features">
+              <div class="feature">
+                <i class="ri-search-line"></i>
+                <span>Search by subject</span>
+              </div>
+              <div class="feature">
+                <i class="ri-filter-line"></i>
+                <span>Filter by topic</span>
+              </div>
+            </div>
+            <p class="note mt-4">
+              <i class="ri-information-line"></i> Currently, only Grade 11 content is fully available for search.
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:w-1/2 w-full">
+          <div class="upload-card">
+            <div class="card-header">
+              <h2>Search for Tests</h2>
+            </div>
+            <div class="card-content">
+              <div class="space-y-6">
+                <div class="space-y-2">
+                  <label for="subjectInput" class="form-label">Enter a subject</label>
+                  <div class="search-input-container">
+                    <input type="text" id="subjectInput" placeholder="e.g. math, biology, physics" class="search-input">
+                    <div id="autocompleteSuggestions" class="autocomplete-container"></div>
+                  </div>
+                  <div class="text-sm mt-1 text-gray-600">
+                    <i class="ri-information-line"></i> Start typing (at least 3 characters) and press Tab to accept suggestion
+                  </div>
+                  <div id="searchSubjectButtonContainer" class="mt-4">
+                    <button id="searchSubjectBtn" class="btn-primary">
+                      <i class="ri-search-line"></i>
+                      <span>Search Subject</span>
+                    </button>
+                  </div>
+                </div>
+                
+                <div id="gradeRadioContainer" class="space-y-2 mt-6"></div>
+                
+                <div id="subjectsContainer" class="space-y-2 mt-6"></div>
+                
+                <div id="submitButtonContainer" style="display: none;" class="mt-6">
+                  <button id="submitBtn" class="btn-primary">
+                    <i class="ri-file-search-line"></i>
+                    <span>Find Tests</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results section (initially hidden) -->
+      <div id="resultsContainer" style="display: none;" class="mt-8">
+        <div class="upload-card">
+          <div class="card-header">
+            <h2 id="resultsTitle">Test Results</h2>
+          </div>
+          <div class="card-content">
+            <div id="testResults" class="space-y-4">
+              <!-- Results will be populated here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-12 py-6 text-center text-gray-600">
+      <p>© <span id="currentYear"></span> Ontario Tests | Early Development Version</p>
+    </footer>
+  </div>
+
+  <script src="scripts.js"></script>
+  <script src="search.js"></script>
+</body>
+</html>

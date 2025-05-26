@@ -40,11 +40,36 @@ if 'Contents' in response:
 
             # Determine the appropriate HTML file based on the file name
             if any(keyword in object_key.lower() for keyword in ['biology', 'bio', 'biolo']):
-                html_file_path = "/Users/alex/NEW-ONT-TEST-3/dFourth-Step/Frontend/biology.html"
+                html_file_path = "/Users/alex/NEW-ONT-TEST-4/dFourth-Step/Frontend/biology.html"
             elif any(keyword in object_key.lower() for keyword in ['computer', 'comp', 'compsci']):
-                html_file_path = "/Users/alex/NEW-ONT-TEST-3/dFourth-Step/Frontend/compsci.html"
+                html_file_path = "/Users/alex/NEW-ONT-TEST-4/dFourth-Step/Frontend/compsci.html"
+                
+
+
+            elif any(keyword in object_key.lower() for keyword in ['accounting']):
+                html_file_path = "/Users/alex/NEW-ONT-TEST-4/dFourth-Step/Frontend/accounting.html"
+
+            elif any(keyword in object_key.lower() for keyword in ['religion']):
+                html_file_path = "/Users/alex/NEW-ONT-TEST-4/dFourth-Step/Frontend/religion.html"
+
+
+            elif any(keyword in object_key.lower() for keyword in ['english', 'eng']):
+                html_file_path = "/Users/alex/NEW-ONT-TEST-4/dFourth-Step/Frontend/english.html"
+
+            elif any(keyword in object_key.lower() for keyword in ['chemistry', 'chem']):
+                html_file_path = "/Users/alex/NEW-ONT-TEST-4/dFourth-Step/Frontend/chemistry.html"
+
+            elif any(keyword in object_key.lower() for keyword in ['physics']):
+                html_file_path = "/Users/alex/NEW-ONT-TEST-4/dFourth-Step/Frontend/physics.html"
+
+            elif any(keyword in object_key.lower() for keyword in ['marketing', 'market']):
+                html_file_path = "/Users/alex/NEW-ONT-TEST-4/dFourth-Step/Frontend/marketing.html"
+            
+            elif any(keyword in object_key.lower() for keyword in ['geography', 'geo']):
+                html_file_path = "/Users/alex/NEW-ONT-TEST-4/dFourth-Step/Frontend/geography.html"
+
             else:
-                html_file_path = "/Users/alex/NEW-ONT-TEST-3/dFourth-Step/Frontend/other.html"  # Default file
+                print('Cant find which HTML file to append to.')
 
             # Append the URL and file name to the determined HTML file
             file_url = f"https://{second_s3_bucket_name}.s3.{second_aws_region}.amazonaws.com/{object_key}"

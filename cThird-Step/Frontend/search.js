@@ -1,36 +1,28 @@
-// Search Page Functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize search page components
     setupAutocomplete();
-    
-    // Setup event listeners
     document.getElementById('searchSubjectBtn').addEventListener('click', showGradeOptions);
     document.getElementById('submitBtn').addEventListener('click', submitAll);
 });
 
-// Available subject options
 const subjectOptions = [
     "math", "biology", "science", "accounting", 
     "computer science", "religion", "history", 
     "geography", "english", "chemistry", "physics", "marketing"
 ];
 
-// Function to show grade options based on subject
 function showGradeOptions() {
     const input = document.getElementById('subjectInput').value.trim().toLowerCase();
+    sessionStorage.setItem('selectedSubject', input);
+
     const container = document.getElementById('gradeRadioContainer');
     const searchSubjectButtonContainer = document.getElementById('searchSubjectButtonContainer');
     const submitButtonContainer = document.getElementById('submitButtonContainer');
     
-    // Clear previous content and hide submit button
     container.innerHTML = '<h3 class="form-label">Select Grade Level</h3>'; 
     submitButtonContainer.style.display = "none";
     
-    // Check if the subject is valid
     if (["math", "functions", "biology", "accounting", "computer science", "religion", "physics"].includes(input)) {
         const grades = ["Grade 9", "Grade 10", "Grade 11", "Grade 12"];
-        
-        // Create radio buttons for each grade
         const radioGroup = document.createElement('div');
         radioGroup.className = 'radio-group';
         
@@ -40,40 +32,40 @@ function showGradeOptions() {
             label.innerHTML = `
                 <input type="radio" name="grade" value="${grade}" class="grade-radio"> ${grade}
             `;
+            label.querySelector('input').addEventListener('change', function() {
+                sessionStorage.setItem('selectedGrade', grade);
+            });
             radioGroup.appendChild(label);
         });
         
         container.appendChild(radioGroup);
         
-        // Add event listener for grade selection
         container.addEventListener('change', (event) => {
             if (event.target.name === "grade") {
                 showSubjectsForGrade(input, event.target.value);
             }
         });
     } else {
-        // If subject is not valid
         container.innerHTML = '<h3 class="form-label">Select Grade Level</h3>';
         container.innerHTML += '<div class="no-content">No grades available for that subject.</div>';
     }
 }
 
-// Function to show subjects/topics based on grade and subject
 function showSubjectsForGrade(subject, grade) {
+    sessionStorage.setItem('selectedGrade', grade);
+    sessionStorage.setItem('selectedSubject', subject);
+
     const subjectsContainer = document.getElementById('subjectsContainer');
     const submitButtonContainer = document.getElementById('submitButtonContainer');
     
-    // Clear previous content
     subjectsContainer.innerHTML = '<h3 class="form-label">Select Topics</h3>';
     
-    // Only show content for Grade 11, other grades are "in development"
     if (grade === "Grade 9" || grade === "Grade 10" || grade === "Grade 12") {
         subjectsContainer.innerHTML += '<div class="development-notice"><i class="ri-time-line"></i> In process of development, will be released later</div>';
         submitButtonContainer.style.display = "none";
         return;
     }
     
-    // Define available subjects/topics based on the selected subject and grade
     let subjects = [];
     if (subject === "biology" && grade === "Grade 11") {
         subjects = ["All", "Respiratory", "Circulatory", "Genetics", "Evolution", "Digestive"];
@@ -91,16 +83,13 @@ function showSubjectsForGrade(subject, grade) {
         }
     }
     
-    // If subjects are available, create checkboxes
     if (subjects.length > 0) {
-        // Sort subjects with "All" first
         subjects.sort((a, b) => {
             if (a === "All") return -1;
             if (b === "All") return 1;
             return a.localeCompare(b);
         });
         
-        // Create checkboxes
         const checkboxGroup = document.createElement('div');
         checkboxGroup.className = 'checkbox-group';
         
@@ -110,25 +99,26 @@ function showSubjectsForGrade(subject, grade) {
             label.innerHTML = `
                 <input type="checkbox" name="topic" value="${topic}" class="subject-checkbox"> ${topic}
             `;
+            label.querySelector('input').addEventListener('change', function() {
+                const selectedTopics = Array.from(subjectsContainer.querySelectorAll('.subject-checkbox:checked')).map(cb => cb.value);
+                sessionStorage.setItem('selectedTopics', JSON.stringify(selectedTopics));
+            });
             checkboxGroup.appendChild(label);
         });
         
         subjectsContainer.appendChild(checkboxGroup);
         submitButtonContainer.style.display = "block";
         
-        // Add event listener for checkbox selection logic
         subjectsContainer.addEventListener('change', (event) => {
             const checkboxes = subjectsContainer.querySelectorAll('.subject-checkbox');
             const allCheckbox = Array.from(checkboxes).find(cb => cb.value === "All");
             
             if (event.target.value === "All") {
-                // If "All" is checked/unchecked, update all other checkboxes
                 const isChecked = event.target.checked;
                 checkboxes.forEach(cb => {
                     cb.checked = isChecked;
                 });
             } else {
-                // If any individual option is checked, check if all are checked
                 const allIndividualChecked = Array.from(checkboxes)
                     .filter(cb => cb.value !== "All")
                     .every(cb => cb.checked);
@@ -139,13 +129,11 @@ function showSubjectsForGrade(subject, grade) {
             }
         });
     } else {
-        // If no subjects are available
         subjectsContainer.innerHTML += '<div class="no-content">No topics available for this grade and subject.</div>';
         submitButtonContainer.style.display = "none";
     }
 }
 
-// Autocomplete functionality for the subject input
 function setupAutocomplete() {
     const inputField = document.getElementById('subjectInput');
     const gradeRadioContainer = document.getElementById('gradeRadioContainer');
@@ -155,7 +143,6 @@ function setupAutocomplete() {
     let currentSuggestion = "";
     let isDeleting = false;
     
-    // Input event for autocomplete suggestions
     inputField.addEventListener('input', () => {
         if (isDeleting) {
             currentSuggestion = "";
@@ -166,12 +153,10 @@ function setupAutocomplete() {
         const cursorPosition = inputField.selectionStart;
         currentSuggestion = "";
         
-        // Reset containers when input changes
         gradeRadioContainer.innerHTML = "";
         subjectsContainer.innerHTML = "";
         submitButtonContainer.style.display = "none";
         
-        // Only show suggestions if at least 3 characters are typed
         if (query.length >= 3) {
             const filteredOptions = subjectOptions.filter(option => 
                 option.toLowerCase().startsWith(query)
@@ -185,7 +170,6 @@ function setupAutocomplete() {
         }
     });
     
-    // Key events for navigation and selection
     inputField.addEventListener('keydown', (event) => {
         if (event.key === "Tab" && currentSuggestion) {
             event.preventDefault();
@@ -208,42 +192,58 @@ function setupAutocomplete() {
     });
 }
 
-// Function to handle form submission and redirection
 function submitAll() {
     const selectedGrade = document.querySelector('input[name="grade"]:checked');
-    
     if (!selectedGrade) {
         showToast('Error', 'Please select a grade level.');
         return;
     }
-    
     const grade = selectedGrade.value;
     const subject = document.getElementById('subjectInput').value.trim().toLowerCase();
     const selectedTopics = Array.from(document.querySelectorAll('.subject-checkbox:checked')).map(cb => cb.value);
-    
-    if (grade === "Grade 11" && selectedTopics.length > 0) {
-        // For demo purposes, we'll show results directly instead of redirecting
-        displayResults(subject, grade, selectedTopics);
+
+    sessionStorage.setItem('selectedSubject', subject);
+    sessionStorage.setItem('selectedGrade', grade);
+    sessionStorage.setItem('selectedTopics', JSON.stringify(selectedTopics));
+
+    let htmlFile = null;
+    if (["biology", "bio", "biolo"].some(k => subject.includes(k))) {
+        htmlFile = "biology.html";
+    } else if (["computer", "comp", "compsci"].some(k => subject.includes(k))) {
+        htmlFile = "compsci.html";
+    } else if (["accounting"].some(k => subject.includes(k))) {
+        htmlFile = "accounting.html";
+    } else if (["religion"].some(k => subject.includes(k))) {
+        htmlFile = "religion.html";
+    } else if (["english", "eng"].some(k => subject.includes(k))) {
+        htmlFile = "english.html";
+    } else if (["chemistry", "chem"].some(k => subject.includes(k))) {
+        htmlFile = "chemistry.html";
+    } else if (["physics"].some(k => subject.includes(k))) {
+        htmlFile = "physics.html";
+    } else if (["marketing", "market"].some(k => subject.includes(k))) {
+        htmlFile = "marketing.html";
+    } else if (["geography", "geo"].some(k => subject.includes(k))) {
+        htmlFile = "geography.html";
+    }
+
+    if (grade === "Grade 11" && selectedTopics.length > 0 && htmlFile) {
+        window.location.href = "../../dFourth-Step/Frontend/" + htmlFile;
     } else {
         showToast('Error', 'Please select Grade 11 and at least one topic.');
     }
 }
 
-// Function to display search results (demo version)
 function displayResults(subject, grade, selectedTopics) {
     const resultsContainer = document.getElementById('resultsContainer');
     const resultsTitle = document.getElementById('resultsTitle');
     const testResults = document.getElementById('testResults');
     
-    // Clear previous results
     testResults.innerHTML = '';
     
-    // Update title
     resultsTitle.textContent = `${grade} ${subject.charAt(0).toUpperCase() + subject.slice(1)} Tests`;
     
-    // Generate mock results
     if (selectedTopics.includes('All')) {
-        // If "All" is selected, get all topics except "All"
         const allTopics = Array.from(document.querySelectorAll('.subject-checkbox'))
             .filter(cb => cb.value !== 'All')
             .map(cb => cb.value);
@@ -253,23 +253,17 @@ function displayResults(subject, grade, selectedTopics) {
         generateTestResults(testResults, subject, grade, selectedTopics);
     }
     
-    // Show results container
     resultsContainer.style.display = 'block';
-    
-    // Scroll to results
     resultsContainer.scrollIntoView({ behavior: 'smooth' });
 }
 
-// Helper function to generate test result items
 function generateTestResults(container, subject, grade, topics) {
     if (topics.length === 0) {
         container.innerHTML = '<div class="no-content">No tests found for the selected criteria.</div>';
         return;
     }
     
-    // For each topic, create a test result entry
     topics.forEach(topic => {
-        // Create 1-3 test entries per topic
         const testCount = Math.floor(Math.random() * 3) + 1;
         
         for (let i = 1; i <= testCount; i++) {

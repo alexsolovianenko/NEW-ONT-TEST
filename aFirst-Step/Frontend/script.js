@@ -1,7 +1,5 @@
-// Set current year in footer
 document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-// File Upload Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const uploadForm = document.getElementById('uploadForm');
     if (!uploadForm) return; // If we're not on the upload page
@@ -16,15 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
     let isUploading = false;
     let recentUploads = [];
     
-    // Initialize button state
     updateButtonState();
     
-    // Handle file selection
     fileInput.addEventListener('change', function(e) {
         if (e.target.files && e.target.files.length > 0) {
             selectedFile = e.target.files[0];
             
-            // Validate file type
             if (selectedFile.type !== 'application/pdf') {
                 showToast('Error', 'Only PDF files are allowed.');
                 selectedFile = null;
@@ -34,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Validate file size (10MB max)
             if (selectedFile.size > 10 * 1024 * 1024) {
                 showToast('Error', 'File size exceeds 10MB limit.');
                 selectedFile = null;
@@ -44,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Display selected file name
             fileNameDisplay.innerHTML = `<i class="ri-file-pdf-line"></i> ${selectedFile.name}`;
         } else {
             selectedFile = null;
@@ -54,12 +47,10 @@ document.addEventListener('DOMContentLoaded', function() {
         updateButtonState();
     });
     
-    // Make entire drop area clickable
     document.querySelector('.file-drop-area').addEventListener('click', function() {
         fileInput.click();
     });
     
-    // Handle form submission
     uploadForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -68,28 +59,20 @@ document.addEventListener('DOMContentLoaded', function() {
         isUploading = true;
         updateButtonState();
         
-        // Simulate upload
         uploadButton.innerHTML = '<i class="ri-loader-2-line ri-spin"></i> <span>Uploading...</span>';
         
-        // Simulate API call with a timeout
         setTimeout(function() {
             isUploading = false;
             
-            // Update recent uploads
             recentUploads.unshift(textInput.value);
             if (recentUploads.length > 5) {
                 recentUploads.pop();
             }
             updateRecentUploadsList();
-            
-            // Show success state
             uploadButton.innerHTML = '<i class="ri-check-line"></i> <span>Upload Complete</span>';
             uploadButton.classList.add('bg-green-600');
             uploadButton.classList.remove('bg-blue-600');
-            
             showToast('Success', `${textInput.value} has been uploaded successfully.`);
-            
-            // Reset form after delay
             setTimeout(function() {
                 uploadForm.reset();
                 selectedFile = null;
@@ -102,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 2000);
     });
     
-    // Update button state based on form validity
     textInput.addEventListener('input', updateButtonState);
     
     function updateButtonState() {
@@ -122,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Simple toast notification
     function showToast(title, message) {
         const toast = document.createElement('div');
         toast.className = 'toast ' + (title === 'Error' ? 'toast-error' : 'toast-success');
@@ -146,7 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     }
     
-    // Add this to the end of styles.css for toast notifications
     const style = document.createElement('style');
     style.textContent = `
         .toast {

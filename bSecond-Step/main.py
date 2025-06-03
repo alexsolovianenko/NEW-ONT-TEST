@@ -135,14 +135,34 @@ Here is the content of the document:
 
 class StyledPDF(FPDF, HTMLMixin):
     def header(self):
-        self.set_font("Arial", size=12, style="B")
-        self.cell(0, 10, "Ontario Practice Test", ln=True, align="C")
+        self.set_fill_color(91, 44, 250)  # Purple background
+        self.set_text_color(255, 255, 255)  # White text
+        # Add Lexend Black font if not already added
+        if not hasattr(self, '_lexend_black_added'):
+            self.add_font("Lexend", "B", "Lexend-Black.ttf", uni=True)
+            self._lexend_black_added = True
+        # Page number at top right (y=5) with Lexend SemiBold
+        self.add_font("Lexend", "I", "Lexend-SemiBold.ttf", uni=True)
+        self.set_font("Lexend", style="I", size=10)
+        self.set_text_color(0, 0, 0)
+        self.set_xy(-40, 5)
+        self.cell(30, 10, f"Page {self.page_no()}", align="R")
+        # Title
+        self.set_xy(10, 18)
+        self.set_text_color(255, 255, 255)
+        self.set_font("Lexend", style="B", size=46)
+        self.cell(0, 28, "Ontario Tests", ln=True, align="C", fill=True)
         self.ln(5)
 
     def footer(self):
+        # Copyright/development notice at center bottom
+        from datetime import datetime
         self.set_y(-15)
-        self.set_font("Arial", size=10, style="I")
-        self.cell(0, 10, f"Page {self.page_no()}", align="C")
+        self.set_font("Lexend", style="", size=11)
+        self.set_text_color(138, 153, 163)  # #8a99a3
+        dev_notice = f"© {datetime.now().year} Ontario Tests | Early Development Version"
+        self.cell(0, 10, dev_notice, align="C")
+        self.set_text_color(150, 150, 150)
 
 if __name__ == "__main__":
     ExportPDFToDOCXWithOCROption(object_key)
@@ -157,18 +177,47 @@ if __name__ == "__main__":
 
     pdf = StyledPDF()
     pdf.set_auto_page_break(auto=True, margin=15)
-    pdf.add_page()
+    # Add Lexend fonts if not already added
+    pdf.add_font("Lexend", "", "Lexend-SemiBold.ttf", uni=True)
+    pdf.add_font("Lexend", "B", "Lexend-Black.ttf", uni=True)
+    pdf.add_font("Lexend", "I", "Lexend-SemiBold.ttf", uni=True)
+    # Add EB Garamond fonts for instructions (ExtraBold and Medium only)
+    pdf.add_font("EBGaramond", "XB", "EBGaramond-ExtraBold.ttf", uni=True)
+    pdf.add_font("EBGaramond", "M", "EBGaramond-Medium.ttf", uni=True)
 
-    # Add title with subject and grade
-    pdf.set_font("Arial", size=16, style="B")
-    pdf.cell(0, 10, f"Ontario Practice Test - {subject} ({grade})", ln=True, align="C")
-    pdf.ln(10)
+    pdf.add_page()  # Ensure a page exists before any drawing
 
-    pdf.set_font("Arial", size=12)
-    pdf.multi_cell(0, 10, "Instructions: Answer all questions in the space provided. Use diagrams or images where applicable.")
-    pdf.ln(10)
+    # Modern title
+    pdf.set_text_color(91, 44, 250)
+    pdf.set_font("Lexend", style="B", size=18)
+    pdf.ln(2)  # Reduce spacing before instructions
 
-    pdf.set_font("Arial", size=12)
+    # Instructions block: "Instructions:" (Lexend Black) + rest (EB Garamond Medium), bigger font
+    pdf.set_fill_color(240, 240, 255)
+    pdf.set_text_color(0, 0, 0)
+    left_margin = 5
+    right_margin = 20
+    box_width = pdf.w - left_margin - right_margin
+    pdf.set_x(left_margin)
+    pdf.set_font("Lexend", style="B", size=12)
+    instr_text = "Instructions:"
+    instr_width = pdf.get_string_width(instr_text + " ")
+    pdf.cell(instr_width, 8, instr_text, ln=0, fill=True)
+    pdf.set_font("EBGaramond", style="M", size=12)
+    first_line = "For each of the following, provide the most accurate and complete response. Explanations are provided"
+    pdf.cell(box_width - instr_width, 8, first_line, ln=1, fill=True)
+    pdf.set_x(left_margin)
+    pdf.cell(box_width, 8, "at the end.", ln=1, fill=True)
+    pdf.ln(6)
+
+    # Add section headers in Lexend SemiBold, two lines apart
+    section_headers = ["Knowledge", "Thinking", "Application", "Communication"]
+    for section in section_headers:
+        pdf.ln(12)
+        pdf.set_font("Lexend", style="", size=15)  # Lexend SemiBold, bigger font size
+        pdf.cell(0, 10, section + ":", ln=1, fill=True)
+
+    # Use extracted questions for the rest of the PDF
     section_titles = ["Thinking", "Communication", "Knowledge", "Application"]
     question_lines = questions.split("\n")
     current_section = None
@@ -176,25 +225,33 @@ if __name__ == "__main__":
     for line in question_lines:
         if line.strip() in section_titles:
             current_section = line.strip()
-            pdf.set_font("Arial", size=14, style="B")
-            pdf.cell(0, 10, f"Section: {current_section}", ln=True, align="L")
-            pdf.ln(5)
-            pdf.set_font("Arial", size=12)
+            pdf.set_fill_color(220, 230, 255)
+            pdf.set_text_color(40, 40, 120)
+            pdf.set_font("Lexend", style="B", size=14)
+            pdf.cell(0, 10, f"Section: {current_section}", ln=True, fill=True)
+            pdf.ln(4)
+            pdf.set_font("Lexend", size=12)
+            pdf.set_text_color(0, 0, 0)
         elif line.strip():
             if line.startswith("[Refer to Figure"):
-                pdf.set_font("Arial", size=12, style="I")
+                pdf.set_font("Lexend", style="I", size=12)
+                pdf.set_text_color(80, 80, 80)
                 pdf.multi_cell(0, 10, line)
                 pdf.ln(2)
+                pdf.set_font("Lexend", size=12)
+                pdf.set_text_color(0, 0, 0)
             else:
                 pdf.multi_cell(0, 10, line)
                 pdf.ln(2)
 
     pdf.add_page()
-    pdf.set_font("Arial", size=12, style="B")
-    pdf.cell(0, 10, "Figures and Diagrams", ln=True, align="C")
+    pdf.set_font("Lexend", style="B", size=20)
+    pdf.set_text_color(91, 44, 250)
+    pdf.cell(0, 10, "Solutions", ln=True, align="C")
     pdf.ln(10)
-    pdf.set_font("Arial", size=12)
- 
+    pdf.set_text_color(0, 0, 0)
+    pdf.set_font("Lexend", size=12)
+
     original_file_name = os.path.splitext(object_key)[0]
     output_pdf_path = f"{original_file_name}_Practice_Test.pdf"
     pdf.output(output_pdf_path)

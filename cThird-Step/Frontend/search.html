@@ -6,11 +6,10 @@
   <title>Ontario Tests - Search Tests</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-  <link rel="stylesheet" href="/Users/alex/NEW-ONT-TEST-3/First-Step/Frontend/main.css">
+  <link rel="stylesheet" href="search.css">
 </head>
 <body>
   <div class="container mx-auto px-4 py-8 flex flex-col min-h-screen">
-    <!-- Header -->
     <header class="mb-8 relative">
       <nav>
         <a href="index.html" class="bubble-link">
@@ -28,7 +27,6 @@
       </nav>
     </header>
 
-    <!-- Main Content -->
     <main class="flex-grow">
       <div class="flex flex-col lg:flex-row items-start gap-8">
         <div class="lg:w-1/2 w-full lg:sticky lg:top-8">
@@ -93,7 +91,6 @@
         </div>
       </div>
 
-      <!-- Results section (initially hidden) -->
       <div id="resultsContainer" style="display: none;" class="mt-8">
         <div class="upload-card">
           <div class="card-header">
@@ -101,14 +98,12 @@
           </div>
           <div class="card-content">
             <div id="testResults" class="space-y-4">
-              <!-- Results will be populated here -->
             </div>
           </div>
         </div>
       </div>
     </main>
 
-    <!-- Footer -->
     <footer class="mt-12 py-6 text-center text-gray-600">
       <p>© <span id="currentYear"></span> Ontario Tests | Early Development Version</p>
     </footer>

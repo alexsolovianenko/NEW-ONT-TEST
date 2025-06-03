@@ -7,23 +7,18 @@ const cors = require('cors');
 const app = express();
 const port = 8000;
 
-// Enable CORS for frontend requests
 app.use(cors());
 
-// Serve static files from the First-Step frontend directory
 app.use(express.static(path.join(__dirname, 'First-Step/Frontend')));
 
-// Serve static files for Subjects-Front
 app.use('/subjects', express.static(path.join(__dirname, 'Third-Step/Frontend/Subjects-Front')));
 
-// Configure AWS S3
 const s3 = new AWS.S3({
     accessKeyId: process.env.SECOND_AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.SECOND_AWS_SECRET_ACCESS_KEY,
     region: process.env.SECOND_AWS_REGION,
 });
 
-// Endpoint to fetch files for a specific subject
 app.get('/api/files/:subject', async (req, res) => {
     const subject = req.params.subject.toLowerCase();
     const params = {
@@ -43,7 +38,6 @@ app.get('/api/files/:subject', async (req, res) => {
     }
 });
 
-// Start the server
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });

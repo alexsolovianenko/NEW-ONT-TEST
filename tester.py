@@ -96,21 +96,10 @@ if __name__ == "__main__":
         pdf.cell(pdf.get_string_width(section + " "), 8, section + ":", ln=0, fill=True)
         pdf.set_font("EBGaramond", style="M", size=12)
         pdf.cell(0, 8, "", ln=1, fill=True)
-
-    section_titles = ["Thinking", "Communication", "Knowledge", "Application"]
-    current_section = None
-
-    for line in random_things:
-        if line.strip() in section_titles:
-            current_section = line.strip()
-            pdf.set_fill_color(220, 230, 255)
-            pdf.set_text_color(40, 40, 120)
-            pdf.set_font("Lexend", style="B", size=14)
-            pdf.cell(0, 10, f"Section: {current_section}", ln=True, fill=True)
-            pdf.ln(4)
-            pdf.set_font("Lexend", size=12)
-            pdf.set_text_color(0, 0, 0)
-        elif line.strip():
+        # Show all questions under each section header
+        pdf.set_font("Lexend", size=12)
+        pdf.set_text_color(0, 0, 0)
+        for line in random_things:
             if line.startswith("[Refer to Figure"):
                 pdf.set_font("Lexend", style="I", size=12)
                 pdf.set_text_color(80, 80, 80)

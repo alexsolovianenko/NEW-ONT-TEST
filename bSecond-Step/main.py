@@ -116,7 +116,8 @@ Here is the content of the document:
 {docx_content}
 """
 
-        response = openai.ChatCompletion.create(
+        # Updated OpenAI API usage for >=1.0.0
+        response = openai.chat.completions.create(
             model="gpt-4",
             messages=[
                 {"role": "system", "content": "You are a high school teacher creating a structured practice test."},
@@ -125,7 +126,8 @@ Here is the content of the document:
             max_tokens=2000,
             temperature=0.5
         )
-        return response['choices'][0]['message']['content']
+        # The new API returns an object, not a dict
+        return response.choices[0].message.content
     except openai.error.OpenAIError as e:
         logging.error(f"Error extracting questions with OpenAI: {e}")
         return "Error: Unable to process the request."
@@ -177,13 +179,15 @@ if __name__ == "__main__":
 
     pdf = StyledPDF()
     pdf.set_auto_page_break(auto=True, margin=15)
-    # Add Lexend fonts if not already added
-    pdf.add_font("Lexend", "", "Lexend-SemiBold.ttf", uni=True)
-    pdf.add_font("Lexend", "B", "Lexend-Black.ttf", uni=True)
-    pdf.add_font("Lexend", "I", "Lexend-SemiBold.ttf", uni=True)
+    # Get the absolute path to the directory containing this script
+    font_dir = os.path.dirname(os.path.abspath(__file__))
+    # Add Lexend fonts if not already added, using absolute paths
+    pdf.add_font("Lexend", "", os.path.join(font_dir, "Lexend-SemiBold.ttf"), uni=True)
+    pdf.add_font("Lexend", "B", os.path.join(font_dir, "Lexend-Black.ttf"), uni=True)
+    pdf.add_font("Lexend", "I", os.path.join(font_dir, "Lexend-SemiBold.ttf"), uni=True)
     # Add EB Garamond fonts for instructions (ExtraBold and Medium only)
-    pdf.add_font("EBGaramond", "XB", "EBGaramond-ExtraBold.ttf", uni=True)
-    pdf.add_font("EBGaramond", "M", "EBGaramond-Medium.ttf", uni=True)
+    pdf.add_font("EBGaramond", "XB", os.path.join(font_dir, "EBGaramond-ExtraBold.ttf"), uni=True)
+    pdf.add_font("EBGaramond", "M", os.path.join(font_dir, "EBGaramond-Medium.ttf"), uni=True)
 
     pdf.add_page()  # Ensure a page exists before any drawing
 

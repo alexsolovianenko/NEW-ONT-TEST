@@ -1,5 +1,5 @@
-// Determine which JSON file to fetch based on the subject filter
 function getSubjectJsonFile(subject) {
+  // Based on the subject, append to proper settings
   subject = subject ? subject.toLowerCase() : "";
   if (["biology", "bio", "biolo"].some(k => subject.includes(k))) {
     return "biology.json";
@@ -26,6 +26,7 @@ function getSubjectJsonFile(subject) {
 }
 
 function getAvailableTopics(subject, grade) {
+  // autocomplete the words
   subject = (subject || "").toLowerCase();
   grade = (grade || "");
   let subjects = ["All"];
@@ -47,15 +48,15 @@ function getAvailableTopics(subject, grade) {
   return subjects;
 }
 
-// Helper to render filters and a "Change Filters" button or filter form
+
 function renderFilters(subject, grade, topics, showForm = false) {
+  // change the filters inside the page
   const filtersDiv = document.getElementById('filters');
   if (!showForm) {
-    // Show grade as number only, and if topics contains "All--", display the expanded text
     let topicsDisplay = "";
     if (topics && topics.length) {
       if (topics[0].startsWith("All--")) {
-        topicsDisplay = topics[0]; // Already in the format "All--topic1, topic2, ..."
+        topicsDisplay = topics[0];
       } else {
         topicsDisplay = topics.join(', ');
       }
@@ -78,7 +79,6 @@ function renderFilters(subject, grade, topics, showForm = false) {
     ];
     const availableTopics = getAvailableTopics(subject, grade);
 
-    // Landscape layout for topics as checkboxes
     filtersDiv.innerHTML = `
       <div style="display:flex;align-items:center;gap:40px;">
         <div>
@@ -106,27 +106,26 @@ function renderFilters(subject, grade, topics, showForm = false) {
       <button id="cancelFiltersBtn" style="margin-top:16px;">Cancel</button>
     `;
 
-    // Topic checkbox logic (toggle "All" and exclusivity)
+    // checkbox
     const topicCheckboxes = filtersDiv.querySelectorAll('input[name="topicCheckbox"]');
-    // Track local selection state so UI changes don't affect sessionStorage until Apply
+    // don't allow a change bf. hit apply
     let localSelectedGrade = grade;
     let localSelectedTopics = [...topics];
 
     topicCheckboxes.forEach(checkbox => {
       checkbox.onchange = function() {
         let selectedTopics = Array.from(filtersDiv.querySelectorAll('input[name="topicCheckbox"]:checked')).map(cb => cb.value);
+        
+        // Selected 'ALL' by user, checks everything
         const allCheckbox = Array.from(topicCheckboxes).find(cb => cb.value === "All");
         const nonAllCheckboxes = Array.from(topicCheckboxes).filter(cb => cb.value !== "All");
         if (this.value === "All" && this.checked) {
-          // If "All" is checked, check all others and update local state as ["All--<list all topics>"]
           topicCheckboxes.forEach(cb => { cb.checked = true; });
           selectedTopics = ["All--" + nonAllCheckboxes.map(cb => cb.value).join(", ")];
         } else if (this.value === "All" && !this.checked) {
-          // If "All" is unchecked, uncheck all
           topicCheckboxes.forEach(cb => { cb.checked = false; });
           selectedTopics = [];
         } else {
-          // If all individual topics are checked, check "All" too and set as All--<list all topics>
           const allChecked = nonAllCheckboxes.every(cb => cb.checked);
           if (allChecked && allCheckbox) {
             allCheckbox.checked = true;
@@ -136,12 +135,11 @@ function renderFilters(subject, grade, topics, showForm = false) {
             selectedTopics = selectedTopics.filter(t => !t.startsWith("All--"));
           }
         }
-        // Update local state only
         localSelectedTopics = selectedTopics;
       };
     });
 
-    // Grade radio logic
+    // grade radio logic
     const gradeRadios = filtersDiv.querySelectorAll('input[name="gradeRadio"]');
     gradeRadios.forEach(radio => {
       radio.onchange = function() {
@@ -150,7 +148,7 @@ function renderFilters(subject, grade, topics, showForm = false) {
         let newTopics = [];
         let showMsg = false;
 
-        // Only Grade 11 has topics, others show a message and no topics
+        // *** FIX LATER, Grade 11 only for now
         if (newGrade !== "Grade 11") {
           showMsg = true;
           newAvailableTopics = [];
@@ -327,20 +325,20 @@ function loadFiles(subject, grade, topics) {
   }
 }
 
-// Read filters from sessionStorage
+// retain info
 const subject = sessionStorage.getItem('selectedSubject');
 const grade = sessionStorage.getItem('selectedGrade');
 const topics = JSON.parse(sessionStorage.getItem('selectedTopics') || "[]");
 
-// Always show filters at the top
+// show filters
 renderFilters(subject, grade, topics, false);
 
-// Load files initially
+// load files 
 loadFiles(subject, grade, topics);
 
 console.log({ subject, grade, topics });
 
-// Helper to render with message for non-Grade 11
+// if not gr 11
 function renderFiltersWithMsg(subject, grade, topics, showForm, showMsg, origGrade, origTopics) {
   const filtersDiv = document.getElementById('filters');
   const grades = [
@@ -379,7 +377,7 @@ function renderFiltersWithMsg(subject, grade, topics, showForm, showMsg, origGra
     <button id="cancelFiltersBtn" style="margin-top:16px;">Cancel</button>
   `;
 
-  // Only attach topic checkbox logic if Grade 11
+  // ****FIX LATER. only for gr11
   let localSelectedGrade = grade;
   let localSelectedTopics = [...topics];
   if (grade === "Grade 11") {
@@ -410,7 +408,7 @@ function renderFiltersWithMsg(subject, grade, topics, showForm, showMsg, origGra
     });
   }
 
-  // Grade radio logic (recursive, so use renderFiltersWithMsg)
+  // 2nd grade radio logic 
   const gradeRadios = filtersDiv.querySelectorAll('input[name="gradeRadio"]');
   gradeRadios.forEach(radio => {
     radio.onchange = function() {
@@ -426,12 +424,11 @@ function renderFiltersWithMsg(subject, grade, topics, showForm, showMsg, origGra
         newTopics = localSelectedTopics.filter(t => newAvailableTopics.includes(t));
         if (newTopics.length === 0) newTopics = ["All"];
       }
-      // Always pass origGrade and origTopics for cancel
       renderFiltersWithMsg(subject, newGrade, newTopics, true, showMsg, origGrade, origTopics);
     };
   });
 
-  // Apply and Cancel logic
+  // apply and/or Cancel logic
   const applyBtn = document.getElementById('applyFiltersBtn');
   const cancelBtn = document.getElementById('cancelFiltersBtn');
   if (applyBtn) {

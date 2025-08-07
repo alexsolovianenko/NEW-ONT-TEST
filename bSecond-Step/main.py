@@ -115,8 +115,7 @@ You are an AI tutor tasked with creating a structured practice test based on the
 Here is the content of the document:
 {docx_content}
 """
-
-        # Updated OpenAI API usage for >=1.0.0
+        # openai API runs w/ instructions
         response = openai.chat.completions.create(
             model="gpt-4",
             messages=[
@@ -126,7 +125,7 @@ Here is the content of the document:
             max_tokens=2000,
             temperature=0.5
         )
-        # The new API returns an object, not a dict
+       
         return response.choices[0].message.content
     except openai.error.OpenAIError as e:
         logging.error(f"Error extracting questions with OpenAI: {e}")
@@ -137,18 +136,17 @@ Here is the content of the document:
 
 class StyledPDF(FPDF, HTMLMixin):
     def header(self):
-        self.set_fill_color(91, 44, 250)  # Purple background
-        self.set_text_color(255, 255, 255)  # White text
-        # Add Lexend Black font if not already added
+        self.set_fill_color(91, 44, 250)  
+        self.set_text_color(255, 255, 255)  
         if not hasattr(self, '_lexend_black_added'):
             self.add_font("Lexend", "B", "Lexend-Black.ttf", uni=True)
             self._lexend_black_added = True
-        # Page number at top right (y=5) with Lexend SemiBold
         self.add_font("Lexend", "I", "Lexend-SemiBold.ttf", uni=True)
         self.set_font("Lexend", style="I", size=10)
         self.set_text_color(0, 0, 0)
         self.set_xy(-40, 5)
         self.cell(30, 10, f"Page {self.page_no()}", align="R")
+
         # Title
         self.set_xy(10, 18)
         self.set_text_color(255, 255, 255)
@@ -157,7 +155,7 @@ class StyledPDF(FPDF, HTMLMixin):
         self.ln(5)
 
     def footer(self):
-        # Copyright/development notice at center bottom
+        # Copyright
         from datetime import datetime
         self.set_y(-15)
         self.set_font("Lexend", style="", size=11)
@@ -172,31 +170,27 @@ if __name__ == "__main__":
     questions = extract_questions_from_docx(docx_output_file_path)
     print("Generated Practice Test:", questions)
 
-    # Extract subject and grade from the file name (assuming a naming convention like "Math_Grade10.pdf")
+    # name file
     file_name_parts = os.path.splitext(object_key)[0].split("_")
     subject = file_name_parts[0] if len(file_name_parts) > 0 else "Subject"
     grade = file_name_parts[1] if len(file_name_parts) > 1 else "Grade"
 
     pdf = StyledPDF()
     pdf.set_auto_page_break(auto=True, margin=15)
-    # Get the absolute path to the directory containing this script
     font_dir = os.path.dirname(os.path.abspath(__file__))
-    # Add Lexend fonts if not already added, using absolute paths
     pdf.add_font("Lexend", "", os.path.join(font_dir, "Lexend-SemiBold.ttf"), uni=True)
     pdf.add_font("Lexend", "B", os.path.join(font_dir, "Lexend-Black.ttf"), uni=True)
     pdf.add_font("Lexend", "I", os.path.join(font_dir, "Lexend-SemiBold.ttf"), uni=True)
-    # Add EB Garamond fonts for instructions (ExtraBold and Medium only)
     pdf.add_font("EBGaramond", "XB", os.path.join(font_dir, "EBGaramond-ExtraBold.ttf"), uni=True)
     pdf.add_font("EBGaramond", "M", os.path.join(font_dir, "EBGaramond-Medium.ttf"), uni=True)
 
-    pdf.add_page()  # Ensure a page exists before any drawing
+    pdf.add_page()  
 
-    # Modern title
+    # 2nd title
     pdf.set_text_color(91, 44, 250)
     pdf.set_font("Lexend", style="B", size=18)
-    pdf.ln(2)  # Reduce spacing before instructions
+    pdf.ln(2)  
 
-    # Instructions block: "Instructions:" (Lexend Black) + rest (EB Garamond Medium), bigger font
     pdf.set_fill_color(240, 240, 255)
     pdf.set_text_color(0, 0, 0)
     left_margin = 5
@@ -214,14 +208,14 @@ if __name__ == "__main__":
     pdf.cell(box_width, 8, "at the end.", ln=1, fill=True)
     pdf.ln(6)
 
-    # Add section headers in Lexend SemiBold, two lines apart
+    # sections for each
     section_headers = ["Knowledge", "Thinking", "Application", "Communication"]
     for section in section_headers:
         pdf.ln(12)
-        pdf.set_font("Lexend", style="", size=15)  # Lexend SemiBold, bigger font size
+        pdf.set_font("Lexend", style="", size=15)  
         pdf.cell(0, 10, section + ":", ln=1, fill=True)
 
-    # Use extracted questions for the rest of the PDF
+    # ***** FIX THE UI, DOESNT ORDER ITSELF *****
     section_titles = ["Thinking", "Communication", "Knowledge", "Application"]
     question_lines = questions.split("\n")
     current_section = None

@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     setupAutocomplete();
     document.getElementById('searchSubjectBtn').addEventListener('click', showGradeOptions);

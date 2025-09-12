@@ -1,15 +1,26 @@
+
 body {
     width: 100%;
     min-height: 100vh;
     margin: 0;
     font-family: 'Poppins', sans-serif;
     color: #2c3e50;
-    background-image: url('https://i.postimg.cc/kGv9GbsK/Untitled-design.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    /* background-color: #f0f2f5; /* fallback color */
+    /* background-image: url('backgr2.png');
+    /* background-repeat: no-repeat;
+    /* background-size: cover;
+    /* background-position: center;
+    /* background-attachment: fixed;*/
     padding: 0;
     box-sizing: border-box;
+}
+
+.logo {
+    align-items: left;
+}
+
+.log-sign {
+    align-items: right;
 }
 
 .container {
@@ -65,7 +76,7 @@ body {
 }
 
 .bubble-link i {
-    margin-right: 0.5rem;
+    margin-right: 1.5rem;
 }
 
 .text-content {
@@ -125,8 +136,8 @@ h3 {
 .btn-primary {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 100%;
+    justify-content: flex-start;
+    width: auto;
     padding: 15px;
     background-color: #3498db;
     color: white;
@@ -138,6 +149,7 @@ h3 {
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
     text-decoration: none;
+    margin-left: 0;
 }
 
 .btn-primary:hover {
@@ -261,47 +273,12 @@ input[type="text"]:focus {
 }
 
 footer {
-    margin-top: 3rem;
-    padding: 1.5rem 0;
+    bottom: 230px; /* adjust this value to bring it higher */
+    left: 0;
+    width: 100%;
     text-align: center;
-    color: #7f8c8d;
+    color: #666;
 }
-
-@media (min-width: 1024px) {
-    .lg\:flex-row {
-        flex-direction: row;
-    }
-    
-    .lg\:w-1\/2 {
-        width: 50%;
-    }
-    
-    .lg\:sticky {
-        position: sticky;
-    }
-    
-    .lg\:top-8 {
-        top: 2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-    }
-    
-    .text-content {
-        padding: 30px;
-    }
-}
-
-@media (max-width: 480px) {
-    .text-content {
-        padding: 20px;
-    }
-    
-    .bubble-link {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-    }
+html, body {
+    height: 100%;
 }

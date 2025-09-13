@@ -6,99 +6,100 @@ body {
 }
 
 .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .flex-grow { flex-grow: 1; }
 .mb-thin { margin-bottom: 8px; }
 .text-content {
-    background-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
-    padding: 36px;
-    border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 36px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 h1 {
-    font-size: 2.25rem;
-    font-weight: 700;
-    color: #2c3e50;
-    margin: 0 0 13px 0;
-    line-height: 1.2;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 100px 0 13px 0;
+  line-height: 1.2;
 }
 .practice-desc {
-    font-size: 0.97rem;
-    font-weight: 400;
-    color: #2c3e50;
-    margin-bottom: 0.45rem;
+  font-size: 0.97rem;
+  font-weight: 400;
+  color: #2c3e50;
+  margin-bottom: 0.45rem;
 }
 h2 {
-    font-size: 1.62rem;
-    color: #2c3e50;
-    margin: 0 0 22px 0;
+  font-size: 1.62rem;
+  color: #2c3e50;
+  margin: 0 0 22px 0;
 }
 .features {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 .feature {
-    display: flex;
-    align-items: center;
-    color: #34495e;
+  display: flex;
+  align-items: center;
+  color: #34495e;
 }
 .feature i {
-    color: #3498db;
-    font-size: 1.25rem;
-    margin-right: 0.5rem;
+  color: #3498db;
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
 }
 .big-feature i {
-    font-size: 2.2rem;
-    margin-right: 1rem;
+  font-size: 2.2rem;
+  margin-right: 1rem;
 }
 .big-feature span {
-    font-size: 1.25em;
-    font-weight: 500;
+  font-size: 1.25em;
+  font-weight: 500;
 }
 .reuse-title {
-    font-size: 1.89rem;
-    font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 16px;
-    letter-spacing: -1px;
+  font-size: 1.89rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
 }
 .reuse-item {
-    font-size: 0.97rem !important;
-    font-weight: 400;
-    color: #2c3e50;
-    font-family: 'Poppins', sans-serif;
+  font-size: 0.97rem !important;
+  font-weight: 400;
+  color: #2c3e50;
+  font-family: 'Poppins', sans-serif;
 }
 .left-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    height: 100%;
-    padding-left: 50px;
-    padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  padding-left: 50px;
+  padding-top: 10px;
 }
 .bubble-horizontal {
-    padding-top: 24px !important;
-    padding-bottom: 24px !important;
-    min-height: 110px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .left-bubble-content {
   margin-left: 115px;
   bottom: 100px;
   flex: 1;
+  margin-top: 100px;
 }
 .right-bubble-content {
   margin-right: 35px;
@@ -211,7 +212,6 @@ h2 {
 .navbar-brand {
   color: #fff;
   margin-right: 100px;
-
 }
 .main-header .navbar-brand img {
   width: 185px;
@@ -318,6 +318,3 @@ h2 {
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   border: 1px solid rgba(255,255,255,0.25);
 }
-
-
-

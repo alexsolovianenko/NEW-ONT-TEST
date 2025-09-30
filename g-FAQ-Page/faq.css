@@ -4,7 +4,7 @@
  */
 
 body {
-  background: url('../FAQ/faq.png') center calc(100% + 30px) no-repeat;
+  background: url('../1-assets/faq-back.png') center calc(100% + 30px) no-repeat;
   background-size: cover;
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;

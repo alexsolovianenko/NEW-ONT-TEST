@@ -1,5 +1,5 @@
 body {
-  background: url('try.png') center calc(100% + 30px) no-repeat;
+  background: url('../1-assets/home-back.png') center calc(100% + 30px) no-repeat;
   background-size: cover;
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
@@ -187,7 +187,7 @@ h2 {
   background: #000;
 }
 .main-header {
-  position: fixed;
+  position: absolute;
   top: 25px;
   left: 0;
   z-index: 99;
@@ -196,6 +196,7 @@ h2 {
   transition: all 0.4s ease;
 }
 .main-header.fixed-nav {
+  position: absolute;
   top: 0;
   background: #fff;
   -webkit-box-shadow: 0 8px 12px -8px rgba(0, 0, 0, 0.09);

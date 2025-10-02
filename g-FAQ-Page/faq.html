@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ontario Tests - FAQ</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../2-Design/main.css">
+    <link rel="stylesheet" href="faq.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <nav class="navbar navbar-expand-lg main-nav">
+        <a class="navbar-brand" href="../a-Home-page/home-page.html">
+          <img src="../1-assets/logo.png" alt="Ontario Tests Logo">
+        </a>
+        <div class="navbar-collapse" id="mainMenu">
+          <ul class="navbar-nav ml-auto text-uppercase">
+            <li class="nav-item">
+              <a href="../a-Home-page/home-page.html" class="nav-link">home</a>
+            </li>
+            <li class="nav-item">
+              <a href="../b-Upload-Page/Frontend/upload.html" class="nav-link">upload</a>
+            </li>
+            <li class="nav-item">
+              <a href="../d-Search-Page/Frontend/search.html" class="nav-link">search</a>
+            </li>
+            <li class="nav-item">
+              <a href="faq.html" class="nav-link active">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a href="../f-Contact-Page/contact.html" class="nav-link">contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Wrapper -->
+  <!-- Main Content Area -->
+  <main class="main-wrapper">
+    <div class="content-container">
+      <div class="container">
+        <div class="faq-unified-card welcome-card">
+            <div class="faq-unified-content">
+              <h1 class="section-title">Frequently Asked Questions</h1>
+              
+              <div class="faq-items">
+                <div class="faq-item">
+                  <button class="faq-question" onclick="toggleFAQ(0)">
+                    <span>What is the purpose of our online learning platform?</span>
+                    <div class="faq-icon">
+                      <i class="ri-add-line"></i>
+                    </div>
+                  </button>
+                  <div class="faq-answer" id="answer-0">
+                    <p>Our platform provides comprehensive educational resources and interactive learning experiences to help students excel in their studies across various subjects including mathematics, science, literature, and more.</p>
+                  </div>
+                </div>
+                
+                <div class="faq-item">
+                  <button class="faq-question" onclick="toggleFAQ(1)">
+                    <span>How do I access my test results and grades?</span>
+                    <div class="faq-icon">
+                      <i class="ri-add-line"></i>
+                    </div>
+                  </button>
+                  <div class="faq-answer" id="answer-1">
+                    <p>You can view your test results and grades by logging into your student dashboard. Navigate to the "My Results" section where you'll find detailed breakdowns of your performance across all subjects and time periods.</p>
+                  </div>
+                </div>
+                
+                <div class="faq-item">
+                  <button class="faq-question" onclick="toggleFAQ(2)">
+                    <span>What should I do if I'm having technical difficulties?</span>
+                    <div class="faq-icon">
+                      <i class="ri-add-line"></i>
+                    </div>
+                  </button>
+                  <div class="faq-answer" id="answer-2">
+                    <p>If you encounter any technical issues, please contact our support team through the Contact page or email us directly. Our technical support is available 24/7 to ensure your learning experience is seamless.</p>
+                  </div>
+                </div>
+                
+                <div class="faq-item">
+                  <button class="faq-question" onclick="toggleFAQ(3)">
+                    <span>Are there any system requirements for using the platform?</span>
+                    <div class="faq-icon">
+                      <i class="ri-add-line"></i>
+                    </div>
+                  </button>
+                  <div class="faq-answer" id="answer-3">
+                    <p>Our platform works on most modern web browsers including Chrome, Firefox, Safari, and Edge. We recommend keeping your browser updated for the best experience. A stable internet connection is also required for optimal performance.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+            </div>
+        </div>
+      </div>
+    </div>
+  </main>  <script>
+    let currentlyOpen = null;
+    
+    function toggleFAQ(index) {
+      const answer = document.getElementById(`answer-${index}`);
+      const icon = document.querySelectorAll('.faq-icon i')[index];
+      
+      // Close currently open FAQ if there is one
+      if (currentlyOpen !== null && currentlyOpen !== index) {
+        const currentAnswer = document.getElementById(`answer-${currentlyOpen}`);
+        const currentIcon = document.querySelectorAll('.faq-icon i')[currentlyOpen];
+        currentAnswer.classList.remove('open');
+        currentIcon.classList.remove('rotated');
+      }
+      
+      // Toggle the clicked FAQ
+      if (currentlyOpen === index) {
+        // Close if clicking the same one
+        answer.classList.remove('open');
+        icon.classList.remove('rotated');
+        currentlyOpen = null;
+      } else {
+        // Open the new one
+        answer.classList.add('open');
+        icon.classList.add('rotated');
+        currentlyOpen = index;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biology Tests - Ontario Tests</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="../Backend/biology.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Navigation -->
+    <header class="header">
+      <nav class="nav">
+        <a href="../../a-Home-page/home-page.html" class="nav-link">
+          <i class="ri-home-line"></i>
+          <span>Home</span>
+        </a>
+        <a href="../../b-Upload-Page/Frontend/index.html" class="nav-link">
+          <i class="ri-upload-2-line"></i>
+          <span>Upload</span>
+        </a>
+        <a href="../../d-Search-Page/Frontend/search.html" class="nav-link">
+          <i class="ri-search-line"></i>
+          <span>Search</span>
+        </a>
+        <a href="../../f-Contact-Page/contact.html" class="nav-link">
+          <i class="ri-phone-line"></i>
+          <span>Contact</span>
+        </a>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-card">
+        <div class="page-header">
+          <div class="header-icon">
+            <i class="ri-microscope-line"></i>
+          </div>
+          <div class="header-text">
+            <h1>Grade 11 Biology Tests</h1>
+            <p class="subtitle">Comprehensive practice tests covering all major biology topics</p>
+          </div>
+        </div>
+
+        <!-- Filters Section -->
+        <div class="filters-section">
+          <h2>Filter by Topic</h2>
+          <div id="filters" class="filter-grid">
+            <button class="filter-btn active" data-topic="all">
+              <i class="ri-checkbox-multiple-line"></i>
+              All Topics
+            </button>
+            <button class="filter-btn" data-topic="respiratory">
+              <i class="ri-lungs-line"></i>
+              Respiratory System
+            </button>
+            <button class="filter-btn" data-topic="circulatory">
+              <i class="ri-heart-pulse-line"></i>
+              Circulatory System
+            </button>
+            <button class="filter-btn" data-topic="genetics">
+              <i class="ri-dna-line"></i>
+              Genetics
+            </button>
+            <button class="filter-btn" data-topic="evolution">
+              <i class="ri-evolution-line"></i>
+              Evolution
+            </button>
+            <button class="filter-btn" data-topic="digestive">
+              <i class="ri-stomach-line"></i>
+              Digestive System
+            </button>
+          </div>
+        </div>
+
+        <!-- Tests List -->
+        <div class="tests-section">
+          <h2>Available Tests</h2>
+          <div id="file-list" class="tests-grid">
+            <!-- Tests will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../Backend/appendFilters.js"></script>
+  <script>
+    // Enhanced test data
+    const biologyTests = [
+      {
+        title: "Respiratory System - Unit Test",
+        topic: "respiratory",
+        duration: "75 minutes",
+        questions: 45,
+        difficulty: "Intermediate",
+        date: "April 2025"
+      },
+      {
+        title: "Circulatory System - Quiz",
+        topic: "circulatory",
+        duration: "50 minutes",
+        questions: 30,
+        difficulty: "Beginner",
+        date: "March 2025"
+      },
+      {
+        title: "Genetics - Final Exam",
+        topic: "genetics",
+        duration: "90 minutes",
+        questions: 60,
+        difficulty: "Advanced",
+        date: "May 2025"
+      },
+      {
+        title: "Evolution - Midterm Test",
+        topic: "evolution",
+        duration: "60 minutes",
+        questions: 35,
+        difficulty: "Intermediate",
+        date: "April 2025"
+      },
+      {
+        title: "Digestive System - Unit Test",
+        topic: "digestive",
+        duration: "70 minutes",
+        questions: 40,
+        difficulty: "Intermediate",
+        date: "March 2025"
+      },
+      {
+        title: "Respiratory & Circulatory - Combined Test",
+        topic: "respiratory",
+        duration: "85 minutes",
+        questions: 50,
+        difficulty: "Advanced",
+        date: "May 2025"
+      }
+    ];
+
+    // Filter functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const fileList = document.getElementById('file-list');
+
+      function displayTests(tests) {
+        fileList.innerHTML = '';
+        if (tests.length === 0) {
+          fileList.innerHTML = '<div class="no-tests">No tests found for the selected topic.</div>';
+          return;
+        }
+
+        tests.forEach(test => {
+          const testCard = document.createElement('div');
+          testCard.className = 'test-card';
+          testCard.innerHTML = `
+            <div class="test-header">
+              <h3>${test.title}</h3>
+              <span class="difficulty ${test.difficulty.toLowerCase()}">${test.difficulty}</span>
+            </div>
+            <div class="test-meta">
+              <div class="meta-item">
+                <i class="ri-time-line"></i>
+                <span>${test.duration}</span>
+              </div>
+              <div class="meta-item">
+                <i class="ri-question-line"></i>
+                <span>${test.questions} questions</span>
+              </div>
+              <div class="meta-item">
+                <i class="ri-calendar-line"></i>
+                <span>${test.date}</span>
+              </div>
+            </div>
+            <div class="test-actions">
+              <button class="btn btn-primary">
+                <i class="ri-download-line"></i>
+                Download
+              </button>
+              <button class="btn btn-outline">
+                <i class="ri-eye-line"></i>
+                Preview
+              </button>
+            </div>
+          `;
+          fileList.appendChild(testCard);
+        });
+      }
+
+      function filterTests(topic) {
+        if (topic === 'all') {
+          displayTests(biologyTests);
+        } else {
+          const filtered = biologyTests.filter(test => test.topic === topic);
+          displayTests(filtered);
+        }
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          filterTests(this.dataset.topic);
+        });
+      });
+
+      // Initial load
+      filterTests('all');
+    });
+  </script>
+</body>
+</html>

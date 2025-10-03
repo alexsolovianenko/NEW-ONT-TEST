@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>Ontario Tests - File Upload</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+</head>
+    <header class="mb-8 relative">
+      <nav>
+        <div class="nav-left">
+          <a href="../../aFirst-Step/Frontend/index.html" class="bubble-link">
+            <i class="logo"></i>
+            <span>LOGO</span>
+          </a>
+          <a href="../../aFirst-Step/Frontend/index.html" class="bubble-link">
+            <i class="home"></i>
+            <span>Home</span>
+          </a>
+          <a href="../../eContact/contact.html" class="bubble-link ml-4">
+            <i class="contact"></i>
+            <span>Contact</span>
+          </a>
+          <a href="../../FAQ/faq.html" class="bubble-link">
+            <i class="faq"></i>
+            <span>FAQ</span>
+          </a>
+          <!--<a href="../../aFirst-Step/Frontend/upload.html" class="bubble-link ml-4">
+            <i class="ri-upload-2-line mr-2"></i>
+            <span>For now-Upload</span>
+          </a>
+          <a href="../../cThird-Step/Frontend/search.html" class="bubble-link ml-4">
+            <i class="ri-search-line mr-2"></i>
+            <span>For now-search</span>
+          </a>
+        -->
+        </div>
+        <div class="log-sign">
+          <a href="../../cThird-Step/Frontend/search.html" class="bubble-link">
+            <i class="log-sign"></i>
+            <span>Login | Sign up (FIX AFTER)</span>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+<body style="background-image: url('backgr2.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <div class="container mx-auto px-4 py-8">
+
+    <main class="flex-grow">
+      <div class="flex flex-col items-center justify-center gap-10 mt-8">
+        <div class="max-w-2xl w-full">
+          <div class="text-content mb-8">
+            <h1>Welcome to Ontario Tests</h1>
+          </div>
+
+          <div class="text-content mb-8">
+            <p class="subtitle">
+              We are in an early development stage. Our platform aims to provide comprehensive testing solutions for educational institutions across Ontario.
+            </p>
+            
+            <div class="features">
+              <div class="feature">
+                <i class="ri-file-pdf-line"></i>
+                <span>PDF uploads only</span>
+              </div>
+              <div class="feature">
+                <i class="ri-timer-line"></i>
+                <span>Quick processing</span>
+              </div>
+            </div>
+            
+            <a href="upload.html" class="btn-primary">
+              <i class="ri-upload-2-line"></i>
+              <span>Upload a Test</span>
+            </a>
+          </div>
+
+          <div class="text-content">
+            <a href="../../cThird-Step/Frontend/search.html" class="btn-primary">
+              <i class="ri-search-line"></i>
+              <span>Find Tests</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="mt-12 py-6 text-center text-gray-600">
+      <p>© <span id="currentYear"></span> Ontario Tests | Early Development Version</p>
+    </footer>
+  </div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+ 
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ontario Tests - File upload</title>
+    <link rel="stylesheet" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .bubble-link {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .bubble-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+    <header>
+        <a href="../../Third-Step/index.html" class="bubble-link">Software</a>
+    </header>
+
+    <h1>Welcome to Ontario Tests</h1>
+    <p>We are in an early development stage - File uploads are needed until further notice</p>
+
+    <h2>Upload a PDF</h2>
+    <form id="uploadForm">
+        <input type="file" id="fileInput" name="file" accept="application/pdf" required />
+        <label>Name your test: (Grade-Subject-Topic)<input type="text" id="textInput" name="text" placeholder="Grade-Subject-Topic" required /></label>
+        <button type="submit">Upload</button>
+    </form>
+
+
+
+        <label>Name your test: (Grade-Subject-Topic)<input type="text" id="textInput" name="text" placeholder="Grade-Subject-Topic" required /></label>
+        <button type="submit">Upload</button>
+    </form>
+
+
+

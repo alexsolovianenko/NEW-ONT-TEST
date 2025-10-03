@@ -2,7 +2,7 @@
 
 /* Ensure same background as other pages */
 body {
-  background: url('../1-assets/main-back.png') center center no-repeat;
+  background: url('../1-assets/contact-back.png') center center no-repeat;
   background-size: cover;
   background-attachment: fixed;
   overflow-y: auto;

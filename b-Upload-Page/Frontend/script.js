@@ -1,6 +1,3 @@
-document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-
 document.addEventListener('DOMContentLoaded', function() {
    const uploadForm = document.getElementById('uploadForm');
    if (!uploadForm) return; // If we're not on the upload page
@@ -9,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
    const textInput = document.getElementById('textInput');
    const uploadButton = document.getElementById('uploadButton');
    const fileNameDisplay = document.getElementById('fileName');
-   const recentUploadsList = document.getElementById('recentUploadsList');
   
    if (!fileInput) {
        console.error('File input not found!');
@@ -18,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
    let selectedFile = null;
    let isUploading = false;
-   let recentUploads = [];
   
    updateButtonState();
   
@@ -73,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
        });
    }
   
-   uploadForm.addEventListener('submit', function(e) {
+   uploadForm.addEventListener('submit', async function(e) {
        e.preventDefault();
       
        if (!selectedFile || !textInput.value || isUploading) return;
@@ -83,28 +78,44 @@ document.addEventListener('DOMContentLoaded', function() {
       
        uploadButton.innerHTML = '<i class="ri-loader-2-line ri-spin"></i> <span>Uploading...</span>';
       
-       setTimeout(function() {
-           isUploading = false;
-          
-           recentUploads.unshift(textInput.value);
-           if (recentUploads.length > 5) {
-               recentUploads.pop();
+       try {
+           const formData = new FormData();
+           formData.append('file', selectedFile);
+           formData.append('text', textInput.value);
+           
+           const response = await fetch('/upload', {
+               method: 'POST',
+               body: formData
+           });
+           
+           if (response.ok) {
+               const result = await response.json();
+               uploadButton.innerHTML = '<i class="ri-check-line"></i> <span>Upload Complete</span>';
+               uploadButton.classList.add('bg-green-600');
+               uploadButton.classList.remove('bg-blue-600');
+               showToast('Success', `${textInput.value} has been uploaded successfully.`);
+               
+               setTimeout(function() {
+                   uploadForm.reset();
+                   selectedFile = null;
+                   fileNameDisplay.innerHTML = '';
+                   fileNameDisplay.classList.remove('show');
+                   uploadButton.innerHTML = '<i class="ri-upload-2-line"></i> <span>Upload Test</span>';
+                   uploadButton.classList.remove('bg-green-600');
+                   uploadButton.classList.add('bg-blue-600');
+                   isUploading = false;
+                   updateButtonState();
+               }, 3000);
+           } else {
+               throw new Error('Upload failed');
            }
-           updateRecentUploadsList();
-           uploadButton.innerHTML = '<i class="ri-check-line"></i> <span>Upload Complete</span>';
-           uploadButton.classList.add('bg-green-600');
-           uploadButton.classList.remove('bg-blue-600');
-           showToast('Success', `${textInput.value} has been uploaded successfully.`);
-           setTimeout(function() {
-               uploadForm.reset();
-               selectedFile = null;
-               fileNameDisplay.innerHTML = '';
-               uploadButton.innerHTML = '<i class="ri-upload-2-line"></i> <span>Upload Test</span>';
-               uploadButton.classList.remove('bg-green-600');
-               uploadButton.classList.add('bg-blue-600');
-               updateButtonState();
-           }, 3000);
-       }, 2000);
+       } catch (error) {
+           console.error('Upload error:', error);
+           showToast('Error', 'Upload failed. Please try again.');
+           uploadButton.innerHTML = '<i class="ri-upload-2-line"></i> <span>Upload Test</span>';
+           isUploading = false;
+           updateButtonState();
+       }
    });
   
    textInput.addEventListener('input', updateButtonState);
@@ -126,19 +137,6 @@ document.addEventListener('DOMContentLoaded', function() {
            } else {
                uploadButton.innerHTML = '<i class="ri-upload-cloud-line"></i> Upload File';
            }
-       }
-   }
-  
-   function updateRecentUploadsList() {
-       if (recentUploads.length === 0) {
-           recentUploadsList.innerHTML = '<div class="no-uploads">No recent uploads. Your uploaded files will appear here.</div>';
-           recentUploadsList.classList.add('no-uploads');
-       } else {
-           recentUploadsList.classList.remove('no-uploads');
-           const html = recentUploads.map(upload =>
-               `<div class="upload-item"><i class="ri-file-pdf-line"></i>${upload}</div>`
-           ).join('');
-           recentUploadsList.innerHTML = html;
        }
    }
   

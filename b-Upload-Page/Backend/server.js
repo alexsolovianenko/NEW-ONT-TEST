@@ -29,7 +29,7 @@ const upload = multer({ storage: storage });
 app.use(express.static(path.resolve(__dirname, '../Frontend')));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, 'Frontend', 'index.html'));
+  res.sendFile(path.join(__dirname, '../Frontend', 'upload.html'));
 });
 
 app.post('/generate-upload-url', async (req, res) => {

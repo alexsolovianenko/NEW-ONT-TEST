@@ -2,7 +2,7 @@
 
 /* Ensure same background as homepage */
 body {
-  background: url('../1-assets/home-back.png') center center no-repeat;
+  background: url('../1-assets/faq-back.png') center center no-repeat;
   background-size: cover;
   background-attachment: fixed;
   overflow: hidden;

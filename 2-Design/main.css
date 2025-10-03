@@ -9,6 +9,7 @@ body {
   background: url('../1-assets/main-back.png') center center no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  background-position-y: calc(100% + 40px);
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
   overflow: hidden;

@@ -2,7 +2,7 @@
 
 /* Ensure same background as other pages */
 body {
-  background: url('../1-assets/home-back.png') center center no-repeat;
+  background: url('../1-assets/main-back.png') center center no-repeat;
   background-size: cover;
   background-attachment: fixed;
   overflow-y: auto;
@@ -19,7 +19,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
     width: 100%;
     max-width: 1100px;
-    margin: 2rem auto 0 auto;
+    margin: 1rem auto 0 auto;
     transition: all 0.3s ease;
 }
 
@@ -188,6 +188,37 @@ body {
 
 .contact-btn i {
     font-size: 1.2rem;
+}
+
+/* Success notification */
+.success-notification {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+}
+
+.success-notification i {
+    font-size: 1.2rem;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive design */

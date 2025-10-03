@@ -11,6 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
    const fileNameDisplay = document.getElementById('fileName');
    const recentUploadsList = document.getElementById('recentUploadsList');
   
+   if (!fileInput) {
+       console.error('File input not found!');
+       return;
+   }
+  
    let selectedFile = null;
    let isUploading = false;
    let recentUploads = [];
@@ -39,18 +44,34 @@ document.addEventListener('DOMContentLoaded', function() {
                return;
            }
           
+           // Display selected file with animation
            fileNameDisplay.innerHTML = `<i class="ri-file-pdf-line"></i> ${selectedFile.name}`;
+           fileNameDisplay.classList.add('show');
+           
+           // Show success message
+           showToast('Success', `File "${selectedFile.name}" selected successfully!`);
        } else {
            selectedFile = null;
            fileNameDisplay.innerHTML = '';
+           fileNameDisplay.classList.remove('show');
        }
       
        updateButtonState();
    });
   
-   document.querySelector('.file-drop-area').addEventListener('click', function() {
-       fileInput.click();
+   // Text input change handler for real-time button updates
+   textInput.addEventListener('input', function() {
+       updateButtonState();
    });
+
+   // File drop area click handler - simplified
+   const fileDropArea = document.querySelector('.file-drop-area');
+   if (fileDropArea && fileInput) {
+       fileDropArea.style.cursor = 'pointer';
+       fileDropArea.addEventListener('click', function(e) {
+           fileInput.click();
+       });
+   }
   
    uploadForm.addEventListener('submit', function(e) {
        e.preventDefault();
@@ -89,7 +110,23 @@ document.addEventListener('DOMContentLoaded', function() {
    textInput.addEventListener('input', updateButtonState);
   
    function updateButtonState() {
-       uploadButton.disabled = !selectedFile || !textInput.value || isUploading;
+       const isReady = selectedFile && textInput.value && !isUploading;
+       uploadButton.disabled = !isReady;
+       
+       // Add visual feedback for button state
+       if (isReady) {
+           uploadButton.classList.add('ready');
+           uploadButton.innerHTML = '<i class="ri-upload-cloud-line"></i> Upload File';
+       } else {
+           uploadButton.classList.remove('ready');
+           if (!selectedFile) {
+               uploadButton.innerHTML = '<i class="ri-file-add-line"></i> Select a file first';
+           } else if (!textInput.value) {
+               uploadButton.innerHTML = '<i class="ri-edit-line"></i> Enter test name';
+           } else {
+               uploadButton.innerHTML = '<i class="ri-upload-cloud-line"></i> Upload File';
+           }
+       }
    }
   
    function updateRecentUploadsList() {

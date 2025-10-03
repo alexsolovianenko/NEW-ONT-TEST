@@ -53,31 +53,36 @@
               <div class="faq-items">
                 <div class="faq-item">
                   <button class="faq-question" onclick="toggleFAQ(0)">
-                    <span>What is the purpose of our online learning platform?</span>
+                    <span>How are we an improvment to regular studying?</span>
                     <div class="faq-icon">
                       <i class="ri-add-line"></i>
                     </div>
                   </button>
                   <div class="faq-answer" id="answer-0">
-                    <p>Our platform provides comprehensive educational resources and interactive learning experiences to help students excel in their studies across various subjects including mathematics, science, literature, and more.</p>
+                    <p>Ontario Tests improves on regular studying by turning all material students could be tested on into a single practice exam. In the YCDSB system, teachers often expect students to know small, specific points. Since there are only so many concepts taught, our platform covers everything systematically recreating practice from actual school material. </p>
                   </div>
                 </div>
                 
                 <div class="faq-item">
                   <button class="faq-question" onclick="toggleFAQ(1)">
-                    <span>How do I access my test results and grades?</span>
+                    <span>How are our practice tests created?</span>
                     <div class="faq-icon">
                       <i class="ri-add-line"></i>
                     </div>
                   </button>
                   <div class="faq-answer" id="answer-1">
-                    <p>You can view your test results and grades by logging into your student dashboard. Navigate to the "My Results" section where you'll find detailed breakdowns of your performance across all subjects and time periods.</p>
+                    <p>Our system begins through students uploading test material to Ontario Tests. We begin by extracting text 
+                      from the uploaded files using an OCR API. Once the text is extracted, our custom LLM—built with Pandas, NumPy, 
+                      and Hugging Face Transformers—analyzes it; the model uses probability to determine the subject, difficulty level, 
+                      and key concepts. The LLM makes new questions-generating all possible question variations that could be studied throughout the unit-using the data set stored.
+                      Last, the questions are pasted into a PDF file. 
+                      Fun fact: our files are only 5KB each, and all Ontario Tests combined are under 3 megabytes</p>
                   </div>
                 </div>
                 
                 <div class="faq-item">
                   <button class="faq-question" onclick="toggleFAQ(2)">
-                    <span>What should I do if I'm having technical difficulties?</span>
+                    <span>Issues, feedback, concerns.</span>
                     <div class="faq-icon">
                       <i class="ri-add-line"></i>
                     </div>
@@ -89,13 +94,15 @@
                 
                 <div class="faq-item">
                   <button class="faq-question" onclick="toggleFAQ(3)">
-                    <span>Are there any system requirements for using the platform?</span>
+                    <span>Reach out to the founders by personal email.</span>
                     <div class="faq-icon">
                       <i class="ri-add-line"></i>
                     </div>
                   </button>
                   <div class="faq-answer" id="answer-3">
-                    <p>Our platform works on most modern web browsers including Chrome, Firefox, Safari, and Edge. We recommend keeping your browser updated for the best experience. A stable internet connection is also required for optimal performance.</p>
+                    <p>alexander.solovianenko26@ycdsbk12.ca ------ caelan.osoloder26@ycdsbk12.ca
+                      
+                    </p>
                   </div>
                 </div>
               </div>

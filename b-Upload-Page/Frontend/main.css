@@ -137,6 +137,19 @@ input[type="text"]:focus {
   color: #546cb6;
 }
 
+.btn-primary.ready {
+  background: #546cb6 !important;
+  color: white !important;
+  box-shadow: 0 5px 20px rgba(84, 108, 182, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-primary.ready:hover {
+  background: #4a5fa3 !important;
+  box-shadow: 0 8px 25px rgba(84, 108, 182, 0.4);
+  transform: translateY(-2px);
+}
+
 .file-name {
   display: flex;
   align-items: center;

@@ -54,7 +54,7 @@
                 <i class="ri-mail-line main-contact-icon"></i>
               </div>
               <h2 class="section-title">Contact Us</h2>
-              <p class="section-description">If you have any questions or feedback, send us a message and we'll respond as soon as possible.</p>
+              <p class="section-description"></p>
               
               <div class="contact-info">
                 <div class="info-item">
@@ -63,17 +63,23 @@
                 </div>
                 <div class="info-item">
                   <i class="ri-shield-check-line"></i>
-                  <span class="info-text">Your information is secure</span>
+                  <span class="info-text">Questions, Concerns, Feedback</span>
                 </div>
               </div>
             </div>
             
             <div class="contact-form-container">
-              <form action="https://formsubmit.co/caelan.a.osadolor@gmail.com" method="POST" class="contact-form">
+              <form action="https://formsubmit.co/caelan.a.osadolor@gmail.com" method="POST" class="contact-form" id="contactForm">
                 <!-- FormSubmit configuration -->
                 <input type="hidden" name="_subject" value="New Contact Form Submission - Ontario Tests">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+                <input type="hidden" name="_template" value="table">
+                
+                <!-- Success notification -->
+                <div id="successMessage" class="success-notification" style="display: none;">
+                  <i class="ri-check-circle-line"></i>
+                  <span>Message sent successfully! We'll get back to you soon.</span>
+                </div>
                 
                 <div class="form-group">
                   <label for="name" class="form-label">
@@ -124,6 +130,46 @@
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const form = this;
+      const submitBtn = form.querySelector('.contact-btn');
+      const successMessage = document.getElementById('successMessage');
+      
+      // Disable submit button and show loading
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="ri-loader-2-line"></i><span>Sending...</span>';
+      
+      // Submit form data
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form)
+      }).then(response => {
+        if (response.ok) {
+          // Show success message
+          successMessage.style.display = 'flex';
+          form.reset();
+          
+          // Hide success message after 5 seconds
+          setTimeout(() => {
+            successMessage.style.display = 'none';
+          }, 5000);
+        } else {
+          throw new Error('Network response was not ok');
+        }
+      }).catch(error => {
+        console.error('Error:', error);
+        alert('There was an error sending your message. Please try again.');
+      }).finally(() => {
+        // Re-enable submit button
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="ri-send-plane-line"></i><span>Send Message</span>';
+      });
+    });
+  </script>
 </body>
 </html>
 

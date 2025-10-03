@@ -54,12 +54,12 @@
              <form id="uploadForm" class="space-y-6">
                <div class="space-y-2">
                  <label for="fileInput" class="form-label">Select PDF File</label>
-                 <div class="file-drop-area">
+                 <div class="file-drop-area" onclick="document.getElementById('fileInput').click()">
                    <input type="file" id="fileInput" accept="application/pdf" required class="hidden">
-                   <div class="text-center">
-                     <i class="ri-upload-cloud-line"></i>
+                   <div class="upload-content text-center">
+                     <i class="ri-upload-cloud-line upload-icon"></i>
                      <p>Drag and drop your file here or click to browse</p>
-                     <p class="text-sm">Accepts PDF files up to 10MB</p>
+                     <p class="text-sm opacity-70">Accepts PDF files up to 10MB</p>
                    </div>
                  </div>
                  <div id="fileName" class="file-name"></div>

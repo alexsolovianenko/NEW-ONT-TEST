@@ -20,7 +20,7 @@ html {
     background-position-y: calc(100% + 40px);
     height: 100vh !important;
     display: block !important;
-    padding: 110px 15px 80px 15px !important;
+    padding: 35px 15px 80px 15px !important;
 }
 
 /* Custom scrollbar for the card */
@@ -46,9 +46,10 @@ html {
 .content-container {
     max-width: 98%;
     width: 98%;
-    margin: 50px auto 0 auto;
-    padding: 50px;
-    padding-top: 40px;
+    /* Move the card closer to the header */
+    margin: 12px auto 0 auto;
+    padding: 30px;
+    padding-top: 12px;
     background: white;
     border-radius: 20px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);

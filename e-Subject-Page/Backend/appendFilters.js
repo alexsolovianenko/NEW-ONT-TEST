@@ -80,73 +80,103 @@ function renderFilters(subject, grade, topics, showForm = false) {
     const availableTopics = getAvailableTopics(subject, grade);
 
     filtersDiv.innerHTML = `
-      <div style="display:flex;align-items:center;gap:40px;">
+      <div style="display:flex;flex-direction:column;gap:30px;">
         <div>
-          <div><strong>Select Grade Level</strong></div>
-          ${grades.map(g => `
-            <label style="display:block;margin-bottom:4px;">
-              <input type="radio" name="gradeRadio" value="${g}"${g === grade ? " checked" : ""}>
-              ${g}
-            </label>
-          `).join('')}
+          <div style="margin-bottom:12px;"><strong>Select Grade Level</strong></div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            ${grades.map(g => `
+              <button type="button" class="filter-btn grade-btn" data-grade="${g}" data-selected="${g === grade}">
+                ${g}
+              </button>
+            `).join('')}
+          </div>
         </div>
         <div>
-          <div><strong>Select Topics</strong></div>
-          <div style="display:flex;gap:20px;flex-wrap:wrap;">
+          <div style="margin-bottom:12px;"><strong>Select Topics</strong></div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
             ${availableTopics.map(t => `
-              <label style="display:inline-flex;align-items:center;margin-right:16px;">
-                <input type="checkbox" name="topicCheckbox" value="${t}"${topics.includes(t) ? " checked" : ""}>
+              <button type="button" class="filter-btn topic-btn" data-topic="${t}" data-selected="${topics.includes(t)}">
                 ${t}
-              </label>
+              </button>
             `).join('')}
           </div>
         </div>
       </div>
-      <button id="applyFiltersBtn" style="margin-top:16px;">Apply</button>
-      <button id="cancelFiltersBtn" style="margin-top:16px;">Cancel</button>
+      <div style="display:flex;gap:12px;margin-top:20px;">
+        <button id="applyFiltersBtn" class="apply-btn">Apply</button>
+        <button id="cancelFiltersBtn" class="cancel-btn">Cancel</button>
+      </div>
     `;
 
-    // checkbox
-    const topicCheckboxes = filtersDiv.querySelectorAll('input[name="topicCheckbox"]');
-    // don't allow a change bf. hit apply
+    // Apply initial button states
+    const gradeButtons = filtersDiv.querySelectorAll('.grade-btn');
+    const topicButtons = filtersDiv.querySelectorAll('.topic-btn');
+    
+    gradeButtons.forEach(btn => {
+      if (btn.dataset.selected === 'true') {
+        btn.classList.add('active');
+      }
+    });
+    
+    topicButtons.forEach(btn => {
+      if (btn.dataset.selected === 'true') {
+        btn.classList.add('active');
+      }
+    });
+
+    // Topic button click logic
     let localSelectedGrade = grade;
     let localSelectedTopics = [...topics];
 
-    topicCheckboxes.forEach(checkbox => {
-      checkbox.onchange = function() {
-        let selectedTopics = Array.from(filtersDiv.querySelectorAll('input[name="topicCheckbox"]:checked')).map(cb => cb.value);
+    topicButtons.forEach(button => {
+      button.onclick = function() {
+        const topicValue = this.dataset.topic;
+        const allButton = Array.from(topicButtons).find(btn => btn.dataset.topic === "All");
+        const nonAllButtons = Array.from(topicButtons).filter(btn => btn.dataset.topic !== "All");
         
-        // Selected 'ALL' by user, checks everything
-        const allCheckbox = Array.from(topicCheckboxes).find(cb => cb.value === "All");
-        const nonAllCheckboxes = Array.from(topicCheckboxes).filter(cb => cb.value !== "All");
-        if (this.value === "All" && this.checked) {
-          topicCheckboxes.forEach(cb => { cb.checked = true; });
-          selectedTopics = ["All--" + nonAllCheckboxes.map(cb => cb.value).join(", ")];
-        } else if (this.value === "All" && !this.checked) {
-          topicCheckboxes.forEach(cb => { cb.checked = false; });
-          selectedTopics = [];
+        if (topicValue === "All") {
+          if (this.classList.contains('active')) {
+            // Deselect all
+            topicButtons.forEach(btn => btn.classList.remove('active'));
+            localSelectedTopics = [];
+          } else {
+            // Select all
+            topicButtons.forEach(btn => btn.classList.add('active'));
+            localSelectedTopics = ["All--" + nonAllButtons.map(btn => btn.dataset.topic).join(", ")];
+          }
         } else {
-          const allChecked = nonAllCheckboxes.every(cb => cb.checked);
-          if (allChecked && allCheckbox) {
-            allCheckbox.checked = true;
-            selectedTopics = ["All--" + nonAllCheckboxes.map(cb => cb.value).join(", ")];
-          } else if (allCheckbox && !allChecked) {
-            allCheckbox.checked = false;
-            selectedTopics = selectedTopics.filter(t => !t.startsWith("All--"));
+          // Toggle individual topic
+          this.classList.toggle('active');
+          
+          // Update selected topics
+          localSelectedTopics = Array.from(topicButtons)
+            .filter(btn => btn.classList.contains('active') && btn.dataset.topic !== "All")
+            .map(btn => btn.dataset.topic);
+          
+          // Check if all non-All topics are selected
+          const allSelected = nonAllButtons.every(btn => btn.classList.contains('active'));
+          if (allSelected && allButton) {
+            allButton.classList.add('active');
+            localSelectedTopics = ["All--" + nonAllButtons.map(btn => btn.dataset.topic).join(", ")];
+          } else if (allButton) {
+            allButton.classList.remove('active');
           }
         }
-        localSelectedTopics = selectedTopics;
       };
     });
 
-    // grade radio logic
-    const gradeRadios = filtersDiv.querySelectorAll('input[name="gradeRadio"]');
-    gradeRadios.forEach(radio => {
-      radio.onchange = function() {
-        const newGrade = this.value;
+    // Grade button click logic
+    gradeButtons.forEach(button => {
+      button.onclick = function() {
+        const newGrade = this.dataset.grade;
         let newAvailableTopics = getAvailableTopics(subject, newGrade);
         let newTopics = [];
         let showMsg = false;
+
+        // Remove active class from all grade buttons
+        gradeButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        this.classList.add('active');
 
         // *** FIX LATER, Grade 11 only for now
         if (newGrade !== "Grade 11") {
@@ -347,75 +377,110 @@ function renderFiltersWithMsg(subject, grade, topics, showForm, showMsg, origGra
   const availableTopics = getAvailableTopics(subject, grade);
 
   filtersDiv.innerHTML = `
-    <div style="display:flex;align-items:center;gap:40px;">
+    <div style="display:flex;flex-direction:column;gap:30px;">
       <div>
-        <div><strong>Select Grade Level</strong></div>
-        ${grades.map(g => `
-          <label style="display:block;margin-bottom:4px;">
-            <input type="radio" name="gradeRadio" value="${g}"${g === grade ? " checked" : ""}>
-            ${g}
-          </label>
-        `).join('')}
+        <div style="margin-bottom:12px;"><strong>Select Grade Level</strong></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          ${grades.map(g => `
+            <button type="button" class="filter-btn grade-btn" data-grade="${g}" data-selected="${g === grade}">
+              ${g}
+            </button>
+          `).join('')}
+        </div>
       </div>
       <div>
-        <div><strong>Select Topics</strong></div>
-        <div style="display:flex;gap:20px;flex-wrap:wrap;">
+        <div style="margin-bottom:12px;"><strong>Select Topics</strong></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
           ${
             grade === "Grade 11"
               ? availableTopics.map(t => `
-                  <label style="display:inline-flex;align-items:center;margin-right:16px;">
-                    <input type="checkbox" name="topicCheckbox" value="${t}"${topics.includes(t) ? " checked" : ""}>
+                  <button type="button" class="filter-btn topic-btn" data-topic="${t}" data-selected="${topics.includes(t)}">
                     ${t}
-                  </label>
+                  </button>
                 `).join('')
               : `<span style="color:#b77b00;font-style:italic;">In process of development, will be released later</span>`
           }
         </div>
       </div>
     </div>
-    <button id="applyFiltersBtn" style="margin-top:16px;">Apply</button>
-    <button id="cancelFiltersBtn" style="margin-top:16px;">Cancel</button>
+    <div style="display:flex;gap:12px;margin-top:20px;">
+      <button id="applyFiltersBtn" class="apply-btn">Apply</button>
+      <button id="cancelFiltersBtn" class="cancel-btn">Cancel</button>
+    </div>
   `;
+
+  // Apply initial button states
+  const gradeButtons = filtersDiv.querySelectorAll('.grade-btn');
+  const topicButtons = filtersDiv.querySelectorAll('.topic-btn');
+  
+  gradeButtons.forEach(btn => {
+    if (btn.dataset.selected === 'true') {
+      btn.classList.add('active');
+    }
+  });
+  
+  topicButtons.forEach(btn => {
+    if (btn.dataset.selected === 'true') {
+      btn.classList.add('active');
+    }
+  });
 
   // ****FIX LATER. only for gr11
   let localSelectedGrade = grade;
   let localSelectedTopics = [...topics];
+  
   if (grade === "Grade 11") {
-    const topicCheckboxes = filtersDiv.querySelectorAll('input[name="topicCheckbox"]');
-    topicCheckboxes.forEach(checkbox => {
-      checkbox.onchange = function() {
-        let selectedTopics = Array.from(filtersDiv.querySelectorAll('input[name="topicCheckbox"]:checked')).map(cb => cb.value);
-        const allCheckbox = Array.from(topicCheckboxes).find(cb => cb.value === "All");
-        const nonAllCheckboxes = Array.from(topicCheckboxes).filter(cb => cb.value !== "All");
-        if (this.value === "All" && this.checked) {
-          topicCheckboxes.forEach(cb => { cb.checked = true; });
-          selectedTopics = ["All--" + nonAllCheckboxes.map(cb => cb.value).join(", ")];
-        } else if (this.value === "All" && !this.checked) {
-          topicCheckboxes.forEach(cb => { cb.checked = false; });
-          selectedTopics = [];
+    topicButtons.forEach(button => {
+      button.onclick = function() {
+        const topicValue = this.dataset.topic;
+        const allButton = Array.from(topicButtons).find(btn => btn.dataset.topic === "All");
+        const nonAllButtons = Array.from(topicButtons).filter(btn => btn.dataset.topic !== "All");
+        
+        if (topicValue === "All") {
+          if (this.classList.contains('active')) {
+            // Deselect all
+            topicButtons.forEach(btn => btn.classList.remove('active'));
+            localSelectedTopics = [];
+          } else {
+            // Select all
+            topicButtons.forEach(btn => btn.classList.add('active'));
+            localSelectedTopics = ["All--" + nonAllButtons.map(btn => btn.dataset.topic).join(", ")];
+          }
         } else {
-          const allChecked = nonAllCheckboxes.every(cb => cb.checked);
-          if (allChecked && allCheckbox) {
-            allCheckbox.checked = true;
-            selectedTopics = ["All--" + nonAllCheckboxes.map(cb => cb.value).join(", ")];
-          } else if (allCheckbox && !allChecked) {
-            allCheckbox.checked = false;
-            selectedTopics = selectedTopics.filter(t => !t.startsWith("All--"));
+          // Toggle individual topic
+          this.classList.toggle('active');
+          
+          // Update selected topics
+          localSelectedTopics = Array.from(topicButtons)
+            .filter(btn => btn.classList.contains('active') && btn.dataset.topic !== "All")
+            .map(btn => btn.dataset.topic);
+          
+          // Check if all non-All topics are selected
+          const allSelected = nonAllButtons.every(btn => btn.classList.contains('active'));
+          if (allSelected && allButton) {
+            allButton.classList.add('active');
+            localSelectedTopics = ["All--" + nonAllButtons.map(btn => btn.dataset.topic).join(", ")];
+          } else if (allButton) {
+            allButton.classList.remove('active');
           }
         }
-        localSelectedTopics = selectedTopics;
       };
     });
   }
 
-  // 2nd grade radio logic 
-  const gradeRadios = filtersDiv.querySelectorAll('input[name="gradeRadio"]');
-  gradeRadios.forEach(radio => {
-    radio.onchange = function() {
-      const newGrade = this.value;
+  // 2nd grade button logic 
+  gradeButtons.forEach(button => {
+    button.onclick = function() {
+      const newGrade = this.dataset.grade;
       let newAvailableTopics = getAvailableTopics(subject, newGrade);
       let newTopics = [];
       let showMsg = false;
+      
+      // Remove active class from all grade buttons
+      gradeButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      this.classList.add('active');
+      
       if (newGrade !== "Grade 11") {
         showMsg = true;
         newAvailableTopics = [];
@@ -441,10 +506,14 @@ function renderFiltersWithMsg(subject, grade, topics, showForm, showMsg, origGra
       };
     } else {
       applyBtn.onclick = function() {
-        let newGrade = filtersDiv.querySelector('input[name="gradeRadio"]:checked').value;
+        // Get selected grade from active button
+        const activeGradeBtn = filtersDiv.querySelector('.grade-btn.active');
+        let newGrade = activeGradeBtn ? activeGradeBtn.dataset.grade : grade;
         let newTopics = [];
         if (newGrade === "Grade 11") {
-          newTopics = Array.from(filtersDiv.querySelectorAll('input[name="topicCheckbox"]:checked')).map(cb => cb.value);
+          // Get selected topics from active buttons
+          const activeTopicBtns = filtersDiv.querySelectorAll('.topic-btn.active');
+          newTopics = Array.from(activeTopicBtns).map(btn => btn.dataset.topic);
           if (newTopics.length === 0) newTopics = ["All"];
         }
         sessionStorage.setItem('selectedGrade', newGrade);

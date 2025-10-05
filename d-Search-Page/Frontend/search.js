@@ -45,10 +45,14 @@ function showSubjectSelection() {
 function showGradeOptions(subject) {
     const container = document.getElementById('gradeRadioContainer');
     const submitButtonContainer = document.getElementById('submitButtonContainer');
-    
-    container.innerHTML = ''; 
+    const subjectsContainer = document.getElementById('subjectsContainer');
+
+    // Clear grade, topics, and hide submit button when a new subject is selected
+    container.innerHTML = '';
+    subjectsContainer.innerHTML = '';
+    subjectsContainer.style.display = 'none';
     submitButtonContainer.style.display = "none";
-    
+
     if (["math", "functions", "biology", "accounting", "computer science", "religion", "physics"].includes(subject)) {
         const grades = ["Grade 9", "Grade 10", "Grade 11", "Grade 12"];
         

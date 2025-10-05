@@ -62,9 +62,16 @@ class ExportPDFToDOCXWithOCROption:
             with open(file_path, 'rb') as file:
                 input_stream = file.read()
 
+            # Retrieve environment variables for PDF Services credentials
+            pdf_services_client_id = os.getenv('PDF_SERVICES_CLIENT_ID')
+            pdf_services_client_secret = os.getenv('PDF_SERVICES_CLIENT_SECRET')
+
+            if not pdf_services_client_id or not pdf_services_client_secret:
+                raise EnvironmentError("Missing PDF Services credentials: 'PDF_SERVICES_CLIENT_ID' or 'PDF_SERVICES_CLIENT_SECRET'")
+
             credentials = ServicePrincipalCredentials(
-                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
-                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+                client_id=pdf_services_client_id,
+                client_secret=pdf_services_client_secret
             )
 
             pdf_services = PDFServices(credentials=credentials)
@@ -101,16 +108,19 @@ def extract_questions_from_docx(docx_file_path):
         prompt = f"""
 You are an AI tutor tasked with creating a structured practice test based on the provided educational material. The test should follow the Ontario curriculum format and include the following sections:
 
-1. **Thinking**: 5-7 questions that require critical thinking and problem-solving skills.
-2. **Communication**: 5-7 questions that assess the ability to explain concepts clearly and effectively.
-3. **Knowledge**: 5-7 questions that test factual recall and understanding of the material.
-4. **Application**: 5-7 questions that require applying knowledge to new situations or solving practical problems.
+1. **Knowledge**: 5 questions that test factual recall and understanding of the material. Each question is accompanied by 3-4 multiple choice using letters a), b)...
+2. **Thinking**: 5 questions that require critical thinking and problem-solving skills.
+3. **Application**: 5 questions that require applying knowledge to new situations or solving practical problems.
+4. **Communication**: 5 questions that assess the ability to explain concepts clearly and effectively.
 
 - Ensure the questions are relevant to the content provided in the document.
 - Rewrite the questions to align with the curriculum but maintain the core concepts.
 - If the document references images or diagrams, include placeholders for them (e.g., "[Refer to Figure 1]") and ensure the questions reference these appropriately.
 - Provide clear and accurate answers for each question.
 - Format the output as a structured test with numbered questions and labeled sections.
+
+- After all the question, keep in mind which is the right answer and write it under the **Solutions** tab.
+  - 
 
 Here is the content of the document:
 {docx_content}
@@ -119,10 +129,10 @@ Here is the content of the document:
         response = openai.chat.completions.create(
             model="gpt-4",
             messages=[
-                {"role": "system", "content": "You are a high school teacher creating a structured practice test."},
+                {"role": "system", "content": "You are a high school teacher creating a structured practice test with complete answers."},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=2000,
+            max_tokens=2500,
             temperature=0.5
         )
        
@@ -138,11 +148,7 @@ class StyledPDF(FPDF, HTMLMixin):
     def header(self):
         self.set_fill_color(91, 44, 250)  
         self.set_text_color(255, 255, 255)  
-        if not hasattr(self, '_lexend_black_added'):
-            self.add_font("Lexend", "B", "Lexend-Black.ttf", uni=True)
-            self._lexend_black_added = True
-        self.add_font("Lexend", "I", "Lexend-SemiBold.ttf", uni=True)
-        self.set_font("Lexend", style="I", size=10)
+        self.set_font("Arial", style="B", size=10)  # Use default font
         self.set_text_color(0, 0, 0)
         self.set_xy(-40, 5)
         self.cell(30, 10, f"Page {self.page_no()}", align="R")
@@ -150,15 +156,14 @@ class StyledPDF(FPDF, HTMLMixin):
         # Title
         self.set_xy(10, 18)
         self.set_text_color(255, 255, 255)
-        self.set_font("Lexend", style="B", size=46)
+        self.set_font("Arial", style="B", size=46)  # Use default font
         self.cell(0, 28, "Ontario Tests", ln=True, align="C", fill=True)
         self.ln(5)
 
     def footer(self):
-        # Copyright
         from datetime import datetime
         self.set_y(-15)
-        self.set_font("Lexend", style="", size=11)
+        self.set_font("Arial", style="", size=11)  # Use default font
         self.set_text_color(138, 153, 163)  # #8a99a3
         dev_notice = f"© {datetime.now().year} Ontario Tests | Early Development Version"
         self.cell(0, 10, dev_notice, align="C")
@@ -175,80 +180,202 @@ if __name__ == "__main__":
     subject = file_name_parts[0] if len(file_name_parts) > 0 else "Subject"
     grade = file_name_parts[1] if len(file_name_parts) > 1 else "Grade"
 
+    # Create PDF object
     pdf = StyledPDF()
     pdf.set_auto_page_break(auto=True, margin=15)
-    font_dir = os.path.dirname(os.path.abspath(__file__))
-    pdf.add_font("Lexend", "", os.path.join(font_dir, "Lexend-SemiBold.ttf"), uni=True)
-    pdf.add_font("Lexend", "B", os.path.join(font_dir, "Lexend-Black.ttf"), uni=True)
-    pdf.add_font("Lexend", "I", os.path.join(font_dir, "Lexend-SemiBold.ttf"), uni=True)
-    pdf.add_font("EBGaramond", "XB", os.path.join(font_dir, "EBGaramond-ExtraBold.ttf"), uni=True)
-    pdf.add_font("EBGaramond", "M", os.path.join(font_dir, "EBGaramond-Medium.ttf"), uni=True)
+    pdf.add_page()
 
-    pdf.add_page()  
-
-    # 2nd title
+    # Instructions box
     pdf.set_text_color(91, 44, 250)
-    pdf.set_font("Lexend", style="B", size=18)
-    pdf.ln(2)  
-
+    pdf.set_font("Arial", style="B", size=18)
+    pdf.ln(2)
     pdf.set_fill_color(240, 240, 255)
     pdf.set_text_color(0, 0, 0)
-    left_margin = 5
-    right_margin = 20
+    left_margin = 10
+    right_margin = 10
     box_width = pdf.w - left_margin - right_margin
+    
+    # First line with bold "Instructions:" - centered
+    pdf.set_font("Arial", style="B", size=12)
+    bold_text = "Instructions:"
+    pdf.set_font("Arial", style="", size=12)
+    regular_text = " For each of the following, provide the most accurate and complete response."
+    
+    # Calculate total width and centering position
+    pdf.set_font("Arial", style="B", size=12)
+    bold_width = pdf.get_string_width(bold_text)
+    pdf.set_font("Arial", style="", size=12)
+    regular_width = pdf.get_string_width(regular_text)
+    total_width = bold_width + regular_width
+    start_x = left_margin + (box_width - total_width) / 2
+    
+    # Draw the filled background
     pdf.set_x(left_margin)
-    pdf.set_font("Lexend", style="B", size=12)
-    instr_text = "Instructions:"
-    instr_width = pdf.get_string_width(instr_text + " ")
-    pdf.cell(instr_width, 8, instr_text, ln=0, fill=True)
-    pdf.set_font("EBGaramond", style="M", size=12)
-    first_line = "For each of the following, provide the most accurate and complete response. Explanations are provided"
-    pdf.cell(box_width - instr_width, 8, first_line, ln=1, fill=True)
+    pdf.cell(box_width, 8, "", ln=0, fill=True)
+    
+    # Position and write bold text
+    pdf.set_xy(start_x, pdf.get_y())
+    pdf.set_font("Arial", style="B", size=12)
+    pdf.cell(bold_width, 8, bold_text, ln=0)
+    
+    # Write regular text
+    pdf.set_font("Arial", style="", size=12)
+    pdf.cell(regular_width, 8, regular_text, ln=1)
+    
+    # Second line - centered
     pdf.set_x(left_margin)
-    pdf.cell(box_width, 8, "at the end.", ln=1, fill=True)
+    pdf.cell(box_width, 8, "Explanations are at the end.", ln=1, fill=True, align='C')
     pdf.ln(6)
 
-    # sections for each
+    import re
     section_headers = ["Knowledge", "Thinking", "Application", "Communication"]
+    
+    # More flexible section detection - matches any Section X with keywords
+    def parse_sections(text, section_headers_list):
+        section_map = {h: [] for h in section_headers_list}
+        current_section = None
+        current_question = []
+        
+        for line in text.splitlines():
+            line_strip = line.strip()
+            
+            # Check if this line is a section header
+            if line_strip.startswith("**Section") or line_strip.startswith("**section"):
+                # Save previous question if exists
+                if current_question and current_section:
+                    section_map[current_section].append("\n".join(current_question))
+                    current_question = []
+                
+                # Try to map to our standard headers based on keywords
+                line_lower = line_strip.lower()
+                if "knowledge" in line_lower or "understanding" in line_lower:
+                    current_section = "Knowledge"
+                elif "thinking" in line_lower or "inquiry" in line_lower:
+                    current_section = "Thinking"
+                elif "application" in line_lower or "making connections" in line_lower:
+                    current_section = "Application"
+                elif "communication" in line_lower:
+                    current_section = "Communication"
+                continue
+            
+            # Skip markdown markers, dividers, and empty lines
+            if line_strip.startswith("**") or line_strip.startswith("---") or not line_strip:
+                continue
+            
+            # Add content to current section
+            if current_section:
+                # Check if this is a new question (starts with number)
+                if re.match(r'^\d+\.', line_strip):
+                    # Save previous question
+                    if current_question:
+                        section_map[current_section].append("\n".join(current_question))
+                    current_question = [line_strip]
+                # Check if this is a multiple choice option
+                elif re.match(r'^\s*[a-e]\)', line_strip):
+                    current_question.append(line_strip)
+                # Otherwise, it's a continuation of the current question
+                else:
+                    if current_question:
+                        current_question.append(line_strip)
+                    else:
+                        current_question = [line_strip]
+        
+        # Don't forget the last question
+        if current_question and current_section:
+            section_map[current_section].append("\n".join(current_question))
+        
+        return section_map
+
+    # Find where answers start
+    answers_start = None
+    lines = questions.splitlines()
+    for idx, line in enumerate(lines):
+        line_lower = line.strip().lower()
+        if line_lower.startswith("**answer") or line_lower.startswith("**solution") or "end of test" in line_lower:
+            answers_start = idx
+            break
+
+    if answers_start is not None:
+        questions_text = "\n".join(lines[:answers_start])
+        answers_text = "\n".join(lines[answers_start:])
+    else:
+        questions_text = questions
+        answers_text = ""
+
+    question_map = parse_sections(questions_text, section_headers)
+
+    # Render questions under each section header
+    question_number = 1
     for section in section_headers:
-        pdf.ln(12)
-        pdf.set_font("Lexend", style="", size=15)  
-        pdf.cell(0, 10, section + ":", ln=1, fill=True)
+        if question_map[section]:  # Only show section if it has content
+            pdf.ln(12)
+            pdf.set_font("Arial", style="B", size=15)  # Bold section headers
+            pdf.cell(0, 10, section + ":", ln=1, fill=True)
+            pdf.set_font("Arial", size=12)
+            for q in question_map[section]:
+                # Each q is a complete question with possible multiple choice options
+                lines_in_q = q.split('\n')
+                
+                # First line is the question text (remove old numbering)
+                first_line = re.sub(r'^\d+\.\s*', '', lines_in_q[0].strip())
+                pdf.multi_cell(0, 10, f"{question_number}. {first_line}")
+                
+                # Remaining lines are multiple choice options or continuation
+                for line in lines_in_q[1:]:
+                    line_clean = line.strip()
+                    if line_clean:
+                        # Check if it's a multiple choice option
+                        if re.match(r'^[a-e]\)', line_clean):
+                            pdf.ln(1)
+                            pdf.set_x(pdf.l_margin + 5)  # Indent choices
+                            pdf.multi_cell(0, 8, line_clean)
+                        else:
+                            # It's a continuation of the question
+                            pdf.multi_cell(0, 10, line_clean)
+                
+                pdf.ln(5)  # More vertical space between questions
+                question_number += 1
 
-    # ***** FIX THE UI, DOESNT ORDER ITSELF *****
-    section_titles = ["Thinking", "Communication", "Knowledge", "Application"]
-    question_lines = questions.split("\n")
-    current_section = None
+    # Parse and render answers if present
+    answer_map = {h: [] for h in section_headers}
+    if answers_text:
+        print(f"DEBUG: Parsing answers from {len(answers_text)} characters")
+        # Use same section parsing for answers
+        answer_map = parse_sections(answers_text, section_headers)
+        for sec, items in answer_map.items():
+            print(f"DEBUG: Answer section '{sec}' has {len(items)} items")
 
-    for line in question_lines:
-        if line.strip() in section_titles:
-            current_section = line.strip()
-            pdf.set_fill_color(220, 230, 255)
-            pdf.set_text_color(40, 40, 120)
-            pdf.set_font("Lexend", style="B", size=14)
-            pdf.cell(0, 10, f"Section: {current_section}", ln=True, fill=True)
-            pdf.ln(4)
-            pdf.set_font("Lexend", size=12)
-            pdf.set_text_color(0, 0, 0)
-        elif line.strip():
-            if line.startswith("[Refer to Figure"):
-                pdf.set_font("Lexend", style="I", size=12)
-                pdf.set_text_color(80, 80, 80)
-                pdf.multi_cell(0, 10, line)
-                pdf.ln(2)
-                pdf.set_font("Lexend", size=12)
-                pdf.set_text_color(0, 0, 0)
-            else:
-                pdf.multi_cell(0, 10, line)
-                pdf.ln(2)
-
+    # Add Solutions page
     pdf.add_page()
-    pdf.set_font("Lexend", style="B", size=20)
+    pdf.set_font("Arial", style="B", size=20)
     pdf.set_text_color(91, 44, 250)
     pdf.cell(0, 10, "Solutions", ln=True, align="C")
     pdf.ln(10)
     pdf.set_text_color(0, 0, 0)
-    pdf.set_font("Lexend", size=12)
+    pdf.set_font("Arial", size=12)
+    
+    answer_number = 1
+    for section in section_headers:
+        if answer_map[section]:
+            pdf.set_font("Arial", style="B", size=15)
+            pdf.cell(0, 10, section + ":", ln=1, fill=True)
+            pdf.set_font("Arial", size=12)
+            for a in answer_map[section]:
+                # Each answer might have multiple lines
+                lines_in_a = a.split('\n')
+                
+                # First line is the answer text (remove old numbering)
+                first_line = re.sub(r'^\d+\.\s*', '', lines_in_a[0].strip())
+                pdf.multi_cell(0, 10, f"{answer_number}. {first_line}")
+                
+                # Remaining lines are continuation of the answer
+                for line in lines_in_a[1:]:
+                    line_clean = line.strip()
+                    if line_clean and not line_clean.startswith("*Note"):
+                        pdf.multi_cell(0, 10, line_clean)
+                
+                pdf.ln(5)  # Same vertical spacing as questions
+                answer_number += 1
 
     original_file_name = os.path.splitext(object_key)[0]
     output_pdf_path = f"{original_file_name}_Practice_Test.pdf"

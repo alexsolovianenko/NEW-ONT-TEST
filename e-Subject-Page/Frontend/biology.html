@@ -4,212 +4,156 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biology Tests - Ontario Tests</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../2-Design/main.css">
   <link rel="stylesheet" href="../Backend/biology.css">
 </head>
 <body>
-  <div class="container">
-    <!-- Navigation -->
-    <header class="header">
-      <nav class="nav">
-        <a href="../../a-Home-page/home-page.html" class="nav-link">
-          <i class="ri-home-line"></i>
-          <span>Home</span>
+  <!-- Navigation Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <nav class="navbar navbar-expand-lg main-nav">
+        <a class="navbar-brand" href="../../a-Home-page/home-page.html">
+          <img src="../../1-assets/logo.png" alt="Ontario Tests Logo">
         </a>
-        <a href="../../b-Upload-Page/Frontend/index.html" class="nav-link">
-          <i class="ri-upload-2-line"></i>
-          <span>Upload</span>
-        </a>
-        <a href="../../d-Search-Page/Frontend/search.html" class="nav-link">
-          <i class="ri-search-line"></i>
-          <span>Search</span>
-        </a>
-        <a href="../../f-Contact-Page/contact.html" class="nav-link">
-          <i class="ri-phone-line"></i>
-          <span>Contact</span>
-        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon-bar icon-bar-1"></span>
+          <span class="icon-bar icon-bar-2"></span>
+          <span class="icon-bar icon-bar-3"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainMenu">
+          <ul class="navbar-nav ml-auto text-uppercase">
+            <li class="nav-item">
+              <a href="../../a-Home-page/home-page.html" class="nav-link">home</a>
+            </li>
+            <li class="nav-item">
+              <a href="../../b-Upload-Page/Frontend/upload.html" class="nav-link">upload</a>
+            </li>
+            <li class="nav-item">
+              <a href="../../d-Search-Page/Frontend/search.html" class="nav-link">search</a>
+            </li>
+            <li class="nav-item">
+              <a href="../../g-FAQ-Page/faq.html" class="nav-link">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a href="../../f-Contact-Page/contact.html" class="nav-link">contact</a>
+            </li>
+          </ul>
+        </div>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-      <div class="content-card">
-        <div class="page-header">
-          <div class="header-icon">
-            <i class="ri-microscope-line"></i>
-          </div>
-          <div class="header-text">
-            <h1>Grade 11 Biology Tests</h1>
-            <p class="subtitle">Comprehensive practice tests covering all major biology topics</p>
-          </div>
-        </div>
-
-        <!-- Filters Section -->
-        <div class="filters-section">
-          <h2>Filter by Topic</h2>
-          <div id="filters" class="filter-grid">
-            <button class="filter-btn active" data-topic="all">
-              <i class="ri-checkbox-multiple-line"></i>
-              All Topics
-            </button>
-            <button class="filter-btn" data-topic="respiratory">
-              <i class="ri-lungs-line"></i>
-              Respiratory System
-            </button>
-            <button class="filter-btn" data-topic="circulatory">
-              <i class="ri-heart-pulse-line"></i>
-              Circulatory System
-            </button>
-            <button class="filter-btn" data-topic="genetics">
-              <i class="ri-dna-line"></i>
-              Genetics
-            </button>
-            <button class="filter-btn" data-topic="evolution">
-              <i class="ri-evolution-line"></i>
-              Evolution
-            </button>
-            <button class="filter-btn" data-topic="digestive">
-              <i class="ri-stomach-line"></i>
-              Digestive System
-            </button>
-          </div>
-        </div>
-
-        <!-- Tests List -->
-        <div class="tests-section">
-          <h2>Available Tests</h2>
-          <div id="file-list" class="tests-grid">
-            <!-- Tests will be populated by JavaScript -->
-          </div>
+  <!-- Main Content Area -->
+  <main class="main-wrapper" style="padding: 30px 15px;">
+    <div class="content-container" style="max-width: 98%; margin: 0 auto; background: white; border-radius: 20px; padding: 50px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);">
+      <h1 style="color: #2c3e50; margin-bottom: 10px; font-size: 2.5rem; font-weight: 700;">Grade 11 Biology Tests</h1>
+      <p style="color: #666; font-size: 1.1rem; margin-bottom: 30px;">Comprehensive practice tests covering all major biology topics</p>
+      
+      <!-- Filter Section -->
+      <div class="filters-section" style="margin-bottom: 40px;">
+        <h2 style="color: #2c3e50; font-size: 1.5rem; margin-bottom: 20px; font-weight: 600;">Filter by Topic</h2>
+        <div id="filters" style="background: #f8f9fa; padding: 25px; border-radius: 12px;">
+          <!-- Topic filters will be populated by appendFilters.js -->
         </div>
       </div>
-    </main>
-  </div>
+
+      <!-- Tests Section -->
+      <div class="tests-section">
+        <h2 style="color: #2c3e50; font-size: 1.5rem; margin-bottom: 25px; font-weight: 600;">Available Tests</h2>
+        <div id="file-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; padding: 0; list-style: none;">
+          <!-- Tests will be populated by appendFilters.js -->
+        </div>
+      </div>
+    </div>
+  </main>
 
   <script src="../Backend/appendFilters.js"></script>
   <script>
-    // Enhanced test data
-    const biologyTests = [
-      {
-        title: "Respiratory System - Unit Test",
-        topic: "respiratory",
-        duration: "75 minutes",
-        questions: 45,
-        difficulty: "Intermediate",
-        date: "April 2025"
-      },
-      {
-        title: "Circulatory System - Quiz",
-        topic: "circulatory",
-        duration: "50 minutes",
-        questions: 30,
-        difficulty: "Beginner",
-        date: "March 2025"
-      },
-      {
-        title: "Genetics - Final Exam",
-        topic: "genetics",
-        duration: "90 minutes",
-        questions: 60,
-        difficulty: "Advanced",
-        date: "May 2025"
-      },
-      {
-        title: "Evolution - Midterm Test",
-        topic: "evolution",
-        duration: "60 minutes",
-        questions: 35,
-        difficulty: "Intermediate",
-        date: "April 2025"
-      },
-      {
-        title: "Digestive System - Unit Test",
-        topic: "digestive",
-        duration: "70 minutes",
-        questions: 40,
-        difficulty: "Intermediate",
-        date: "March 2025"
-      },
-      {
-        title: "Respiratory & Circulatory - Combined Test",
-        topic: "respiratory",
-        duration: "85 minutes",
-        questions: 50,
-        difficulty: "Advanced",
-        date: "May 2025"
-      }
-    ];
-
-    // Filter functionality
+    // Force full width on page load and style file items as cards
     document.addEventListener('DOMContentLoaded', function() {
-      const filterBtns = document.querySelectorAll('.filter-btn');
+      // Set full width styles immediately
+      const contentContainer = document.querySelector('.content-container');
+      const filterSection = document.querySelector('.filters-section');
+      const testsSection = document.querySelector('.tests-section');
+      const filters = document.getElementById('filters');
       const fileList = document.getElementById('file-list');
-
-      function displayTests(tests) {
-        fileList.innerHTML = '';
-        if (tests.length === 0) {
-          fileList.innerHTML = '<div class="no-tests">No tests found for the selected topic.</div>';
-          return;
-        }
-
-        tests.forEach(test => {
-          const testCard = document.createElement('div');
-          testCard.className = 'test-card';
-          testCard.innerHTML = `
-            <div class="test-header">
-              <h3>${test.title}</h3>
-              <span class="difficulty ${test.difficulty.toLowerCase()}">${test.difficulty}</span>
-            </div>
-            <div class="test-meta">
-              <div class="meta-item">
-                <i class="ri-time-line"></i>
-                <span>${test.duration}</span>
-              </div>
-              <div class="meta-item">
-                <i class="ri-question-line"></i>
-                <span>${test.questions} questions</span>
-              </div>
-              <div class="meta-item">
-                <i class="ri-calendar-line"></i>
-                <span>${test.date}</span>
-              </div>
-            </div>
-            <div class="test-actions">
-              <button class="btn btn-primary">
-                <i class="ri-download-line"></i>
-                Download
-              </button>
-              <button class="btn btn-outline">
-                <i class="ri-eye-line"></i>
-                Preview
-              </button>
-            </div>
-          `;
-          fileList.appendChild(testCard);
-        });
+      
+      if (contentContainer) {
+        contentContainer.style.maxWidth = '98%';
+        contentContainer.style.width = '98%';
       }
-
-      function filterTests(topic) {
-        if (topic === 'all') {
-          displayTests(biologyTests);
-        } else {
-          const filtered = biologyTests.filter(test => test.topic === topic);
-          displayTests(filtered);
-        }
+      if (filterSection) {
+        filterSection.style.width = '100%';
       }
-
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
-          filterTests(this.dataset.topic);
-        });
+      if (testsSection) {
+        testsSection.style.width = '100%';
+      }
+      if (filters) {
+        filters.style.width = '100%';
+        filters.style.maxWidth = '100%';
+      }
+      if (fileList) {
+        fileList.style.width = '100%';
+        fileList.style.maxWidth = '100%';
+        fileList.style.display = 'grid';
+        fileList.style.gridTemplateColumns = 'repeat(auto-fill, minmax(320px, 1fr))';
+        fileList.style.gap = '20px';
+      }
+      
+      // Watch for DOM changes and enforce width + card styling
+      const observer = new MutationObserver(function(mutations) {
+        const filters = document.getElementById('filters');
+        const fileList = document.getElementById('file-list');
+        if (filters) {
+          filters.style.width = '100%';
+          filters.style.maxWidth = '100%';
+        }
+        if (fileList) {
+          fileList.style.width = '100%';
+          fileList.style.maxWidth = '100%';
+          fileList.style.display = 'grid';
+          fileList.style.gridTemplateColumns = 'repeat(auto-fill, minmax(320px, 1fr))';
+          fileList.style.gap = '20px';
+          
+          // Style each file item as a card
+          const fileItems = fileList.querySelectorAll('li');
+          fileItems.forEach(item => {
+            item.style.background = 'white';
+            item.style.border = '1px solid #e1e8ed';
+            item.style.borderRadius = '12px';
+            item.style.padding = '20px';
+            item.style.transition = 'all 0.3s ease';
+            item.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.05)';
+            
+            item.addEventListener('mouseenter', function() {
+              this.style.transform = 'translateY(-5px)';
+              this.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.1)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+              this.style.transform = 'translateY(0)';
+              this.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.05)';
+            });
+          });
+        }
       });
-
-      // Initial load
-      filterTests('all');
+      
+      // Start observing
+      const mainContent = document.querySelector('.content-container');
+      if (mainContent) {
+        observer.observe(mainContent, { 
+          childList: true, 
+          subtree: true,
+          attributes: true,
+          attributeFilter: ['style', 'class']
+        });
+      }
     });
   </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

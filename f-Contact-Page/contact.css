@@ -9,6 +9,11 @@ body {
   overflow-x: hidden;
 }
 
+/* Override content-layout max-width for contact page */
+.content-layout {
+    max-width: 1250px !important;
+}
+
 /* Contact card layout matching other pages */
 .contact-unified-card {
     background: rgba(255, 255, 255, 0.9);
@@ -18,7 +23,7 @@ body {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     width: 100%;
-    max-width: 1100px;
+    max-width: 1550px;
     margin: 1rem auto 0 auto;
     transition: all 0.3s ease;
 }

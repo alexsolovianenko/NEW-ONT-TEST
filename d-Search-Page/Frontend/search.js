@@ -53,16 +53,29 @@ function showGradeOptions(subject) {
     subjectsContainer.style.display = 'none';
     submitButtonContainer.style.display = "none";
 
-    if (["math", "functions", "biology", "accounting", "computer science", "religion", "physics"].includes(subject)) {
-        const grades = ["Grade 9", "Grade 10", "Grade 11", "Grade 12"];
-        
+    // Subject to allowed grades mapping
+    const subjectGradeMap = {
+        "geography": ["Grade 9"],
+        "accounting": ["Grade 11", "Grade 12"],
+        "biology": ["Grade 11", "Grade 12"],
+        "chemistry": ["Grade 11", "Grade 12"],
+        "english": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+        "general science": ["Grade 9", "Grade 10"],
+        "history": ["Grade 11"],
+        "marketing": ["Grade 10", "Grade 11", "Grade 12"],
+        "math": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+        "functions": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+        "physics": ["Grade 11", "Grade 12"],
+        "religion": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+        "computer science": ["Grade 11", "Grade 12"]
+    };
+    let grades = subjectGradeMap[subject];
+    if (grades) {
         const gradeSection = document.createElement('div');
         gradeSection.className = 'grade-section';
         gradeSection.innerHTML = '<h3>Select Grade Level</h3>';
-        
         const gradeGrid = document.createElement('div');
         gradeGrid.className = 'grade-grid';
-        
         grades.forEach(grade => {
             const gradeBtn = document.createElement('button');
             gradeBtn.className = 'grade-btn';
@@ -75,18 +88,15 @@ function showGradeOptions(subject) {
                 document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('selected'));
                 // Add selected class to clicked button
                 this.classList.add('selected');
-                
                 // Store the grade and show topics
                 sessionStorage.setItem('selectedGrade', grade);
                 showSubjects(subject, grade);
             });
             gradeGrid.appendChild(gradeBtn);
         });
-        
         gradeSection.appendChild(gradeGrid);
         container.appendChild(gradeSection);
         container.style.display = "block";
-        
         // Immediate smooth scroll when grade options appear
         container.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } else {
@@ -119,13 +129,13 @@ function showSubjects(subject, grade) {
     
     let subjects = [];
     if (subject === "biology" && grade === "Grade 11") {
-        subjects = ["All", "Respiratory", "Circulatory", "Genetics", "Evolution", "Digestive"];
+        subjects = ["All", "Cells", "Respiratory", "Circulatory", "Genetics", "Evolution", "Biodiversity"];
     } else if (subject === "accounting" && grade === "Grade 11") {
         subjects = ["All", "Accounting Cycle for a Service Business", "Internal and Cash Controls", "Business Structures and Accounting Implications", "Ethical Practices in Accounting", "Technology and Financial Statements"];
     } else if (subject === "computer science" && grade === "Grade 11") {
-        subjects = ["All", "Computer Foundations", "Computing & Programming Basics", "Control Structures", "Functions & Loops", "Lists", "Emerging Areas of Computer Science"];
+        subjects = ["All", "Computer Foundations", "Programming Basics", "Functions & Loops", "Lists"];
     } else if (subject === "religion" && grade === "Grade 11") {
-        subjects = ["All", "Into to World Religions", "Indigenous Spirituality", "Judaism", "Christianity", "Islam", "Eastern Religions – Hinduism & Buddhism"];
+        subjects = ["All", "Intro to World Religions", "Indigenous", "Judaism", "Christianity", "Islam", "Hinduism & Buddhism"];
     } else if (subject === "physics" && grade === "Grade 11") {
         subjects = ["All", "Kinematics", "Forces", "Energy and Society", "Waves and Sound", "Electricity and Magnetism"];
     } else if (subject === "math" || subject === "functions") {

@@ -109,18 +109,24 @@ def extract_questions_from_docx(docx_file_path):
 You are an AI tutor tasked with creating a structured practice test based on the provided educational material. The test should follow the Ontario curriculum format and include the following sections:
 
 1. **Knowledge**: 5 questions that test factual recall and understanding of the material. Each question is accompanied by 3-4 multiple choice using letters a), b)...
-2. **Thinking**: 5 questions that require critical thinking and problem-solving skills.
-3. **Application**: 5 questions that require applying knowledge to new situations or solving practical problems.
-4. **Communication**: 5 questions that assess the ability to explain concepts clearly and effectively.
+2. **Thinking**: 5 questions that require critical thinking and problem-solving skills. 
+3. **Application**: 5 questions that require applying knowledge to new situations or solving practical problems. Must use words to answer.
+4. **Communication**: 5 questions that assess the ability to explain concepts clearly and effectively. Must use words to answer.
 
 - Ensure the questions are relevant to the content provided in the document.
 - Rewrite the questions to align with the curriculum but maintain the core concepts.
-- If the document references images or diagrams, include placeholders for them (e.g., "[Refer to Figure 1]") and ensure the questions reference these appropriately.
+- If the document references images or diagrams, include placeholders for them (e.g., "[Refer to Figure 1]", and continue numerically) and ensure the questions reference these appropriately.
 - Provide clear and accurate answers for each question.
 - Format the output as a structured test with numbered questions and labeled sections.
+- *** Every question must be UNIQUE. You cannot repeat questions for than once.
+- If you are to inclue a coding problem, or a math problem or a math diagram, make a new line and indent it twice.
 
+Now create solutions 
 - After all the question, keep in mind which is the right answer and write it under the **Solutions** tab.
-  - 
+  - Each question must have a solution. Given that a question has more than one answer ensure to incoporate it (thinking and onwards uses sentence format).
+  **** NO ANSWER may receive an "Answers will vary". Everu qestion MUST have a response. If it is an opinion question, then give an example. AND STATE THAT it's an example.
+- EVERY QUESTION MUST RECEIVE A RESPONSE, NO Refer to PYTHON CODE or anything like that. YOU MUST WRITE THE ANSWERS YOURSELF FOR EACH QUESTION
+
 
 Here is the content of the document:
 {docx_content}
@@ -165,7 +171,7 @@ class StyledPDF(FPDF, HTMLMixin):
         self.set_y(-15)
         self.set_font("Arial", style="", size=11)  # Use default font
         self.set_text_color(138, 153, 163)  # #8a99a3
-        dev_notice = f"© {datetime.now().year} Ontario Tests | Early Development Version"
+        dev_notice = f"© {datetime.now().year} Ontario Tests | All rights reserved"
         self.cell(0, 10, dev_notice, align="C")
         self.set_text_color(150, 150, 150)
 
@@ -291,16 +297,21 @@ if __name__ == "__main__":
     lines = questions.splitlines()
     for idx, line in enumerate(lines):
         line_lower = line.strip().lower()
-        if line_lower.startswith("**answer") or line_lower.startswith("**solution") or "end of test" in line_lower:
+        # Look for answers/solutions section - check if "answer" or "solution" appears in the line
+        if "**answer" in line_lower or "**solution" in line_lower or "end of test" in line_lower:
             answers_start = idx
+            print(f"DEBUG: Found answers/solutions at line {idx}: '{line.strip()}'")
             break
 
     if answers_start is not None:
         questions_text = "\n".join(lines[:answers_start])
         answers_text = "\n".join(lines[answers_start:])
+        print(f"DEBUG: Questions section: {len(lines[:answers_start])} lines")
+        print(f"DEBUG: Answers section: {len(lines[answers_start:])} lines")
     else:
         questions_text = questions
         answers_text = ""
+        print("DEBUG: No answers section found!")
 
     question_map = parse_sections(questions_text, section_headers)
 
@@ -355,30 +366,54 @@ if __name__ == "__main__":
     pdf.set_font("Arial", size=12)
     
     answer_number = 1
-    for section in section_headers:
-        if answer_map[section]:
-            pdf.set_font("Arial", style="B", size=15)
-            pdf.cell(0, 10, section + ":", ln=1, fill=True)
-            pdf.set_font("Arial", size=12)
-            for a in answer_map[section]:
-                # Each answer might have multiple lines
-                lines_in_a = a.split('\n')
-                
-                # First line is the answer text (remove old numbering)
-                first_line = re.sub(r'^\d+\.\s*', '', lines_in_a[0].strip())
-                pdf.multi_cell(0, 10, f"{answer_number}. {first_line}")
-                
-                # Remaining lines are continuation of the answer
-                for line in lines_in_a[1:]:
-                    line_clean = line.strip()
-                    if line_clean and not line_clean.startswith("*Note"):
-                        pdf.multi_cell(0, 10, line_clean)
-                
-                pdf.ln(5)  # Same vertical spacing as questions
-                answer_number += 1
+    any_answers = any(answer_map[section] for section in section_headers)
+    if any_answers:
+        for section in section_headers:
+            if answer_map[section]:
+                pdf.set_font("Arial", style="B", size=15)
+                pdf.set_fill_color(235, 233, 254)
+                pdf.cell(0, 10, section + ":", ln=1, fill=True)
+                pdf.set_font("Arial", size=12)
+                for a in answer_map[section]:
+                    lines_in_a = a.split('\n')
+                    first_line = re.sub(r'^\d+\.\s*', '', lines_in_a[0].strip())
+                    pdf.multi_cell(0, 10, f"{answer_number}. {first_line}")
+                    for line in lines_in_a[1:]:
+                        line_clean = line.strip()
+                        if line_clean and not line_clean.startswith("*Note"):
+                            pdf.multi_cell(0, 10, line_clean)
+                    pdf.ln(5)
+                    answer_number += 1
+    else:
+        # Fallback: group multi-line answers under the same number
+        answer_lines = [l for l in answers_text.splitlines() if l.strip() and not l.strip().startswith("*")]
+        current_answer = []
+        for line in answer_lines:
+            # Check if line starts with a number (e.g., 34. ...)
+            if re.match(r'^\d+\.', line.strip()):
+                # Print previous answer if exists
+                if current_answer:
+                    pdf.multi_cell(0, 10, f"{answer_number}. {current_answer[0]}")
+                    for cont in current_answer[1:]:
+                        pdf.multi_cell(0, 10, cont)
+                    pdf.ln(5)
+                    answer_number += 1
+                # Start new answer
+                a_clean = re.sub(r'^\d+\.\s*', '', line.strip())
+                current_answer = [a_clean]
+            else:
+                # Continuation of previous answer
+                if current_answer:
+                    current_answer.append(line.strip())
+        # Print last answer
+        if current_answer:
+            pdf.multi_cell(0, 10, f"{answer_number}. {current_answer[0]}")
+            for cont in current_answer[1:]:
+                pdf.multi_cell(0, 10, cont)
+            pdf.ln(5)
 
     original_file_name = os.path.splitext(object_key)[0]
-    output_pdf_path = f"{original_file_name}_Practice_Test.pdf"
+    output_pdf_path = f"{original_file_name}.pdf"
     pdf.output(output_pdf_path)
     print(f"Practice test saved to '{output_pdf_path}'.")
 

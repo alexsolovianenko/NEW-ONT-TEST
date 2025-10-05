@@ -3,7 +3,11 @@
 /* Remove conflicting body styles - use main.css instead */
 body {
     font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
+    overflow: hidden;
+}
+
+html {
+    overflow: hidden;
 }
 
 /* Main wrapper with same background as other pages */
@@ -15,48 +19,50 @@ body {
     background-attachment: fixed;
     background-position-y: calc(100% + 40px);
     height: 100vh !important;
-    display: flex !important;
-    align-items: flex-start !important;
-    justify-content: center !important;
-    padding: 15px !important;
-    padding-top: 100px !important;
-    padding-bottom: 15px !important;
+    display: block !important;
+    padding: 110px 15px 80px 15px !important;
 }
 
-/* Custom scrollbar on content-container (inside the white card) */
+/* Custom scrollbar for the card */
 .content-container::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
 
 .content-container::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.05);
-    border-radius: 3px;
-    margin: 8px 2px;
+    border-radius: 4px;
 }
 
 .content-container::-webkit-scrollbar-thumb {
     background: rgba(84, 108, 182, 0.4);
-    border-radius: 3px;
-    border: none;
+    border-radius: 4px;
 }
 
 .content-container::-webkit-scrollbar-thumb:hover {
     background: rgba(84, 108, 182, 0.6);
 }
 
-/* Content area styling - white card with FIXED height and internal scroll */
+/* Content area styling - white card WITH scroll */
 .content-container {
     max-width: 98%;
     width: 98%;
-    margin: 0 auto;
+    margin: 50px auto 0 auto;
     padding: 50px;
+    padding-top: 40px;
     background: white;
     border-radius: 20px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-    height: calc(100vh - 115px);
-    max-height: calc(100vh - 115px);
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
+    height: calc(100vh - 150px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: auto;
+    overflow-anchor: none;
+    scroll-padding-top: 0;
+}
+
+/* Prevent scroll on focus */
+.content-container * {
+    scroll-margin-top: 0;
 }
 
 .content-container h1 {
@@ -64,6 +70,8 @@ body {
     font-weight: 700;
     color: #2c3e50;
     margin-bottom: 0.5rem;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 .content-container > p {
@@ -409,65 +417,14 @@ body {
 @media (max-width: 768px) {
     .content-container {
         padding: 20px;
-        max-height: calc(100vh - 100px);
     }
     
-    .content-container h1 {
-        font-size: 2rem;
+    .filter-btn.active {
+        background: linear-gradient(135deg, #546cb6, #6b82c9);
+        color: white;
+        border-color: #546cb6;
+        box-shadow: 0 5px 20px rgba(84, 108, 182, 0.3);
     }
-    
-    #filters {
-        padding: 15px !important;
-    }
-    
-    .file-link-container {
-        min-width: 180px;
-    }
-}
-.filters-section {
-    margin-bottom: 2.5rem;
-}
-
-.filters-section h2 {
-    font-size: 1.5rem;
-    color: #546cb6;
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-.filter-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-}
-
-.filter-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 15px 20px;
-    background: #f8f9fa;
-    border: 2px solid #e9ecef;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    color: #495057;
-}
-
-.filter-btn:hover {
-    background: #f0f4ff;
-    border-color: #546cb6;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(84, 108, 182, 0.2);
-}
-
-.filter-btn.active {
-    background: linear-gradient(135deg, #546cb6, #6b82c9);
-    color: white;
-    border-color: #546cb6;
-    box-shadow: 0 5px 20px rgba(84, 108, 182, 0.3);
 }
 
 .filter-btn i {

@@ -48,6 +48,7 @@
 
   <!-- Main Content Area -->
   <main class="main-wrapper">
+    <div class="con  <main class="main-wrapper">
     <div class="content-container">
       <h1 style="color: #2c3e50; margin-bottom: 10px; font-size: 2.5rem; font-weight: 700;">Grade 11 Biology Tests</h1>
       <p style="color: #666; font-size: 1.1rem; margin-bottom: 30px;">Comprehensive practice tests covering all major biology topics</p>
@@ -71,7 +72,21 @@
   </main>
 
   <script>
-    // No scroll manipulation needed - let page scroll naturally
+    // Force scroll to top whenever content changes
+    function forceScrollToTop() {
+      const contentContainer = document.querySelector('.content-container');
+      if (contentContainer) {
+        contentContainer.scrollTop = 0;
+      }
+    }
+    
+    // Also reset scroll after a very short delay to catch any auto-scroll behavior
+    function delayedScrollReset() {
+      setTimeout(forceScrollToTop, 10);
+      setTimeout(forceScrollToTop, 50);
+      setTimeout(forceScrollToTop, 100);
+      setTimeout(forceScrollToTop, 200);
+    }
   </script>
 
   <script src="../Backend/appendFilters.js"></script>
@@ -84,6 +99,17 @@
       const testsSection = document.querySelector('.tests-section');
       const filters = document.getElementById('filters');
       const fileList = document.getElementById('file-list');
+      
+      // Immediately scroll to top
+      forceScrollToTop();
+      delayedScrollReset();
+      
+      // Add click listener to "Change Filters" button
+      document.addEventListener('click', function(e) {
+        if (e.target.textContent === 'Change Filters' || e.target.closest('button')?.textContent === 'Change Filters') {
+          delayedScrollReset();
+        }
+      });
       
       if (contentContainer) {
         contentContainer.style.maxWidth = '98%';
@@ -109,6 +135,9 @@
       
       // Watch for DOM changes and enforce width + card styling
       const observer = new MutationObserver(function(mutations) {
+        // Reset scroll to top whenever content changes
+        forceScrollToTop();
+        
         const filters = document.getElementById('filters');
         const fileList = document.getElementById('file-list');
         if (filters) {

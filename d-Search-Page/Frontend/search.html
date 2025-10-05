@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ontario Tests - Search</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../2-Design/main.css">
+  <link rel="stylesheet" href="search.css">
+  <link rel="stylesheet" href="../1-assets/main-back.png">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <nav class="navbar navbar-expand-lg main-nav">
+        <a class="navbar-brand" href="../../a-Home-page/home-page.html">
+          <img src="../../1-assets/logo.png" alt="Ontario Tests Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon-bar icon-bar-1"></span>
+          <span class="icon-bar icon-bar-2"></span>
+          <span class="icon-bar icon-bar-3"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainMenu">
+          <ul class="navbar-nav ml-auto text-uppercase">
+            <li class="nav-item">
+              <a href="../../a-Home-page/home-page.html" class="nav-link">home</a>
+            </li>
+            <li class="nav-item">
+              <a href="../../b-Upload-Page/Frontend/upload.html" class="nav-link">upload</a>
+            </li>
+            <li class="nav-item">
+              <a href="./search.html" class="nav-link active">search</a>
+            </li>
+            <li class="nav-item">
+              <a href="../../g-FAQ-Page/faq.html" class="nav-link">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a href="../../f-Contact-Page/contact.html" class="nav-link">contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-wrapper">
+    <div class="content-container">
+      
+      <!-- Search Section -->
+      <section class="features-section">
+        <div class="content-layout">
+          <div class="features-card search-unified-card">
+            <div class="search-header">
+              <div class="search-icon-container">
+                <i class="ri-search-2-line main-search-icon"></i>
+              </div>
+              <h2 class="section-title">Find Tests</h2>
+              <p class="section-description">Browse our collection of Ontario Tests by grade, subject, and topic.</p>
+              <div class="stats-container">
+                <div class="stat-item">
+                  <i class="ri-file-text-line"></i>
+                  <span class="stat-number">500+</span>
+                  <span class="stat-label">Tests Available</span>
+                </div>
+                <div class="stat-item">
+                  <i class="ri-book-open-line"></i>
+                  <span class="stat-number">12</span>
+                  <span class="stat-label">Subjects</span>
+                </div>
+                <div class="stat-item">
+                  <i class="ri-award-line"></i>
+                  <span class="stat-number">9-12</span>
+                  <span class="stat-label">Grade Levels</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="search-unified-content">
+              
+              <!-- Main Search Options -->
+              <div class="search-options">
+                <button class="option-btn main-option" id="searchBySubjectBtn">
+                  <i class="ri-search-line"></i>
+                  <span>Search By Subject</span>
+                </button>
+              </div>
+
+              <!-- Subject Selection -->
+              <div class="subject-selection" id="subjectSelection" style="display: none;">
+                <h3 class="selection-title">Select a Subject</h3>
+                <div class="subject-grid">
+                  <button class="subject-btn" data-subject="accounting">
+                    <i class="ri-money-dollar-circle-line"></i>
+                    <span>Accounting</span>
+                  </button>
+                  <button class="subject-btn" data-subject="biology">
+                    <i class="ri-leaf-line"></i>
+                    <span>Biology</span>
+                  </button>                    
+                  <button class="subject-btn" data-subject="chemistry">
+                    <i class="ri-test-tube-line"></i>
+                    <span>Chemistry</span>
+                  </button>                
+                  <button class="subject-btn" data-subject="computer science">
+                    <i class="ri-computer-line"></i>
+                    <span>Computer Science</span>
+                  </button>                  
+                  <button class="subject-btn" data-subject="english">
+                    <i class="ri-book-open-line"></i>
+                    <span>English</span>
+                  </button>
+                  <button class="subject-btn" data-subject="science">
+                    <i class="ri-flask-line"></i>
+                    <span>General Science</span>
+                  </button>
+                  <button class="subject-btn" data-subject="geography">
+                    <i class="ri-earth-line"></i>
+                    <span>Geography</span>
+                  </button>                  
+                  <button class="subject-btn" data-subject="history">
+                    <i class="ri-time-line"></i>
+                    <span>History</span>
+                  </button>                    
+                  <button class="subject-btn" data-subject="marketing">
+                    <i class="ri-line-chart-line"></i>
+                    <span>Marketing</span>
+                  </button>                
+                  <button class="subject-btn" data-subject="math">
+                    <i class="ri-calculator-line"></i>
+                    <span>Math</span>
+                  </button>                  
+                  <button class="subject-btn" data-subject="physics">
+                    <i class="ri-rocket-line"></i>
+                    <span>Physics</span>
+                  </button>
+                  <button class="subject-btn" data-subject="religion">
+                    <i class="ri-cross-line"></i>
+                    <span>Religion</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Grade Selection -->
+              <div id="gradeRadioContainer" class="form-group"></div>
+              
+              <!-- Topic Selection -->
+              <div id="subjectsContainer" class="form-group"></div>
+              
+              <!-- Submit Button -->
+              <div id="submitButtonContainer" style="display: none;" class="form-group">
+                <button id="submitBtn" class="btn-primary">
+                  <i class="ri-file-search-line"></i>
+                  <span>Find Tests</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results Section -->
+      <section id="resultsContainer" style="display: none;" class="features-section">
+        <div class="content-layout">
+          <div class="features-card">
+            <h2 id="resultsTitle" class="section-title">Test Results</h2>
+            <div id="testResults" class="results-grid">
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./search.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ontario Tests - Contact Us</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../2-Design/main.css">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <nav class="navbar navbar-expand-lg main-nav">
+        <a class="navbar-brand" href="../a-Home-page/home-page.html">
+          <img src="../1-assets/logo.png" alt="Ontario Tests Logo">
+        </a>
+        <div class="navbar-collapse" id="mainMenu">
+          <ul class="navbar-nav ml-auto text-uppercase">
+            <li class="nav-item">
+              <a href="../a-Home-page/home-page.html" class="nav-link">home</a>
+            </li>
+            <li class="nav-item">
+              <a href="../b-Upload-Page/Frontend/upload.html" class="nav-link">upload</a>
+            </li>
+            <li class="nav-item">
+              <a href="../d-Search-Page/Frontend/search.html" class="nav-link">search</a>
+            </li>
+            <li class="nav-item">
+              <a href="../g-FAQ-Page/faq.html" class="nav-link">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a href="contact.html" class="nav-link active">contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-wrapper">
+    <div class="content-container">
+      
+      <!-- Contact Section -->
+      <section class="features-section">
+        <div class="content-layout">
+          <div class="features-card contact-unified-card">
+            <div class="contact-header">
+              <div class="contact-icon-container">
+                <i class="ri-mail-line main-contact-icon"></i>
+              </div>
+              <h2 class="section-title">Contact Us</h2>
+              <p class="section-description"></p>
+              
+              <div class="contact-info">
+                <div class="info-item">
+                  <i class="ri-time-line"></i>
+                  <span class="info-text">Usually respond within 24 hours</span>
+                </div>
+                <div class="info-item">
+                  <i class="ri-shield-check-line"></i>
+                  <span class="info-text">Questions, Concerns, Feedback</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="contact-form-container">
+              <form action="https://formsubmit.co/caelan.a.osadolor@gmail.com" method="POST" class="contact-form" id="contactForm">
+                <!-- FormSubmit configuration -->
+                <input type="hidden" name="_subject" value="New Contact Form Submission - Ontario Tests">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                
+                <!-- Success notification -->
+                <div id="successMessage" class="success-notification" style="display: none;">
+                  <i class="ri-check-circle-line"></i>
+                  <span>Message sent successfully! We'll get back to you soon.</span>
+                </div>
+                
+                <div class="form-group">
+                  <label for="name" class="form-label">
+                    <i class="ri-user-line"></i>
+                    Your Name
+                  </label>
+                  <input type="text" id="name" name="name" required class="form-input" placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                  <label for="email" class="form-label">
+                    <i class="ri-mail-line"></i>
+                    Your Email
+                  </label>
+                  <input type="email" id="email" name="email" required class="form-input" placeholder="Enter your email address">
+                </div>
+                
+                <div class="form-group">
+                  <label for="subject" class="form-label">
+                    <i class="ri-chat-3-line"></i>
+                    Subject
+                  </label>
+                  <input type="text" id="subject" name="subject" required class="form-input" placeholder="What is this about?">
+                </div>
+                
+                <div class="form-group">
+                  <label for="message" class="form-label">
+                    <i class="ri-message-2-line"></i>
+                    Your Message
+                  </label>
+                  <textarea id="message" name="message" required class="form-textarea" placeholder="Tell us more about your inquiry..." rows="5"></textarea>
+                </div>
+                
+                <div class="form-submit">
+                  <button type="submit" class="btn-primary contact-btn">
+                    <i class="ri-send-plane-line"></i>
+                    <span>Send Message</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const form = this;
+      const submitBtn = form.querySelector('.contact-btn');
+      const successMessage = document.getElementById('successMessage');
+      
+      // Disable submit button and show loading
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="ri-loader-2-line"></i><span>Sending...</span>';
+      
+      // Submit form data
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form)
+      }).then(response => {
+        if (response.ok) {
+          // Show success message
+          successMessage.style.display = 'flex';
+          form.reset();
+          
+          // Hide success message after 5 seconds
+          setTimeout(() => {
+            successMessage.style.display = 'none';
+          }, 5000);
+        } else {
+          throw new Error('Network response was not ok');
+        }
+      }).catch(error => {
+        console.error('Error:', error);
+        alert('There was an error sending your message. Please try again.');
+      }).finally(() => {
+        // Re-enable submit button
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="ri-send-plane-line"></i><span>Send Message</span>';
+      });
+    });
+  </script>
+</body>
+</html>
+

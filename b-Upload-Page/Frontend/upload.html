@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+ <title>Ontario Tests - File Upload</title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+ <link rel="stylesheet" href="../../2-Design/main.css">
+ <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <nav class="navbar navbar-expand-lg main-nav">
+        <a class="navbar-brand" href="../../a-Home-page/home-page.html">
+          <img src="../../1-assets/logo.png" alt="Ontario Tests Logo">
+        </a>
+        <div class="navbar-collapse" id="mainMenu">
+          <ul class="navbar-nav ml-auto text-uppercase">
+            <li class="nav-item">
+              <a href="../../a-Home-page/home-page.html" class="nav-link">home</a>
+            </li>
+            <li class="nav-item">
+              <a href="upload.html" class="nav-link active">upload</a>
+            </li>
+            <li class="nav-item">
+              <a href="../../d-Search-Page/Frontend/search.html" class="nav-link">search</a>
+            </li>
+            <li class="nav-item">
+              <a href="../../g-FAQ-Page/faq.html" class="nav-link">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a href="../../f-Contact-Page/contact.html" class="nav-link">contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-wrapper">
+    <div class="content-container">
+
+ <div class="container mx-auto px-4 py-8">
+   <!-- Main Content -->
+   <main class="flex-grow">
+       <div class="lg:w-4/5 xl:w-3/4 w-full mx-auto">
+         <div class="upload-card welcome-card">
+             <h2>Upload Your Test File</h2>
+             <form id="uploadForm" class="space-y-6">
+               <div class="space-y-2">
+                 <label for="fileInput" class="form-label">Select PDF File</label>
+                 <div class="file-drop-area">
+                   <input type="file" id="fileInput" accept="application/pdf" required class="hidden">
+                   <div class="upload-content text-center">
+                     <i class="ri-upload-cloud-line upload-icon"></i>
+                     <p>Drag and drop your file here or click to browse</p>
+                     <p class="text-sm opacity-70">Accepts PDF files up to 10MB</p>
+                   </div>
+                 </div>
+                 <div id="fileName" class="file-name"></div>
+               </div>
+              
+               <div class="space-y-2">
+                 <label for="textInput" class="form-label">Name your test (Grade-Subject-Topic)</label>
+                 <input type="text" id="textInput" placeholder="e.g. 10-Math-Trigonometry" required>
+               </div>
+              
+               <div class="upload-button-container">
+                 <button type="submit" id="uploadButton" class="btn-primary" disabled>
+                   <i class="ri-upload-2-line"></i>
+                   <span>Upload Test</span>
+                 </button>
+               </div>
+             </form>
+         </div>
+       </div>
+     </div>
+   </main>
+
+    </div>
+  </main>
+
+ <script src="script.js"></script>
+</body>
+</html>
+
+
+

@@ -48,137 +48,46 @@
 
   <!-- Main Content Area -->
   <main class="main-wrapper">
-    <div class="con  <main class="main-wrapper">
+    <!-- Navigation spacer -->
+    <div class="nav-spacer"></div>
+    
     <div class="content-container">
-      <h1 style="color: #2c3e50; margin-bottom: 10px; font-size: 2.5rem; font-weight: 700;">Grade 11 Biology Tests</h1>
-      <p style="color: #666; font-size: 1.1rem; margin-bottom: 30px;">Comprehensive practice tests covering all major biology topics</p>
-      
-      <!-- Filter Section -->
-      <div class="filters-section" style="margin-bottom: 40px;">
-        <h2 style="color: #2c3e50; font-size: 1.5rem; margin-bottom: 20px; font-weight: 600;">Filter by Topic</h2>
-        <div id="filters" style="background: #f8f9fa; padding: 30px; border-radius: 12px; overflow: visible; min-height: 120px;">
-          <!-- Topic filters will be populated by appendFilters.js -->
+      <!-- Scrollable content -->
+      <div class="content-scroll">
+        <!-- Compact header section moved inside scroll area -->
+        <div class="content-header-compact">
+          <h1>Grade 11 Biology Tests</h1>
+          <p>Comprehensive practice tests covering all major biology topics</p>
         </div>
-      </div>
+        
+        <!-- Filter Section -->
+        <div class="filters-section">
+          <h2>Filter by Topic</h2>
+          <div id="filters" style="background: #f8f9fa; padding: 15px; border-radius: 10px; overflow: visible; min-height: 50px;">
+            <!-- Topic filters will be populated by appendFilters.js -->
+          </div>
+        </div>
 
-      <!-- Tests Section -->
-      <div class="tests-section">
-        <h2 style="color: #2c3e50; font-size: 1.5rem; margin-bottom: 25px; font-weight: 600;">Available Tests</h2>
-        <div id="file-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px; padding: 0; list-style: none; margin-bottom: 20px;">
-          <!-- Tests will be populated by appendFilters.js -->
+        <!-- Tests Section -->
+        <div class="tests-section">
+          <h2>Available Tests</h2>
+          <div id="file-list">
+            <!-- Tests will be populated by appendFilters.js -->
+          </div>
         </div>
       </div>
     </div>
   </main>
 
   <script>
-    // Force scroll to top whenever content changes
-    function forceScrollToTop() {
-      const contentContainer = document.querySelector('.content-container');
-      if (contentContainer) {
-        contentContainer.scrollTop = 0;
-      }
-    }
-    
-    // Also reset scroll after a very short delay to catch any auto-scroll behavior
-    function delayedScrollReset() {
-      setTimeout(forceScrollToTop, 10);
-      setTimeout(forceScrollToTop, 50);
-      setTimeout(forceScrollToTop, 100);
-      setTimeout(forceScrollToTop, 200);
-    }
+    // No auto-adjustment logic - let CSS handle everything
   </script>
 
   <script src="../Backend/appendFilters.js"></script>
   <script>
-    // Force full width on page load and style file items as cards
+    // Simple page load - let natural positioning work
     document.addEventListener('DOMContentLoaded', function() {
-      // Set full width styles immediately
-      const contentContainer = document.querySelector('.content-container');
-      const filterSection = document.querySelector('.filters-section');
-      const testsSection = document.querySelector('.tests-section');
-      const filters = document.getElementById('filters');
-      const fileList = document.getElementById('file-list');
-      
-      // Immediately scroll to top
-      forceScrollToTop();
-      delayedScrollReset();
-      
-      // Add click listener to "Change Filters" button
-      document.addEventListener('click', function(e) {
-        if (e.target.textContent === 'Change Filters' || e.target.closest('button')?.textContent === 'Change Filters') {
-          delayedScrollReset();
-        }
-      });
-      
-      if (contentContainer) {
-        contentContainer.style.maxWidth = '98%';
-        contentContainer.style.width = '98%';
-      }
-      if (filterSection) {
-        filterSection.style.width = '100%';
-      }
-      if (testsSection) {
-        testsSection.style.width = '100%';
-      }
-      if (filters) {
-        filters.style.width = '100%';
-        filters.style.maxWidth = '100%';
-      }
-      if (fileList) {
-        fileList.style.width = '100%';
-        fileList.style.maxWidth = '100%';
-        fileList.style.display = 'grid';
-        fileList.style.gridTemplateColumns = 'repeat(auto-fill, minmax(350px, 1fr))';
-        fileList.style.gap = '24px';
-      }
-      
-      // Watch for DOM changes and enforce width + card styling
-      const observer = new MutationObserver(function(mutations) {
-        // Reset scroll to top whenever content changes
-        forceScrollToTop();
-        
-        const filters = document.getElementById('filters');
-        const fileList = document.getElementById('file-list');
-        if (filters) {
-          filters.style.width = '100%';
-          filters.style.maxWidth = '100%';
-        }
-        if (fileList) {
-          fileList.style.width = '100%';
-          fileList.style.maxWidth = '100%';
-          fileList.style.display = 'grid';
-          fileList.style.gridTemplateColumns = 'repeat(auto-fill, minmax(350px, 1fr))';
-          fileList.style.gap = '24px';
-          
-          // Style each file item as a card
-          const fileItems = fileList.querySelectorAll('li');
-          fileItems.forEach(item => {
-            // Cards are now styled via CSS, no inline styles needed
-            item.style.background = '';
-            item.style.border = '';
-            item.style.borderRadius = '';
-            item.style.padding = '';
-            item.style.transition = '';
-            item.style.boxShadow = '';
-            
-            // Remove old hover listeners
-            item.onmouseenter = null;
-            item.onmouseleave = null;
-          });
-        }
-      });
-      
-      // Start observing
-      const mainContent = document.querySelector('.content-container');
-      if (mainContent) {
-        observer.observe(mainContent, { 
-          childList: true, 
-          subtree: true,
-          attributes: true,
-          attributeFilter: ['style', 'class']
-        });
-      }
+      console.log('Biology page loaded');
     });
   </script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -3,6 +3,8 @@ function getSubjectJsonFile(subject) {
   subject = subject ? subject.toLowerCase() : "";
   if (["biology", "bio", "biolo"].some(k => subject.includes(k))) {
     return "biology.json";
+  } else if (["english", "eng"].some(k => subject.includes(k))) {
+    return "english.json";
   } else if (["computer", "comp", "compsci"].some(k => subject.includes(k))) {
     return "compsci.json";
   } else if (["math", "mathematics", "maths"].some(k => subject.includes(k))) {
@@ -11,8 +13,6 @@ function getSubjectJsonFile(subject) {
     return "accounting.json";
   } else if (["religion"].some(k => subject.includes(k))) {
     return "religion.json";
-  } else if (["english", "eng"].some(k => subject.includes(k))) {
-    return "english.json";
   } else if (["chemistry", "chem"].some(k => subject.includes(k))) {
     return "chemistry.json";
   } else if (["physics"].some(k => subject.includes(k))) {
@@ -23,6 +23,28 @@ function getSubjectJsonFile(subject) {
     return "geography.json";
   }
   return null;
+}
+
+// Function to preview PDF files in a new tab
+function previewPDF(url, filename) {
+  // Open PDF in new tab for preview
+  const newWindow = window.open(url, '_blank');
+  if (!newWindow) {
+    alert('Please allow popups to preview the PDF file.');
+  }
+}
+
+// Function to preview PDF files in a new tab (opens for viewing, not download)
+function previewPDF(url, filename) {
+  // Use Google's PDF viewer to force display instead of download
+  const googleViewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(url)}&embedded=true`;
+  
+  // Open in new window
+  const newWindow = window.open(googleViewerUrl, '_blank', 'width=1200,height=800,scrollbars=yes,resizable=yes');
+  
+  if (!newWindow) {
+    alert('Please allow popups to preview the PDF file.');
+  }
 }
 
 // Function to download PDF files from S3
@@ -59,6 +81,27 @@ function downloadPDF(url, filename) {
     });
 }
 
+function getAvailableGrades(subject) {
+  // Get available grades for each subject - matching search.js logic
+  const subjectGradeMap = {
+    "geography": ["Grade 9"],
+    "accounting": ["Grade 11", "Grade 12"],
+    "biology": ["Grade 11", "Grade 12"],
+    "chemistry": ["Grade 11", "Grade 12"],
+    "english": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+    "general science": ["Grade 9", "Grade 10"],
+    "history": ["Grade 10"],
+    "marketing": ["Grade 10", "Grade 11", "Grade 12"],
+    "math": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+    "functions": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+    "physics": ["Grade 11", "Grade 12"],
+    "religion": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+    "computer science": ["Grade 10", "Grade 11"]
+  };
+  
+  return subjectGradeMap[subject.toLowerCase()] || ["Grade 11"];
+}
+
 function getAvailableTopics(subject, grade) {
   // autocomplete the words
   subject = (subject || "").toLowerCase();
@@ -66,6 +109,8 @@ function getAvailableTopics(subject, grade) {
   let subjects = ["All"];
   if (subject === "biology" && grade === "Grade 11") {
     subjects = ["All", "Respiratory", "Circulatory", "Genetics", "Evolution", "Digestive"];
+  } else if (subject === "biology" && grade === "Grade 12") {
+    subjects = ["All", "Biochemistry", "Metabolic Processes", "Molecular Genetics", "Homeostasis", "Population Dynamics"];
   } else if (subject === "accounting" && grade === "Grade 11") {
     subjects = ["All", "Accounting Cycle for a Service Business", "Internal and Cash Controls", "Business Structures and Accounting Implications", "Ethical Practices in Accounting", "Technology and Financial Statements"];
   } else if (subject === "computer science" && grade === "Grade 11") {
@@ -108,9 +153,7 @@ function renderFilters(subject, grade, topics, showForm = false) {
       };
     }
   } else {
-    const grades = [
-      "Grade 9", "Grade 10", "Grade 11", "Grade 12"
-    ];
+    const grades = getAvailableGrades(subject);
     const availableTopics = getAvailableTopics(subject, grade);
 
     filtersDiv.innerHTML = `
@@ -205,6 +248,7 @@ function renderFilters(subject, grade, topics, showForm = false) {
     gradeButtons.forEach(button => {
       button.onclick = function() {
         const newGrade = this.dataset.grade;
+        const availableGrades = getAvailableGrades(subject);
         let newAvailableTopics = getAvailableTopics(subject, newGrade);
         let newTopics = [];
         let showMsg = false;
@@ -214,8 +258,8 @@ function renderFilters(subject, grade, topics, showForm = false) {
         // Add active class to clicked button
         this.classList.add('active');
 
-        // *** FIX LATER, Grade 11 only for now
-        if (newGrade !== "Grade 11") {
+        // Check if the selected grade is available for this subject
+        if (!availableGrades.includes(newGrade)) {
           showMsg = true;
           newAvailableTopics = [];
           newTopics = [];
@@ -238,8 +282,9 @@ function renderFilters(subject, grade, topics, showForm = false) {
     const applyBtn = document.getElementById('applyFiltersBtn');
     const cancelBtn = document.getElementById('cancelFiltersBtn');
     if (applyBtn) {
-      // Disable Apply if not Grade 11
-      if (localSelectedGrade !== "Grade 11") {
+      // Check if the selected grade is available for this subject
+      const availableGrades = getAvailableGrades(subject);
+      if (!availableGrades.includes(localSelectedGrade)) {
         applyBtn.disabled = true;
         applyBtn.style.opacity = "0.5";
         applyBtn.onclick = function(e) {
@@ -287,11 +332,32 @@ function loadFiles(subject, grade, topics) {
         // Check if topics contains "All" or starts with "All--"
         const hasAllFilter = topics.length === 0 || topics.some(t => t === "All" || t.startsWith("All--"));
         if (topics.length && !hasAllFilter) {
-          filteredFiles = filteredFiles.filter(f =>
-            topics.some(topic =>
-              f.name.toLowerCase().includes(topic.toLowerCase())
-            )
-          );
+          // Get all topics that actually exist in the data
+          const allTopicsInData = Array.from(new Set(filteredFiles.map(f => (f.topic || '').toLowerCase())));
+          // Get selected topics (case-insensitive)
+          const selectedTopics = topics.map(t => t.toLowerCase());
+          // If all topics in data are selected (even if some UI topics have no tests), treat as 'All'
+          const allSelected = allTopicsInData.every(t => selectedTopics.includes(t));
+          if (allSelected) {
+            // Show all files (same as 'All')
+            // do nothing, filteredFiles already has all files
+          } else {
+            // Get all topics that actually exist in the data (case-sensitive)
+            const allTopicsInData = Array.from(new Set(filteredFiles.map(f => (f.topic || ''))));
+            // Get selected topics (skip 'All' and 'All--...')
+            const selectedTopics = topics.filter(t => t !== 'All' && !t.startsWith('All--'));
+            // If all topics in data are selected, show all files
+            const allSelected = allTopicsInData.length > 0 && allTopicsInData.every(t => selectedTopics.includes(t));
+            if (allSelected) {
+              // Show all files (same as 'All')
+              // do nothing, filteredFiles already has all files
+            } else {
+              filteredFiles = filteredFiles.filter(f => {
+                const fileTopic = f.topic || '';
+                return selectedTopics.includes(fileTopic);
+              });
+            }
+          }
         }
 
         const fileList = document.getElementById('file-list');
@@ -319,11 +385,11 @@ function loadFiles(subject, grade, topics) {
                   </div>
                 </div>
                 <div class="test-actions">
-                  <a href="${f.url}" target="_blank" class="test-btn btn-preview">
+                  <a href="#" onclick="previewPDF('${f.url}', '${f.name}'); return false;" class="test-btn btn-preview">
                     <i class="ri-eye-line"></i>
                     Preview
                   </a>
-                  <a href="#" onclick="downloadPDF('${f.url}', '${f.name}'); return false;" class="test-btn btn-download">
+                  <a href="${f.url}" download="${f.name}" class="test-btn btn-download">
                     <i class="ri-download-line"></i>
                     Download
                   </a>

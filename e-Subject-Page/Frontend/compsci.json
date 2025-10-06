@@ -3,30 +3,35 @@
     "name": "11-compsci-computerfoundations.pdf",
     "displayName": "Computer Foundations - Test",
     "topic": "Computer Foundations",
+    "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-compsci-computerfoundations.pdf"
   },
   {
     "name": "11-compsci-computing.pdf",
     "displayName": "Computing and Programming Basics - Test",
     "topic": "Programming Basics",
+    "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-compsci-computing.pdf"
   },
   {
     "name": "11-compsci-algorithms.pdf",
     "displayName": "Algorithms - Test",
     "topic": "Functions & Loops",
+    "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-compsci-algorithms.pdf"
   },
   {
     "name": "11-compsci-loops.pdf",
     "displayName": "Loops, methods & Errors - Test",
     "topic": "Functions & Loops",
+    "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-compsci-loops.pdf"
   },
   {
     "name": "11-compsci-lists.pdf",
     "displayName": "Lists - Test",
     "topic": "Lists",
+    "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-compsci-lists.pdf"
   }
 ]

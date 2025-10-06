@@ -3,30 +3,35 @@
     "name": "11-religion-worldviews.pdf",
     "displayName": "Worldviews - Quiz",
     "topic": "Intro to World Religions",
+    "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-religion-worldviews.pdf"
   },
   {
     "name": "11-religion-introworldreligions.pdf",
     "displayName": "Intro to World Religions - Test",
     "topic": "Intro to World Religions",
+    "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-religion-introworldreligions.pdf"
   },
   {
     "name": "11-religion-indigenous.pdf",
     "displayName": "Indigenous Spirituality - Test",
     "topic": "Indigenous",
+    "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-religion-indigenous.pdf"
   },
   {
     "name": "11-religion-judaism.pdf",
     "displayName": "Judaism - Test",
     "topic": "Judaism",
+    "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-religion-judaism.pdf"
   },
   {
     "name": "11-religion-islam.pdf",
     "displayName": "Islam - Test",
     "topic": "Islam",
+    "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-religion-islam.pdf"
   }
 ]

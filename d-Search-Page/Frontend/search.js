@@ -61,13 +61,13 @@ function showGradeOptions(subject) {
         "chemistry": ["Grade 11", "Grade 12"],
         "english": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
         "general science": ["Grade 9", "Grade 10"],
-        "history": ["Grade 11"],
+        "history": ["Grade 10"],
         "marketing": ["Grade 10", "Grade 11", "Grade 12"],
         "math": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
         "functions": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
         "physics": ["Grade 11", "Grade 12"],
         "religion": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
-        "computer science": ["Grade 11", "Grade 12"]
+        "computer science": ["Grade 10", "Grade 11"]
     };
     let grades = subjectGradeMap[subject];
     if (grades) {
@@ -104,6 +104,7 @@ function showGradeOptions(subject) {
     }
 }
 
+
 function showSubjects(subject, grade) {
     sessionStorage.setItem('selectedGrade', grade);
     sessionStorage.setItem('selectedSubject', subject);
@@ -112,7 +113,7 @@ function showSubjects(subject, grade) {
     const submitButtonContainer = document.getElementById('submitButtonContainer');
     
     subjectsContainer.innerHTML = '';
-    
+    /*         ************************ ADD AFTER FOR DIFFERENT SUBJECTS*************************************
     if (grade === "Grade 9" || grade === "Grade 10" || grade === "Grade 12") {
         const topicSection = document.createElement('div');
         topicSection.className = 'topic-section';
@@ -126,12 +127,22 @@ function showSubjects(subject, grade) {
         submitButtonContainer.style.display = "none";
         return;
     }
-    
+    */
+
     let subjects = [];
     if (subject === "biology" && grade === "Grade 11") {
         subjects = ["All", "Cells", "Respiratory", "Circulatory", "Genetics", "Evolution", "Biodiversity"];
     } else if (subject === "accounting" && grade === "Grade 11") {
         subjects = ["All", "Accounting Cycle for a Service Business", "Internal and Cash Controls", "Business Structures and Accounting Implications", "Ethical Practices in Accounting", "Technology and Financial Statements"];
+    
+    } else if (subject === "english" && grade === "Grade 9") {
+        subjects = ["All", "Romeo & Juliet"]; 
+    } else if (subject === "english" && grade === "Grade 10") {
+        subjects = ["All", "Macbeth", "The Alchemist", "Advanced Language", "Mythic voices"];
+    } else if (subject === "english" && grade === "Grade 11") {
+        subjects = ["All", "Rhetoric", "Hamlet", "1984", "Poetry"];
+
+    
     } else if (subject === "computer science" && grade === "Grade 11") {
         subjects = ["All", "Computer Foundations", "Programming Basics", "Functions & Loops", "Lists"];
     } else if (subject === "religion" && grade === "Grade 11") {
@@ -259,7 +270,7 @@ function submitAll() {
     }
     
     // Navigate to the subject page for Grade 11
-    if (selectedGrade === "Grade 11") {
+    if (selectedGrade === "Grade 9" || selectedGrade === "Grade 10" || selectedGrade === "Grade 11" || selectedGrade === "Grade 12") {
         let htmlFile = null;
         
         if (selectedSubject === "biology") {
@@ -274,6 +285,8 @@ function submitAll() {
             htmlFile = "physics.html";
         } else if (selectedSubject === "math" || selectedSubject === "functions") {
             htmlFile = "math.html";
+        } else if (selectedSubject === "english") {
+            htmlFile = "english.html";
         }
         
         if (htmlFile) {
@@ -282,6 +295,6 @@ function submitAll() {
             alert('Subject page not available yet.');
         }
     } else {
-        alert('Only Grade 11 is currently available.');
+        alert('This subject is under development.');
     }
 }

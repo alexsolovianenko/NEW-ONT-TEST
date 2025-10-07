@@ -110,5 +110,117 @@
     "topic": "1984",
     "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-1984-part3.pdf"
+  },
+  {
+    "name": "9-english-romeojuliet-act1.pdf",
+    "displayName": "Romeo & Juliet Act 1 - Test",
+    "topic": "Romeo & Juliet",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-romeojuliet-act1.pdf"
+  },
+  {
+    "name": "9-english-romeojuliet-act2.pdf",
+    "displayName": "Romeo & Juliet Act 2 - Test",
+    "topic": "Romeo & Juliet",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-romeojuliet-act2.pdf"
+  },
+  {
+    "name": "9-english-romeojuliet-act3.pdf",
+    "displayName": "Romeo & Juliet Act 3 - Test",
+    "topic": "Romeo & Juliet",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-romeojuliet-act3.pdf"
+  },
+  {
+    "name": "9-english-romeojuliet-act4.pdf",
+    "displayName": "Romeo & Juliet Act 4 - Test",
+    "topic": "Romeo & Juliet",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-romeojuliet-act4.pdf"
+  },
+  {
+    "name": "9-english-romeojuliet-act5.pdf",
+    "displayName": "Romeo & Juliet Act 5 - Test",
+    "topic": "Romeo & Juliet",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-romeojuliet-act5.pdf"
+  },
+  {
+    "name": "9-english-romeojuliet-assessment.pdf",
+    "displayName": "Romeo & Juliet English Essay - Timed Assessment",
+    "topic": "Romeo & Juliet",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-romeojuliet-assessment.pdf"
+  },
+  {
+    "name": "9-english-secretpath-assessment.pdf",
+    "displayName": "The Secret Path - Timed Assessment",
+    "topic": "The Secret Path",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-secretpath-assessment.pdf"
+  },
+  {
+    "name": "9-english-secretpath-test.pdf",
+    "displayName": "The Secret Path - Test",
+    "topic": "The Secret Path",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-secretpath-test.pdf"
+  },
+  {
+    "name": "9-english-shortfilm-lalunapiper.pdf",
+    "displayName": "La Luna & Piper - Test",
+    "topic": "Short Films discussion",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-shortfilm-lalunapiper.pdf"
+  },
+  {
+    "name": "9-english-shortfilm-thearrival.pdf",
+    "displayName": "The Arrival by Shaun Tan - Test",
+    "topic": "Short Films discussion",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-shortfilm-thearrival.pdf"
+  },
+  {
+    "name": "9-english-wordsonbathroomwalls-36-42.pdf",
+    "displayName": "Words The Bathroom Walls Chapters 36-42- Test",
+    "topic": "Words The Bathroom Walls",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-wordsonbathroomwalls-36-42.pdf"
+  },
+  {
+    "name": "9-english-wordsonbathroomwalls-chapter1-7.pdf",
+    "displayName": "Words The Bathroom Walls Chapters 1-7- Test",
+    "topic": "Words The Bathroom Walls",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-wordsonbathroomwalls-chapter1-7.pdf"
+  },
+  {
+    "name": "9-english-wordsonbathroomwalls-chapter15-21.pdf",
+    "displayName": "Words The Bathroom Walls Chapters 15-21- Test",
+    "topic": "Words The Bathroom Walls",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-wordsonbathroomwalls-chapter15-21.pdf"
+  },
+  {
+    "name": "9-english-wordsonbathroomwalls-chapter22-28.pdf",
+    "displayName": "Words The Bathroom Walls Chapters 22-28- Test",
+    "topic": "Words The Bathroom Walls",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-wordsonbathroomwalls-chapter22-28.pdf"
+  },
+  {
+    "name": "9-english-wordsonbathroomwalls-chapter29-35.pdf",
+    "displayName": "Words The Bathroom Walls Chapters 29-35- Test",
+    "topic": "Words The Bathroom Walls",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-wordsonbathroomwalls-chapter29-35.pdf"
+  },
+  {
+    "name": "9-english-wordsonbathroomwalls-chapter8-14.pdf",
+    "displayName": "Words The Bathroom Walls Chapters 8-14- Test",
+    "topic": "Words The Bathroom Walls",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-wordsonbathroomwalls-chapter8-14.pdf"
   }
 ]

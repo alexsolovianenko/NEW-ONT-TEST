@@ -51,17 +51,38 @@
     <div class="content-container">
       <div class="content-scroll">
         <div class="content-header-compact">
-          <h1>Geography Tests</h1>
-          <p>Comprehensive practice tests covering all major Geography topics</p>
+          <h1>Grade 11 Geography Tests</h1>
+          <p>Comprehensive practice tests covering all major geography topics</p>
         </div>
-        <div id="filters"></div>
+        <!-- Filter Section -->
+        <div class="filters-section">
+          <h2>Filter by Topic</h2>
+          <div id="filters" style="background: #f8f9fa; padding: 15px; border-radius: 10px; overflow: visible; min-height: 50px;">
+            <!-- Topic filters will be populated by appendFilters.js -->
+          </div>
+        </div>
+
+        <!-- Tests Section -->
         <div class="tests-section">
-          <ul id="file-list"></ul>
+          <h2>Available Tests</h2>
+          <div id="file-list">
+            <!-- Tests will be populated by appendFilters.js -->
+          </div>
         </div>
       </div>
     </div>
   </main>
+  <script>
+    // No auto-adjustment logic - let CSS handle everything
+  </script>
+
   <script src="../Backend/appendFilters.js"></script>
+  <script>
+    // Simple page load - let natural positioning work
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Geography page loaded');
+    });
+  </script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -285,23 +285,21 @@ if __name__ == "__main__":
     pdf.set_text_color(0, 0, 0)
     pdf.set_font("Arial", size=12)
     
-    answer_number = 1
     for section in section_headers:
         if answer_map[section]:
             pdf.set_font("Arial", style="B", size=15)
             pdf.cell(0, 10, section + ":", ln=1, fill=True)
             pdf.set_font("Arial", size=12)
+            section_answer_number = 1
             for a in answer_map[section]:
                 # Remove old numbering from answers
                 a_clean = re.sub(r'^\d+\.\s*', '', a.strip())
-                
-                # Keep all answers on single lines (don't split multiple choice)
-                pdf.multi_cell(0, 10, f"{answer_number}. {a_clean}")
-                pdf.ln(5)  # Same vertical spacing as questions
-                answer_number += 1
+                pdf.multi_cell(0, 10, f"{section_answer_number}. {a_clean}")
+                pdf.ln(5)
+                section_answer_number += 1
 
     original_file_name = os.path.splitext(practice_test_path)[0]
-    output_pdf_path = "11-english-1984-part3.pdf"
+    output_pdf_path = "10-science-biology.pdf"
     pdf.output(output_pdf_path)
     print(f"Practice test saved to '{output_pdf_path}'.")
 

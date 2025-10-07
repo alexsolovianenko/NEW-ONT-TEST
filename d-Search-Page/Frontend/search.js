@@ -64,7 +64,6 @@ function showGradeOptions(subject) {
         "history": ["Grade 10"],
         "marketing": ["Grade 10", "Grade 11", "Grade 12"],
         "math": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
-        "functions": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
         "physics": ["Grade 11", "Grade 12"],
         "religion": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
         "computer science": ["Grade 10", "Grade 11"]
@@ -106,55 +105,128 @@ function showGradeOptions(subject) {
 
 
 function showSubjects(subject, grade) {
+    // Only allow topics for grades that are valid for the subject
+    const subjectGradeMap = {
+        "geography": ["Grade 9"],
+        "accounting": ["Grade 11", "Grade 12"],
+        "biology": ["Grade 11", "Grade 12"],
+        "chemistry": ["Grade 11", "Grade 12"],
+        "english": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+        "general science": ["Grade 9", "Grade 10"],
+        "history": ["Grade 10"],
+        "marketing": ["Grade 10", "Grade 11", "Grade 12"],
+        "math": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+        "physics": ["Grade 11", "Grade 12"],
+        "religion": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+        "computer science": ["Grade 10", "Grade 11"]
+    };
+    if (!subjectGradeMap[subject] || !subjectGradeMap[subject].includes(grade)) {
+        // Not a valid grade for this subject
+        const subjectsContainer = document.getElementById('subjectsContainer');
+        const submitButtonContainer = document.getElementById('submitButtonContainer');
+        subjectsContainer.innerHTML = '';
+        const topicSection = document.createElement('div');
+        topicSection.className = 'topic-section';
+        topicSection.innerHTML = '<h3>Select Topics</h3><div class="no-content">No topics available for this grade and subject.</div>';
+        subjectsContainer.appendChild(topicSection);
+        subjectsContainer.style.display = "block";
+        submitButtonContainer.style.display = "none";
+        return;
+    }
+
     sessionStorage.setItem('selectedGrade', grade);
     sessionStorage.setItem('selectedSubject', subject);
 
     const subjectsContainer = document.getElementById('subjectsContainer');
     const submitButtonContainer = document.getElementById('submitButtonContainer');
-    
     subjectsContainer.innerHTML = '';
-    /*         ************************ ADD AFTER FOR DIFFERENT SUBJECTS*************************************
-    if (grade === "Grade 9" || grade === "Grade 10" || grade === "Grade 12") {
-        const topicSection = document.createElement('div');
-        topicSection.className = 'topic-section';
-        topicSection.innerHTML = '<h3>Select Topics</h3><div class="development-notice"><i class="ri-time-line"></i> In process of development, will be released later</div>';
-        subjectsContainer.appendChild(topicSection);
-        subjectsContainer.style.display = "block";
-        
-        // Immediate smooth scroll when development notice appears
-        subjectsContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        submitButtonContainer.style.display = "none";
-        return;
-    }
-    */
 
     let subjects = [];
-    if (subject === "biology" && grade === "Grade 11") {
-        subjects = ["All", "Cells", "Respiratory", "Circulatory", "Genetics", "Evolution", "Biodiversity"];
-    } else if (subject === "accounting" && grade === "Grade 11") {
-        subjects = ["All", "Accounting Cycle for a Service Business", "Internal and Cash Controls", "Business Structures and Accounting Implications", "Ethical Practices in Accounting", "Technology and Financial Statements"];
-    
-    } else if (subject === "english" && grade === "Grade 9") {
-        subjects = ["All", "Romeo & Juliet"]; 
-    } else if (subject === "english" && grade === "Grade 10") {
-        subjects = ["All", "Macbeth", "The Alchemist", "Advanced Language", "Mythic voices"];
-    } else if (subject === "english" && grade === "Grade 11") {
-        subjects = ["All", "Rhetoric", "Hamlet", "1984", "Poetry"];
-
-    
-    } else if (subject === "computer science" && grade === "Grade 11") {
-        subjects = ["All", "Computer Foundations", "Programming Basics", "Functions & Loops", "Lists"];
-    } else if (subject === "religion" && grade === "Grade 11") {
-        subjects = ["All", "Intro to World Religions", "Indigenous", "Judaism", "Christianity", "Islam", "Hinduism & Buddhism"];
-    } else if (subject === "physics" && grade === "Grade 11") {
-        subjects = ["All", "Kinematics", "Forces", "Energy and Society", "Waves and Sound", "Electricity and Magnetism"];
-    } else if (subject === "math" || subject === "functions") {
+    // Use real topics for all grades, not just Grade 11
+    if (subject === "biology") {
         if (grade === "Grade 11") {
+            subjects = ["All", "Cells", "Respiratory", "Circulatory", "Genetics", "Evolution", "Biodiversity"];
+        } else if (grade === "Grade 12") {
+            subjects = ["All", "Biochemistry", "Metabolic Processes", "Molecular Genetics", "Homeostasis", "Population Dynamics"];
+        }
+    } else if (subject === "accounting") {
+        if (grade === "Grade 11") {
+            subjects = ["All", "Accounting Cycle for a Service Business", "Internal and Cash Controls", "Business Structures and Accounting Implications", "Ethical Practices in Accounting", "Technology and Financial Statements"];
+        } else if (grade === "Grade 12") {
+            subjects = ["All", "Accounting for Merchandising Businesses", "Partnerships and Corporations", "Financial Analysis", "Accounting Software"];
+        }
+    } else if (subject === "english") {
+        if (grade === "Grade 9") {
+            subjects = ["All", "TCEA", "Words on Bathroom Walls", "Romeo & Juliet", "The Secret Path", "Short Films discussion"];
+        } else if (grade === "Grade 10") {
+            subjects = ["All", "Macbeth", "The Alchemist", "Advanced Language", "Mythic voices"];
+        } else if (grade === "Grade 11") {
+            subjects = ["All", "Rhetoric", "Hamlet", "1984", "Poetry"];
+        } else if (grade === "Grade 12") {
+            subjects = ["All", "King Lear", "Poetry", "Comparative Essays", "Literary Criticism"];
+        }
+    } else if (subject === "computer science") {
+        if (grade === "Grade 10") {
+            subjects = ["All", "Introduction to Programming", "Data Types", "Control Structures", "Functions"];
+        } else if (grade === "Grade 11") {
+            subjects = ["All", "Computer Foundations", "Programming Basics", "Functions & Loops", "Lists"];
+        }
+    } else if (subject === "religion") {
+        if (grade === "Grade 9") {
+            subjects = ["All", "Old Testament", "New Testament", "Christian Morality", "Sacraments"];
+        } else if (grade === "Grade 10") {
+            subjects = ["All", "World Religions", "Christianity", "Judaism", "Islam"];
+        } else if (grade === "Grade 11") {
+            subjects = ["All", "Intro to World Religions", "Indigenous", "Judaism", "Christianity", "Islam", "Hinduism & Buddhism"];
+        } else if (grade === "Grade 12") {
+            subjects = ["All", "Philosophy of Religion", "Ethics", "Contemporary Issues"];
+        }
+    } else if (subject === "physics") {
+        if (grade === "Grade 11") {
+            subjects = ["All", "Kinematics", "Forces", "Energy and Society", "Waves and Sound", "Electricity and Magnetism"];
+        } else if (grade === "Grade 12") {
+            subjects = ["All", "Dynamics", "Energy and Momentum", "Gravitation", "Electricity and Magnetism", "Modern Physics"];
+        }
+    } else if (subject === "math") {
+        if (grade === "Grade 9") {
+            subjects = ["All", "Number Sense", "Algebra", "Linear Relations", "Measurement", "Geometry"];
+        } else if (grade === "Grade 10") {
+            subjects = ["All", "Quadratic Relations", "Trigonometry", "Analytic Geometry", "Measurement"];
+        } else if (grade === "Grade 11") {
             subjects = ["All", "Algebra", "Trigonometry", "Calculus", "Statistics"];
+        } else if (grade === "Grade 12") {
+            subjects = ["All", "Advanced Functions", "Calculus", "Vectors", "Probability"];
+        }
+    } else if (subject === "chemistry") {
+        if (grade === "Grade 11") {
+            subjects = ["All", "Matter, Chemical Trends, and Bonding", "Chemical Reactions", "Quantities in Chemical Reactions", "Solutions and Solubility", "Gases and Atmospheric Chemistry"];
+        } else if (grade === "Grade 12") {
+            subjects = ["All", "Organic Chemistry", "Structure and Properties", "Energy Changes", "Chemical Systems and Equilibrium", "Electrochemistry"];
+        }
+    } else if (subject === "geography") {
+        if (grade === "Grade 9") {
+            subjects = ["All", "Canadian Geography", "Changing Populations", "Environmental Issues", "Physical Geography", "Liveable Communities"];
+        }
+
+    } else if (subject === "marketing") {
+        if (grade === "Grade 10") {
+            subjects = ["All", "Introduction to Marketing", "Consumer Behaviour", "Advertising", "Market Research"];
+        } else if (grade === "Grade 11") {
+            subjects = ["All", "Marketing Strategies", "Branding", "Sales Techniques", "Digital Marketing"];
+        } else if (grade === "Grade 12") {
+            subjects = ["All", "International Marketing", "E-Commerce", "Marketing Management"];
+        }
+    } else if (subject === "general science") {
+        if (grade === "Grade 9") {
+            subjects = ["All", "Biology", "Chemistry", "Physics", "Earth and Space Science"];
+        } else if (grade === "Grade 10") {
+            subjects = ["All", "Chemistry", "Optics", "Biology", "Climate"];
+        }
+    } else if (subject === "history") {
+        if (grade === "Grade 10") {
+            subjects = ["All", "1910-Canada & World War I", "1920-Canada", "1930-Great Depression", "1940-Canada & World War II", "Canada and the Cold War"];
         }
     }
-    
     if (subjects.length > 0) {
         subjects.sort((a, b) => {
             if (a === "All") return -1;
@@ -283,10 +355,20 @@ function submitAll() {
             htmlFile = "religion.html";
         } else if (selectedSubject === "physics") {
             htmlFile = "physics.html";
-        } else if (selectedSubject === "math" || selectedSubject === "functions") {
+        } else if (selectedSubject === "math") {
             htmlFile = "math.html";
         } else if (selectedSubject === "english") {
             htmlFile = "english.html";
+        } else if (selectedSubject === "general science") {
+            htmlFile = "generalsci.html";
+        } else if (selectedSubject === "history") {
+            htmlFile = "history.html";
+        } else if (selectedSubject === "geography") {
+            htmlFile = "geography.html";
+        } else if (selectedSubject === "chemistry") {
+            htmlFile = "chemistry.html";
+        } else if (selectedSubject === "marketing") {
+            htmlFile = "marketing.html";
         }
         
         if (htmlFile) {

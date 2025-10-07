@@ -1,0 +1,30 @@
+[
+  {
+    "name": "10-science-chemistry.pdf",
+    "displayName": "Chemistry - Test",
+    "topic": "Chemistry",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-chemistry.pdf"
+  },
+  {
+    "name": "10-science-climate.pdf",
+    "displayName": "Climate - Test",
+    "topic": "Climate",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-climate.pdf"
+  },
+  {
+    "name": "10-science-optics.pdf",
+    "displayName": "Optics - Test",
+    "topic": "Optics",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-optics.pdf"
+  },
+  {
+    "name": "10-science-biology.pdf",
+    "displayName": "Biology - Test",
+    "topic": "Biology",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-optics.pdf"
+  }
+]

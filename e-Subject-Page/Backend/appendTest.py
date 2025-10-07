@@ -46,6 +46,8 @@ if 'Contents' in response:
                 subject_key = "accounting"
             elif any(keyword in object_key.lower() for keyword in ['religion']):
                 subject_key = "religion"
+            elif any(keyword in object_key.lower() for keyword in ['general science', 'science', 'generalscience']):
+                subject_key = "generalsci"
             elif any(keyword in object_key.lower() for keyword in ['english', 'eng']):
                 subject_key = "english"
             elif any(keyword in object_key.lower() for keyword in ['chemistry', 'chem']):

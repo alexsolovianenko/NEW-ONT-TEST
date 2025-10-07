@@ -21,6 +21,8 @@ function getSubjectJsonFile(subject) {
     return "marketing.json";
   } else if (["geography", "geo"].some(k => subject.includes(k))) {
     return "geography.json";
+  } else if (["general science", "generalsci", "science"].some(k => subject.includes(k))) {
+    return "generalsci.json";
   }
   return null;
 }
@@ -93,35 +95,117 @@ function getAvailableGrades(subject) {
     "history": ["Grade 10"],
     "marketing": ["Grade 10", "Grade 11", "Grade 12"],
     "math": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
-    "functions": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
     "physics": ["Grade 11", "Grade 12"],
     "religion": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
     "computer science": ["Grade 10", "Grade 11"]
   };
-  
-  return subjectGradeMap[subject.toLowerCase()] || ["Grade 11"];
+  return subjectGradeMap[subject ? subject.toLowerCase() : ""] || [];
 }
 
 function getAvailableTopics(subject, grade) {
   // autocomplete the words
   subject = (subject || "").toLowerCase();
   grade = (grade || "");
-  let subjects = ["All"];
-  if (subject === "biology" && grade === "Grade 11") {
-    subjects = ["All", "Respiratory", "Circulatory", "Genetics", "Evolution", "Digestive"];
-  } else if (subject === "biology" && grade === "Grade 12") {
-    subjects = ["All", "Biochemistry", "Metabolic Processes", "Molecular Genetics", "Homeostasis", "Population Dynamics"];
-  } else if (subject === "accounting" && grade === "Grade 11") {
-    subjects = ["All", "Accounting Cycle for a Service Business", "Internal and Cash Controls", "Business Structures and Accounting Implications", "Ethical Practices in Accounting", "Technology and Financial Statements"];
-  } else if (subject === "computer science" && grade === "Grade 11") {
-    subjects = ["All", "Computer Foundations", "Computing & Programming Basics", "Control Structures", "Functions & Loops", "Lists", "Emerging Areas of Computer Science"];
-  } else if (subject === "religion" && grade === "Grade 11") {
-    subjects = ["All", "Into to World Religions", "Indigenous Spirituality", "Judaism", "Christianity", "Islam", "Eastern Religions – Hinduism & Buddhism"];
-  } else if (subject === "physics" && grade === "Grade 11") {
-    subjects = ["All", "Kinematics", "Forces", "Energy and Society", "Waves and Sound", "Electricity and Magnetism"];
-  } else if (subject === "math" || subject === "functions") {
+  // Only allow topics for grades that are valid for the subject
+  const subjectGradeMap = {
+    "geography": ["Grade 9"],
+    "accounting": ["Grade 11", "Grade 12"],
+    "biology": ["Grade 11", "Grade 12"],
+    "chemistry": ["Grade 11", "Grade 12"],
+    "english": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+    "general science": ["Grade 9", "Grade 10"],
+    "history": ["Grade 10"],
+    "marketing": ["Grade 10", "Grade 11", "Grade 12"],
+    "math": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+    "physics": ["Grade 11", "Grade 12"],
+    "religion": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+    "computer science": ["Grade 10", "Grade 11"]
+  };
+  if (!subjectGradeMap[subject] || !subjectGradeMap[subject].includes(grade)) {
+    return [];
+  }
+  let subjects = [];
+  if (subject === "biology") {
     if (grade === "Grade 11") {
+      subjects = ["All", "Respiratory", "Circulatory", "Genetics", "Evolution", "Digestive"];
+    } else if (grade === "Grade 12") {
+      subjects = ["All", "Biochemistry", "Metabolic Processes", "Molecular Genetics", "Homeostasis", "Population Dynamics"];
+    }
+  } else if (subject === "accounting") {
+    if (grade === "Grade 11") {
+      subjects = ["All", "Accounting Cycle for a Service Business", "Internal and Cash Controls", "Business Structures and Accounting Implications", "Ethical Practices in Accounting", "Technology and Financial Statements"];
+    } else if (grade === "Grade 12") {
+      subjects = ["All", "Accounting for Merchandising Businesses", "Partnerships and Corporations", "Financial Analysis", "Accounting Software"];
+    }
+  } else if (subject === "english") {
+    if (grade === "Grade 9") {
+      subjects = ["All", "TCEA", "Words on Bathroom Walls", "Romeo & Juliet", "The Secret Path", "Short Films discussion"];
+    } else if (grade === "Grade 10") {
+      subjects = ["All", "Macbeth", "The Alchemist", "Advanced Language", "Mythic voices"];
+    } else if (grade === "Grade 11") {
+      subjects = ["All", "Rhetoric", "Hamlet", "1984", "Poetry"];
+    } else if (grade === "Grade 12") {
+      subjects = ["All", "King Lear", "Poetry", "Comparative Essays", "Literary Criticism"];
+    }
+  } else if (subject === "computer science") {
+    if (grade === "Grade 10") {
+      subjects = ["All", "Introduction to Programming", "Data Types", "Control Structures", "Functions"];
+    } else if (grade === "Grade 11") {
+      subjects = ["All", "Computer Foundations", "Computing & Programming Basics", "Control Structures", "Functions & Loops", "Lists", "Emerging Areas of Computer Science"];
+    }
+  } else if (subject === "religion") {
+    if (grade === "Grade 9") {
+      subjects = ["All", "Old Testament", "New Testament", "Christian Morality", "Sacraments"];
+    } else if (grade === "Grade 10") {
+      subjects = ["All", "World Religions", "Christianity", "Judaism", "Islam"];
+    } else if (grade === "Grade 11") {
+      subjects = ["All", "Into to World Religions", "Indigenous Spirituality", "Judaism", "Christianity", "Islam", "Eastern Religions – Hinduism & Buddhism"];
+    } else if (grade === "Grade 12") {
+      subjects = ["All", "Philosophy of Religion", "Ethics", "Contemporary Issues"];
+    }
+  } else if (subject === "physics") {
+    if (grade === "Grade 11") {
+      subjects = ["All", "Kinematics", "Forces", "Energy and Society", "Waves and Sound", "Electricity and Magnetism"];
+    } else if (grade === "Grade 12") {
+      subjects = ["All", "Dynamics", "Energy and Momentum", "Gravitation", "Electricity and Magnetism", "Modern Physics"];
+    }
+  } else if (subject === "math") {
+    if (grade === "Grade 9") {
+      subjects = ["All", "Number Sense", "Algebra", "Linear Relations", "Measurement", "Geometry"];
+    } else if (grade === "Grade 10") {
+      subjects = ["All", "Quadratic Relations", "Trigonometry", "Analytic Geometry", "Measurement"];
+    } else if (grade === "Grade 11") {
       subjects = ["All", "Algebra", "Trigonometry", "Calculus", "Statistics"];
+    } else if (grade === "Grade 12") {
+      subjects = ["All", "Advanced Functions", "Calculus", "Vectors", "Probability"];
+    }
+  } else if (subject === "chemistry") {
+    if (grade === "Grade 11") {
+      subjects = ["All", "Matter, Chemical Trends, and Bonding", "Chemical Reactions", "Quantities in Chemical Reactions", "Solutions and Solubility", "Gases and Atmospheric Chemistry"];
+    } else if (grade === "Grade 12") {
+      subjects = ["All", "Organic Chemistry", "Structure and Properties", "Energy Changes", "Chemical Systems and Equilibrium", "Electrochemistry"];
+    }
+  } else if (subject === "geography") {
+    if (grade === "Grade 9") {
+      subjects = ["All", "Canadian Geography", "Changing Populations", "Environmental Issues", "Physical Geography", "Liveable Communities"];
+    }
+  } else if (subject === "marketing") {
+    if (grade === "Grade 10") {
+      subjects = ["All", "Introduction to Marketing", "Consumer Behaviour", "Advertising", "Market Research"];
+    } else if (grade === "Grade 11") {
+      subjects = ["All", "Marketing Strategies", "Branding", "Sales Techniques", "Digital Marketing"];
+    } else if (grade === "Grade 12") {
+      subjects = ["All", "International Marketing", "E-Commerce", "Marketing Management"];
+    }
+  } else if (subject === "general science") {
+    if (grade === "Grade 9") {
+      subjects = ["All", "Biology", "Chemistry", "Physics", "Earth and Space Science"];
+    } else if (grade === "Grade 10") {
+      subjects = ["All", "Biology", "Chemistry", "Physics", "Earth and Space Science"];
+    }
+  } else if (subject === "history") {
+    if (grade === "Grade 10") {
+      subjects = ["All", "Canadian History Since WWI", "World War II", "Cold War", "Contemporary Issues"];
     }
   }
   return subjects;
@@ -441,7 +525,7 @@ function renderFiltersWithMsg(subject, grade, topics, showForm, showMsg, origGra
       <div>
         <div style="margin-bottom:12px;"><strong>Select Grade Level</strong></div>
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
-          ${grades.map(g => `
+          ${getAvailableGrades(subject).map(g => `
             <button type="button" class="filter-btn grade-btn" data-grade="${g}" data-selected="${g === grade}">
               ${g}
             </button>
@@ -452,7 +536,7 @@ function renderFiltersWithMsg(subject, grade, topics, showForm, showMsg, origGra
         <div style="margin-bottom:12px;"><strong>Select Topics</strong></div>
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
           ${
-            grade === "Grade 11"
+            availableTopics.length > 0
               ? availableTopics.map(t => {
                   // Check if this topic is selected - handle both "All" and "All--..." format
                   const isSelected = topics.includes(t) || (t === "All" && topics.some(topic => topic.startsWith("All--")));
@@ -460,7 +544,7 @@ function renderFiltersWithMsg(subject, grade, topics, showForm, showMsg, origGra
                     ${t}
                   </button>`;
                 }).join('')
-              : `<span style="color:#b77b00;font-style:italic;">In process of development, will be released later</span>`
+              : `<span style=\"color:#b77b00;font-style:italic;\">No topics available for this grade</span>`
           }
         </div>
       </div>
@@ -487,17 +571,15 @@ function renderFiltersWithMsg(subject, grade, topics, showForm, showMsg, origGra
     }
   });
 
-  // ****FIX LATER. only for gr11
+  // Enable topic selection for all grades with topics
   let localSelectedGrade = grade;
   let localSelectedTopics = [...topics];
-  
-  if (grade === "Grade 11") {
+  if (availableTopics.length > 0) {
     topicButtons.forEach(button => {
       button.onclick = function() {
         const topicValue = this.dataset.topic;
         const allButton = Array.from(topicButtons).find(btn => btn.dataset.topic === "All");
         const nonAllButtons = Array.from(topicButtons).filter(btn => btn.dataset.topic !== "All");
-        
         if (topicValue === "All") {
           if (this.classList.contains('active')) {
             // Deselect all
@@ -511,12 +593,10 @@ function renderFiltersWithMsg(subject, grade, topics, showForm, showMsg, origGra
         } else {
           // Toggle individual topic
           this.classList.toggle('active');
-          
           // Update selected topics
           localSelectedTopics = Array.from(topicButtons)
             .filter(btn => btn.classList.contains('active') && btn.dataset.topic !== "All")
             .map(btn => btn.dataset.topic);
-          
           // Check if all non-All topics are selected
           const allSelected = nonAllButtons.every(btn => btn.classList.contains('active'));
           if (allSelected && allButton) {
@@ -530,28 +610,19 @@ function renderFiltersWithMsg(subject, grade, topics, showForm, showMsg, origGra
     });
   }
 
-  // 2nd grade button logic 
+  // Grade button logic for all grades
   gradeButtons.forEach(button => {
     button.onclick = function() {
       const newGrade = this.dataset.grade;
       let newAvailableTopics = getAvailableTopics(subject, newGrade);
       let newTopics = [];
-      let showMsg = false;
-      
       // Remove active class from all grade buttons
       gradeButtons.forEach(btn => btn.classList.remove('active'));
       // Add active class to clicked button
       this.classList.add('active');
-      
-      if (newGrade !== "Grade 11") {
-        showMsg = true;
-        newAvailableTopics = [];
-        newTopics = [];
-      } else {
-        newTopics = localSelectedTopics.filter(t => newAvailableTopics.includes(t));
-        if (newTopics.length === 0) newTopics = ["All"];
-      }
-      renderFiltersWithMsg(subject, newGrade, newTopics, true, showMsg, origGrade, origTopics);
+      newTopics = localSelectedTopics.filter(t => newAvailableTopics.includes(t));
+      if (newTopics.length === 0) newTopics = ["All"];
+      renderFilters(subject, newGrade, newTopics, true);
     };
   });
 
@@ -559,31 +630,20 @@ function renderFiltersWithMsg(subject, grade, topics, showForm, showMsg, origGra
   const applyBtn = document.getElementById('applyFiltersBtn');
   const cancelBtn = document.getElementById('cancelFiltersBtn');
   if (applyBtn) {
-    if (grade !== "Grade 11") {
-      applyBtn.disabled = true;
-      applyBtn.style.opacity = "0.5";
-      applyBtn.onclick = function(e) {
-        e.preventDefault();
-        return false;
-      };
-    } else {
-      applyBtn.onclick = function() {
-        // Get selected grade from active button
-        const activeGradeBtn = filtersDiv.querySelector('.grade-btn.active');
-        let newGrade = activeGradeBtn ? activeGradeBtn.dataset.grade : grade;
-        let newTopics = [];
-        if (newGrade === "Grade 11") {
-          // Get selected topics from active buttons
-          const activeTopicBtns = filtersDiv.querySelectorAll('.topic-btn.active');
-          newTopics = Array.from(activeTopicBtns).map(btn => btn.dataset.topic);
-          if (newTopics.length === 0) newTopics = ["All"];
-        }
-        sessionStorage.setItem('selectedGrade', newGrade);
-        sessionStorage.setItem('selectedTopics', JSON.stringify(newTopics));
-        renderFilters(subject, newGrade, newTopics, false);
-        loadFiles(subject, newGrade, newTopics);
-      };
-    }
+    applyBtn.onclick = function() {
+      // Get selected grade from active button
+      const activeGradeBtn = filtersDiv.querySelector('.grade-btn.active');
+      let newGrade = activeGradeBtn ? activeGradeBtn.dataset.grade : grade;
+      let newTopics = [];
+      // Get selected topics from active buttons
+      const activeTopicBtns = filtersDiv.querySelectorAll('.topic-btn.active');
+      newTopics = Array.from(activeTopicBtns).map(btn => btn.dataset.topic);
+      if (newTopics.length === 0) newTopics = ["All"];
+      sessionStorage.setItem('selectedGrade', newGrade);
+      sessionStorage.setItem('selectedTopics', JSON.stringify(newTopics));
+      renderFilters(subject, newGrade, newTopics, false);
+      loadFiles(subject, newGrade, newTopics);
+    };
   }
   if (cancelBtn) {
     cancelBtn.onclick = function(e) {

@@ -33,5 +33,33 @@
     "topic": "Islam",
     "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-religion-islam.pdf"
+  },
+  {
+    "name": "10-religion-Scripture&Jesus.pdf",
+    "displayName": "Scripture & Jesus - Test",
+    "topic": "Scriptures",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-religion-Scripture&Jesus.pdf"
+  },
+  {
+    "name": "10-religion-christian.pdf",
+    "displayName": "Christianity - Test",
+    "topic": "Christianity",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-religion-christian.pdf"
+  },
+  {
+    "name": "10-religion-professionoffaith.pdf",
+    "displayName": "Profession of Faith - Test",
+    "topic": "Profession of Faith",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-religion-professionoffaith.pdf"
+  },
+  {
+    "name": "10-religion-sacramentallife.pdf",
+    "displayName": "Sacramental Life - Test",
+    "topic": "Profession of Faith",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-religion-sacramentallife.pdf"
   }
 ]

@@ -175,7 +175,7 @@ function showSubjects(subject, grade) {
         if (grade === "Grade 9") {
             subjects = ["All", "Old Testament", "New Testament", "Christian Morality", "Sacraments"];
         } else if (grade === "Grade 10") {
-            subjects = ["All", "World Religions", "Christianity", "Judaism", "Islam"];
+            subjects = ["All", "Profession of Faith", "Christianity", "Scripture", "Sacraments"];
         } else if (grade === "Grade 11") {
             subjects = ["All", "Intro to World Religions", "Indigenous", "Judaism", "Christianity", "Islam", "Hinduism & Buddhism"];
         } else if (grade === "Grade 12") {

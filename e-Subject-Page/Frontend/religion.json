@@ -61,5 +61,65 @@
     "topic": "Profession of Faith",
     "grade": 10,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-religion-sacramentallife.pdf"
+  },
+  {
+    "name": "9-religion-oldtestament-genesis-deuteronomy.pdf",
+    "displayName": "Old Testament Genesis through Deuteronomy - Test",
+    "topic": "Old Testament",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-religion-oldtestament-genesis-deuteronomy.pdf"
+  },
+  {
+    "name": "9-religion-oldtestament-job-malachi.pdf",
+    "displayName": "Old Testament Job through Malachi - Test",
+    "topic": "Old Testament",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-religion-oldtestament-job-malachi.pdf"
+  },
+  {
+    "name": "9-religion-oldtestament-joshua-esther.pdf",
+    "displayName": "Old Testament Joshua through Esther - Test",
+    "topic": "Old Testament",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-religion-oldtestament-joshua-esther.pdf"
+  },
+  {
+    "name": "9-religion-oldtestament-kinds-exile.pdf",
+    "displayName": "Old Testament Joshua through Esther - Test",
+    "topic": "Old Testament",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-religion-oldtestament-kinds-exile.pdf"
+  },
+  {
+    "name": "9-religion-sacraments.pdf",
+    "displayName": "Sacraments - Test",
+    "topic": "Sacraments",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-religion-sacraments.pdf"
+  },
+  {
+    "name": "9-religion-tencommandments.pdf",
+    "displayName": "Ten Commandments - Test",
+    "topic": "Sacraments",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-religion-tencommandments.pdf"
+  },
+  {
+    "name": "9-religion-christianmortality.pdf",
+    "displayName": "Christian Mortality - Test",
+    "topic": "Christian Mortality",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-religion-christianmortality.pdf"
+  },
+  {
+    "name": "9-religion-newtestament.pdf",
+    "displayName": "New Testament - Test",
+    "topic": "New Testament",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-religion-newtestament.pdf"
+  },
+  {
+    "name": "9-religion-oldtestament-sacraments.pdf",
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-religion-oldtestament-sacraments.pdf"
   }
 ]

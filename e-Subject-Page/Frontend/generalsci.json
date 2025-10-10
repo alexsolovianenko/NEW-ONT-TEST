@@ -26,5 +26,47 @@
     "topic": "Biology",
     "grade": 10,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-optics.pdf"
+  },
+  {
+    "name": "10-science-chem2.pdf",
+    "displayName": "Chem - Test 2",
+    "topic": "Chemistry",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-chem2.pdf"
+  },
+  {
+    "name": "10-science-chemistry2.pdf",
+    "displayName": "Chem - Test 1",
+    "topic": "Chemistry",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-chemistry2.pdf"
+  },
+  {
+    "name": "10-science-climate (2).pdf",
+    "displayName": "Chem - Test 1",
+    "topic": "Chemistry",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-climate (2).pdf"
+  },
+  {
+    "name": "9-science-chemistry.pdf",
+    "displayName": "Chemistry - Test",
+    "topic": "Chemistry",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-science-chemistry.pdf"
+  },
+  {
+    "name": "9-science-electricity.pdf",
+    "displayName": "Electricity - Test",
+    "topic": "Electricity",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-science-electricity.pdf"
+  },
+  {
+    "name": "9-science-space.pdf",
+    "displayName": "Space - Test",
+    "topic": "Space",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-science-space.pdf"
   }
 ]

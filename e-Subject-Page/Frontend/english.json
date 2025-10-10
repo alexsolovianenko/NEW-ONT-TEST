@@ -91,27 +91,6 @@
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-advancedlanguage.pdf"
   },
   {
-    "name": "11-english-1984-part1.pdf",
-    "displayName": "1984 Part 1 - Test",
-    "topic": "1984",
-    "grade": 11,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-1984-part1.pdf"
-  },
-  {
-    "name": "11-english-1984-part2.pdf",
-    "displayName": "1984 Part 2 - Test",
-    "topic": "1984",
-    "grade": 11,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-1984-part2.pdf"
-  },
-  {
-    "name": "11-english-1984-part3.pdf",
-    "displayName": "1984 Part 3 - Test",
-    "topic": "1984",
-    "grade": 11,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-1984-part3.pdf"
-  },
-  {
     "name": "9-english-romeojuliet-act1.pdf",
     "displayName": "Romeo & Juliet Act 1 - Test",
     "topic": "Romeo & Juliet",
@@ -218,9 +197,79 @@
   },
   {
     "name": "9-english-wordsonbathroomwalls-chapter8-14.pdf",
-    "displayName": "Words The Bathroom Walls Chapters 8-14- Test",
-    "topic": "Words The Bathroom Walls",
-    "grade": 9,
+    "displayName": "1984 Part 1 - Test",
+    "topic": "1984",
+    "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-wordsonbathroomwalls-chapter8-14.pdf"
+  },
+  {
+    "name": "11-english-1984-p2.pdf",
+    "displayName": "1984 Part 2 - Test",
+    "topic": "1984",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-1984-p2.pdf"
+  },
+  {
+    "name": "11-english-1984-p3.pdf",
+    "displayName": "1984 Part 3 - Test",
+    "topic": "1984",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-1984-p3.pdf"
+  },
+  {
+    "name": "11-english-hamlet-scene1-4.pdf",
+    "displayName": "Hamlet Scenes 1-4 - Test",
+    "topic": "Hamlet",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-hamlet-scene1-4.pdf"
+  },
+  {
+    "name": "11-english-hamlet-scene17-20.pdf",
+    "displayName": "Hamlet Scenes 17-20 - Test",
+    "topic": "Hamlet",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-hamlet-scene17-20.pdf"
+  },
+  {
+    "name": "11-english-hamlet-scene5-8.pdf",
+    "displayName": "Hamlet Scenes 5-8 - Test",
+    "topic": "Hamlet",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-hamlet-scene5-8.pdf"
+  },
+  {
+    "name": "11-english-hamlet-scene9-12.pdf",
+    "displayName": "Hamlet Scenes 9-12 - Test",
+    "topic": "Hamlet",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-hamlet-scene9-12.pdf"
+  },
+  {
+    "name": "11-english-hamletscene13-16.pdf",
+    "displayName": "Hamlet Scenes 13-16 - Test",
+    "topic": "Hamlet",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-hamletscene13-16.pdf"
+  },
+  {
+    "name": "11-english-poetry.pdf",
+    "displayName": "Poetry Analysis - Test",
+    "topic": "Poetry",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-poetry.pdf"
+  },
+  {
+    "name": "11-english-rhetoric.pdf",
+    "displayName": "Rhetoric Analysis - Test",
+    "topic": "Rhetoric",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-rhetoric.pdf"
+  },
+  {
+    "name": "11-english-1984-part1.pdf",
+    "displayName": "1984 Part 1 - Test",
+    "topic": "1984",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-1984-part1.pdf"
   }
 ]

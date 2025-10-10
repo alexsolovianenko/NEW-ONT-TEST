@@ -127,8 +127,6 @@ Now create solutions
   **** NO ANSWER may receive an "Answers will vary". Everu qestion MUST have a response. If it is an opinion question, then give an example. AND STATE THAT it's an example.
 - EVERY QUESTION MUST RECEIVE A RESPONSE, NO Refer to PYTHON CODE or anything like that. YOU MUST WRITE THE ANSWERS YOURSELF FOR EACH QUESTION
 
-
-Here is the content of the document:
 {docx_content}
 """
         # openai API runs w/ instructions
@@ -150,29 +148,56 @@ Here is the content of the document:
         logging.error(f"Error reading DOCX file: {e}")
         return "Error: Unable to read the DOCX file."
 
+def clean_text_for_pdf(text):
+    # Replace or remove non-latin-1 characters for FPDF compatibility
+    import unicodedata
+    if not text:
+        return ""
+    # Replace common math symbols and unicode with ASCII equivalents
+    replacements = {
+        '\u2013': '-', '\u2014': '-', '\u2018': "'", '\u2019': "'", '\u201c': '"', '\u201d': '"',
+        '\u2022': '-', '\u2026': '...', '\u2212': '-', '\u00b7': '-', '\u2260': '!=', '\u2264': '<=', '\u2265': '>=',
+        '\u00d7': 'x', '\u00f7': '/', '\u2192': '->', '\u2190': '<-', '\u2194': '<->', '\u00b0': ' deg',
+        '\u03c0': 'pi', '\u03b1': 'alpha', '\u03b2': 'beta', '\u03b3': 'gamma', '\u03a3': 'Sigma',
+        '\u221e': 'infinity', '\u00b1': '+/-', '\u2261': '===', '\u00bc': '1/4', '\u00bd': '1/2', '\u00be': '3/4',
+        '\u2020': '', '\u2021': '', '\u2030': ' per mille', '\u2032': "'", '\u2033': '"', '\u00a9': '(c)', '\u2122': '(TM)',
+        '\u00ae': '(R)', '\u202a': '', '\u202c': '', '\u200b': '', '\u200c': '', '\u200d': '', '\u200e': '', '\u200f': '',
+        '\u2010': '-', '\u2011': '-', '\u2012': '-', '\u2015': '-', '\u221a': 'sqrt', '\u221b': 'cbrt', '\u221c': 'fourthrt',
+        '\u2070': '0', '\u00b9': '1', '\u00b2': '2', '\u00b3': '3', '\u2074': '4', '\u2075': '5', '\u2076': '6', '\u2077': '7', '\u2078': '8', '\u2079': '9',
+        '\u2080': '0', '\u2081': '1', '\u2082': '2', '\u2083': '3', '\u2084': '4', '\u2085': '5', '\u2086': '6', '\u2087': '7', '\u2088': '8', '\u2089': '9',
+    }
+    for uni, repl in replacements.items():
+        text = text.replace(uni.encode('utf-8').decode('unicode_escape'), repl)
+    # Remove any remaining non-latin-1 characters
+    text = ''.join((c if ord(c) < 256 else '?') for c in text)
+    # Normalize whitespace
+    text = unicodedata.normalize('NFKD', text)
+    return text
+
 class StyledPDF(FPDF, HTMLMixin):
+
     def header(self):
-        self.set_fill_color(91, 44, 250)  
-        self.set_text_color(255, 255, 255)  
-        self.set_font("Arial", style="B", size=10)  # Use default font
+        self.set_fill_color(91, 44, 250)
+        self.set_text_color(255, 255, 255)
+        self.set_font("Arial", style="B", size=10)
         self.set_text_color(0, 0, 0)
         self.set_xy(-40, 5)
-        self.cell(30, 10, f"Page {self.page_no()}", align="R")
+        self.cell(30, 10, clean_text_for_pdf(f"Page {self.page_no()}"), align="R")
 
         # Title
         self.set_xy(10, 18)
         self.set_text_color(255, 255, 255)
-        self.set_font("Arial", style="B", size=46)  # Use default font
-        self.cell(0, 28, "Ontario Tests", ln=True, align="C", fill=True)
+        self.set_font("Arial", style="B", size=46)
+        self.cell(0, 28, clean_text_for_pdf("Ontario Tests"), ln=True, align="C", fill=True)
         self.ln(5)
 
     def footer(self):
         from datetime import datetime
         self.set_y(-15)
-        self.set_font("Arial", style="", size=11)  # Use default font
-        self.set_text_color(138, 153, 163)  # #8a99a3
-        dev_notice = f"© {datetime.now().year} Ontario Tests | All rights reserved"
-        self.cell(0, 10, dev_notice, align="C")
+        self.set_font("Arial", style="", size=11)
+        self.set_text_color(138, 153, 163)
+        dev_notice = f"(c) {datetime.now().year} Ontario Tests | All rights reserved"
+        self.cell(0, 10, clean_text_for_pdf(dev_notice), align="C")
         self.set_text_color(150, 150, 150)
 
 if __name__ == "__main__":
@@ -200,13 +225,13 @@ if __name__ == "__main__":
     left_margin = 10
     right_margin = 10
     box_width = pdf.w - left_margin - right_margin
-    
+
     # First line with bold "Instructions:" - centered
     pdf.set_font("Arial", style="B", size=12)
-    bold_text = "Instructions:"
+    bold_text = clean_text_for_pdf("Instructions:")
     pdf.set_font("Arial", style="", size=12)
-    regular_text = " For each of the following, provide the most accurate and complete response."
-    
+    regular_text = clean_text_for_pdf(" For each of the following, provide the most accurate and complete response.")
+
     # Calculate total width and centering position
     pdf.set_font("Arial", style="B", size=12)
     bold_width = pdf.get_string_width(bold_text)
@@ -214,23 +239,23 @@ if __name__ == "__main__":
     regular_width = pdf.get_string_width(regular_text)
     total_width = bold_width + regular_width
     start_x = left_margin + (box_width - total_width) / 2
-    
+
     # Draw the filled background
     pdf.set_x(left_margin)
     pdf.cell(box_width, 8, "", ln=0, fill=True)
-    
+
     # Position and write bold text
     pdf.set_xy(start_x, pdf.get_y())
     pdf.set_font("Arial", style="B", size=12)
     pdf.cell(bold_width, 8, bold_text, ln=0)
-    
+
     # Write regular text
     pdf.set_font("Arial", style="", size=12)
     pdf.cell(regular_width, 8, regular_text, ln=1)
-    
+
     # Second line - centered
     pdf.set_x(left_margin)
-    pdf.cell(box_width, 8, "Explanations are at the end.", ln=1, fill=True, align='C')
+    pdf.cell(box_width, 8, clean_text_for_pdf("Explanations are at the end."), ln=1, fill=True, align='C')
     pdf.ln(6)
 
     import re
@@ -321,16 +346,16 @@ if __name__ == "__main__":
         if question_map[section]:  # Only show section if it has content
             pdf.ln(12)
             pdf.set_font("Arial", style="B", size=15)  # Bold section headers
-            pdf.cell(0, 10, section + ":", ln=1, fill=True)
+            pdf.cell(0, 10, clean_text_for_pdf(section + ":"), ln=1, fill=True)
             pdf.set_font("Arial", size=12)
             for q in question_map[section]:
                 # Each q is a complete question with possible multiple choice options
                 lines_in_q = q.split('\n')
-                
+
                 # First line is the question text (remove old numbering)
                 first_line = re.sub(r'^\d+\.\s*', '', lines_in_q[0].strip())
-                pdf.multi_cell(0, 10, f"{question_number}. {first_line}")
-                
+                pdf.multi_cell(0, 10, clean_text_for_pdf(f"{question_number}. {first_line}"))
+
                 # Remaining lines are multiple choice options or continuation
                 for line in lines_in_q[1:]:
                     line_clean = line.strip()
@@ -339,11 +364,11 @@ if __name__ == "__main__":
                         if re.match(r'^[a-e]\)', line_clean):
                             pdf.ln(1)
                             pdf.set_x(pdf.l_margin + 5)  # Indent choices
-                            pdf.multi_cell(0, 8, line_clean)
+                            pdf.multi_cell(0, 8, clean_text_for_pdf(line_clean))
                         else:
                             # It's a continuation of the question
-                            pdf.multi_cell(0, 10, line_clean)
-                
+                            pdf.multi_cell(0, 10, clean_text_for_pdf(line_clean))
+
                 pdf.ln(5)  # More vertical space between questions
                 question_number += 1
 
@@ -360,11 +385,11 @@ if __name__ == "__main__":
     pdf.add_page()
     pdf.set_font("Arial", style="B", size=20)
     pdf.set_text_color(91, 44, 250)
-    pdf.cell(0, 10, "Solutions", ln=True, align="C")
+    pdf.cell(0, 10, clean_text_for_pdf("Solutions"), ln=True, align="C")
     pdf.ln(10)
     pdf.set_text_color(0, 0, 0)
     pdf.set_font("Arial", size=12)
-    
+
     answer_number = 1
     any_answers = any(answer_map[section] for section in section_headers)
     if any_answers:
@@ -372,16 +397,16 @@ if __name__ == "__main__":
             if answer_map[section]:
                 pdf.set_font("Arial", style="B", size=15)
                 pdf.set_fill_color(235, 233, 254)
-                pdf.cell(0, 10, section + ":", ln=1, fill=True)
+                pdf.cell(0, 10, clean_text_for_pdf(section + ":"), ln=1, fill=True)
                 pdf.set_font("Arial", size=12)
                 for a in answer_map[section]:
                     lines_in_a = a.split('\n')
                     first_line = re.sub(r'^\d+\.\s*', '', lines_in_a[0].strip())
-                    pdf.multi_cell(0, 10, f"{answer_number}. {first_line}")
+                    pdf.multi_cell(0, 10, clean_text_for_pdf(f"{answer_number}. {first_line}"))
                     for line in lines_in_a[1:]:
                         line_clean = line.strip()
                         if line_clean and not line_clean.startswith("*Note"):
-                            pdf.multi_cell(0, 10, line_clean)
+                            pdf.multi_cell(0, 10, clean_text_for_pdf(line_clean))
                     pdf.ln(5)
                     answer_number += 1
     else:
@@ -393,9 +418,9 @@ if __name__ == "__main__":
             if re.match(r'^\d+\.', line.strip()):
                 # Print previous answer if exists
                 if current_answer:
-                    pdf.multi_cell(0, 10, f"{answer_number}. {current_answer[0]}")
+                    pdf.multi_cell(0, 10, clean_text_for_pdf(f"{answer_number}. {current_answer[0]}"))
                     for cont in current_answer[1:]:
-                        pdf.multi_cell(0, 10, cont)
+                        pdf.multi_cell(0, 10, clean_text_for_pdf(cont))
                     pdf.ln(5)
                     answer_number += 1
                 # Start new answer
@@ -407,9 +432,9 @@ if __name__ == "__main__":
                     current_answer.append(line.strip())
         # Print last answer
         if current_answer:
-            pdf.multi_cell(0, 10, f"{answer_number}. {current_answer[0]}")
+            pdf.multi_cell(0, 10, clean_text_for_pdf(f"{answer_number}. {current_answer[0]}"))
             for cont in current_answer[1:]:
-                pdf.multi_cell(0, 10, cont)
+                pdf.multi_cell(0, 10, clean_text_for_pdf(cont))
             pdf.ln(5)
 
     original_file_name = os.path.splitext(object_key)[0]

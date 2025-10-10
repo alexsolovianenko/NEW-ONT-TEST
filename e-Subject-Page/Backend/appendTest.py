@@ -58,6 +58,8 @@ if 'Contents' in response:
                 subject_key = "marketing"
             elif any(keyword in object_key.lower() for keyword in ['geography', 'geo']):
                 subject_key = "geography"
+            elif any(keyword in object_key.lower() for keyword in ['history']):
+                subject_key = "history"
             elif any(keyword in object_key.lower() for keyword in ['math', 'functions']):
                 subject_key = "math"
             else:

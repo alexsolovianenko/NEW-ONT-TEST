@@ -100,5 +100,9 @@
   {
     "name": "10-science-biology.pdf",
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-biology.pdf"
+  },
+  {
+    "name": "10-science-biology2.pdf",
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-biology2.pdf"
   }
 ]

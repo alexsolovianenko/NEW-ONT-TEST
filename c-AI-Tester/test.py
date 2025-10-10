@@ -57,30 +57,50 @@ def clean_text_for_pdf(text):
     return ''.join((c if ord(c) < 256 else '?') for c in text)
 
 
+
+def extract_sections(text, section_names):
+    """Extracts each section's text from the document, in order, by section header name."""
+    # section_names: ["Section A", "Section B", ...]
+    pattern = r'(?i)(' + '|'.join(re.escape(name) for name in section_names) + r')'
+    # Find all section header matches
+    matches = list(re.finditer(pattern, text))
+    sections = {}
+    for idx, match in enumerate(matches):
+        start = match.start()
+        end = matches[idx + 1].start() if idx + 1 < len(matches) else len(text)
+        section_title = match.group(0)
+        sections[section_title] = text[start:end].strip()
+    return sections
+
 def parse_document(text):
-    """Parse document with Section A/B/C/D format"""
-    lines = text.splitlines()
-    
+    """Sequentially process Section A, then B, then C, then D, saving after each."""
     # Find where Solutions start
-    solutions_idx = None
-    for i, line in enumerate(lines):
-        if line.strip().lower() == 'solutions':
-            solutions_idx = i
-            break
-    
-    if solutions_idx:
-        questions_lines = lines[:solutions_idx]
-        solutions_lines = lines[solutions_idx + 1:]
+    solutions_idx = text.lower().find('solutions')
+    if solutions_idx != -1:
+        questions_text = text[:solutions_idx]
+        solutions_text = text[solutions_idx:]
     else:
-        questions_lines = lines
-        solutions_lines = []
-    
-    # Parse questions
-    questions = parse_questions(questions_lines)
-    
-    # Parse solutions
-    solutions = parse_solutions(solutions_lines)
-    
+        questions_text = text
+        solutions_text = ''
+
+    section_names = ["Section A", "Section B", "Section C", "Section D"]
+    question_sections = extract_sections(questions_text, section_names)
+    solution_sections = extract_sections(solutions_text, section_names)
+
+    # Save each section after processing
+    for sec in section_names:
+        if sec in question_sections:
+            filename = f"questions_{sec.replace(' ', '_')}.txt"
+            with open(filename, 'w', encoding='utf-8') as f:
+                f.write(question_sections[sec])
+        if sec in solution_sections:
+            filename = f"solutions_{sec.replace(' ', '_')}.txt"
+            with open(filename, 'w', encoding='utf-8') as f:
+                f.write(solution_sections[sec])
+
+    # For compatibility with rest of code, parse as before
+    questions = parse_questions(questions_text.splitlines())
+    solutions = parse_solutions(solutions_text.splitlines())
     return questions, solutions
 
 
@@ -287,7 +307,7 @@ if __name__ == "__main__":
         render_solutions(pdf, solutions)
 
     # Save PDF
-    output_pdf_path = "11-physics-Mechanical Systems.pdf"
+    output_pdf_path = "11-enlgish-1984-part1.pdf"
     pdf.output(output_pdf_path)
     print(f"Practice test saved to '{output_pdf_path}'.")
 

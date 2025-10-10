@@ -167,7 +167,7 @@ function showSubjects(subject, grade) {
         }
     } else if (subject === "computer science") {
         if (grade === "Grade 10") {
-            subjects = ["All", "Introduction to Programming", "Data Types", "Control Structures", "Functions"];
+            subjects = ["All", "Python Basics", "Python lists", "Python loops", "Python functions"];
         } else if (grade === "Grade 11") {
             subjects = ["All", "Computer Foundations", "Programming Basics", "Functions & Loops", "Lists"];
         }
@@ -205,7 +205,7 @@ function showSubjects(subject, grade) {
         }
     } else if (subject === "geography") {
         if (grade === "Grade 9") {
-            subjects = ["All", "Canadian Geography", "Changing Populations", "Environmental Issues", "Physical Geography", "Liveable Communities"];
+            subjects = ["All", "Canadian Geography", "Changing Populations", "Environmental Issues", "Rocks, Soil, Terrain", "Liveable Communities"];
         }
 
     } else if (subject === "marketing") {

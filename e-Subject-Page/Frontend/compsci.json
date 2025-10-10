@@ -33,5 +33,33 @@
     "topic": "Lists",
     "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-compsci-lists.pdf"
+  },
+  {
+    "name": "10-compsci-unit1.pdf",
+    "displayName": "Unit 1 - Test",
+    "topic": "Python Basics",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-compsci-unit1.pdf"
+  },
+  {
+    "name": "10-compsci-unit2.pdf",
+    "displayName": "Unit 2 - Test",
+    "topic": "Python lists",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-compsci-unit2.pdf"
+  },
+  {
+    "name": "10-compsci-unit3.pdf",
+    "displayName": "Unit 3 - Test",
+    "topic": "Python loops",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-compsci-unit3.pdf"
+  },
+  {
+    "name": "10-compsci-unit4.pdf",
+    "displayName": "Unit 4 - Test",
+    "topic": "Python functions",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-compsci-unit4.pdf"
   }
 ]

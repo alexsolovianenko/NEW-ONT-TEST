@@ -7,15 +7,15 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-  <link rel="stylesheet" href="../2-Design/main.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
   <!-- Navigation Header -->
   <header class="main-header">
     <div class="header-container">
       <nav class="navbar navbar-expand-lg main-nav">
-        <a class="navbar-brand" href="./index.html">
-          <img src="../1-assets/logo.png" alt="Ontario Tests Logo">
+        <a class="navbar-brand" href="/">
+          <img src="../assets/logo.png" alt="Ontario Tests Logo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
           <span class="icon-bar icon-bar-1"></span>
@@ -25,19 +25,19 @@
         <div class="collapse navbar-collapse" id="mainMenu">
           <ul class="navbar-nav ml-auto text-uppercase">
             <li class="nav-item">
-              <a href="./index.html" class="nav-link active">home</a>
+              <a href="/" class="nav-link active">home</a>
             </li>
             <li class="nav-item">
-              <a href="../b-Upload-Page/Frontend/upload.html" class="nav-link">upload</a>
+              <a href="/upload/" class="nav-link">upload</a>
             </li>
             <li class="nav-item">
-              <a href="../d-Search-Page/Frontend/search.html" class="nav-link">search</a>
+              <a href="/search/" class="nav-link">search</a>
             </li>
             <li class="nav-item">
-              <a href="../g-FAQ-Page/faq.html" class="nav-link">FAQ</a>
+              <a href="/faq/" class="nav-link">FAQ</a>
             </li>
             <li class="nav-item">
-              <a href="../f-Contact-Page/contact.html" class="nav-link">contact</a>
+              <a href="/contact/" class="nav-link">contact</a>
             </li>
           </ul>
         </div>
@@ -97,7 +97,18 @@
   </main>
 
   <script>
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    // Update active nav link based on current page
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentPath = window.location.pathname;
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === currentPath || 
+            (currentPath === '/' && link.getAttribute('href') === '/') ||
+            (currentPath !== '/' && link.getAttribute('href') !== '/' && currentPath.startsWith(link.getAttribute('href')))) {
+          link.classList.add('active');
+        }
+      });
+    });
   </script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>

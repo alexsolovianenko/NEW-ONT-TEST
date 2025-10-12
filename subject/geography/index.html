@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geography Tests - Ontario Tests</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="geography.css">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <nav class="navbar navbar-expand-lg main-nav">
+        <a class="navbar-brand" href="../../index.html">
+          <img src="../../1-assets/logo.png" alt="Ontario Tests Logo">
+          <img src="/assets/logo.png" alt="Ontario Tests Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon-bar icon-bar-1"></span>
+          <span class="icon-bar icon-bar-2"></span>
+          <span class="icon-bar icon-bar-3"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainMenu">
+          <ul class="navbar-nav ml-auto text-uppercase">
+            <li class="nav-item">
+              <a href="/" class="nav-link">home</a>
+            </li>
+            <li class="nav-item">
+              <a href="/upload/" class="nav-link">upload</a>
+            </li>
+            <li class="nav-item">
+              <a href="/search/" class="nav-link active">search</a>
+            </li>
+            <li class="nav-item">
+              <a href="/faq/" class="nav-link">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a href="/contact/" class="nav-link">contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <div class="nav-spacer"></div>
+    <div class="content-container">
+      <div class="content-scroll">
+        <div class="content-header-compact">
+          <h1 id="dynamic-title">Geography Tests</h1>
+          <p>Comprehensive practice tests covering all major geography topics</p>
+        </div>
+        <!-- Filter Section -->
+        <div class="filters-section">
+          <h2>Filter by Topic</h2>
+          <div id="filters" style="background: #f8f9fa; padding: 15px; border-radius: 10px; overflow: visible; min-height: 50px;">
+            <!-- Topic filters will be populated by appendFilters.js -->
+          </div>
+        </div>
+
+        <!-- Tests Section -->
+        <div class="tests-section">
+          <h2>Available Tests</h2>
+          <div id="file-list">
+            <!-- Tests will be populated by appendFilters.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="../appendFilters.js"></script>
+  <script>
+    function updateDynamicTitle() {
+      var grade = sessionStorage.getItem('selectedGrade');
+      var title = document.getElementById('dynamic-title');
+      if (grade && title) {
+        title.textContent = grade + ' Geography Tests';
+      } else if (title) {
+        title.textContent = 'Geography Tests';
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      updateDynamicTitle();
+      window.addEventListener('gradeChanged', updateDynamicTitle);
+    });
+    window.addEventListener('storage', updateDynamicTitle);
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

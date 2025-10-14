@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Ontario Tests - Home</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <nav class="navbar navbar-expand-lg main-nav" style="max-width: 100vw;">
+        <a class="navbar-brand" href="/">
+          <img src="assets/logo.png" alt="Ontario Tests Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon-bar icon-bar-1"></span>
+          <span class="icon-bar icon-bar-2"></span>
+          <span class="icon-bar icon-bar-3"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainMenu">
+          <ul class="navbar-nav ml-auto text-uppercase">
+            <li class="nav-item">
+              <a href="/" class="nav-link active">home</a>
+            </li>
+            <li class="nav-item">
+              <a href="/upload/" class="nav-link">upload</a>
+            </li>
+            <li class="nav-item">
+              <a href="/search/" class="nav-link">search</a>
+            </li>
+            <li class="nav-item">
+              <a href="/faq/" class="nav-link">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a href="/contact/" class="nav-link">contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Backdrop for sidebar -->
+  <div class="navbar-backdrop" id="navBackdrop"></div>
+
+  <!-- Main Content Area -->
+  <main class="main-wrapper">
+    <div class="content-container">
+      
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-content">
+          <div class="welcome-card">
+            <h1 class="hero-title">Welcome to Ontario Tests</h1>
+            <p class="hero-description">We provide students with REAL curriculum practice tests for better understanding of material and to best simulate a real test.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section - Side by Side Layout -->
+      <section class="content-layout">
+        <div class="features-section">
+          <div class="features-card">
+            <h2 class="section-title">Practice Studying From:</h2>
+            <div class="features-grid-centered">
+              <div class="feature-item-large">
+                <i class="ri-draft-line feature-icon-large"></i>
+                <span class="feature-text-large">Tests & Quizzes</span>
+              </div>
+              <div class="feature-item-large">
+                <i class="ri-clipboard-line feature-icon-large"></i>
+                <span class="feature-text-large">Study Guides</span>
+              </div>
+              <div class="feature-item-large">
+                <i class="ri-slideshow-3-line feature-icon-large"></i>
+                <span class="feature-text-large">Detailed Slideshows</span>
+              </div>
+              <div class="feature-item-large">
+                <i class="ri-article-line feature-icon-large"></i>
+                <span class="feature-text-large">Study notes</span>
+              </div>
+              <div class="feature-item-large">
+                <i class="ri-book-2-line feature-icon-large"></i>
+                <span class="feature-text-large">Textbook material</span>
+              </div>
+              <div class="feature-item-large">
+                <i class="ri-file-list-3-line feature-icon-large"></i>
+                <span class="feature-text-large">Exam & CPT content</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // Update active nav link based on current page
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentPath = window.location.pathname;
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === currentPath || 
+            (currentPath === '/' && link.getAttribute('href') === '/') ||
+            (currentPath !== '/' && link.getAttribute('href') !== '/' && currentPath.startsWith(link.getAttribute('href')))) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+  <script src="css/sidebar-nav.js"></script>
+</body>
+</html>

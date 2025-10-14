@@ -821,7 +821,6 @@ html, body {
   max-width: 100% !important;
 }
 
-/* Override Tailwind classes that are constraining width - SUPER AGGRESSIVE */
 div[class*="lg:w-4/5"],
 div[class*="xl:w-3/4"],
 .lg\:w-4\/5,

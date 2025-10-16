@@ -1,5 +1,5 @@
 function getSubjectJsonFile(subject) {
-  // Based on the subject, return the correct path to the JSON file in the subject's folder
+  // Based on the subject return the correct path to the JSON file in the subject's folder
   subject = subject ? subject.toLowerCase() : "";
   if (["biology", "bio", "biolo"].some(k => subject.includes(k))) {
     return "/subject/biology/biology.json";

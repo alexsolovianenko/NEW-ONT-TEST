@@ -1,0 +1,45 @@
+# ============================================================
+# QUICK TEST COMMANDS
+# ============================================================
+
+# To test and download a PDF locally (no S3 upload):
+python test_clean.py downloadpdf
+
+# To test with custom naming (grade-subject-unit format):
+python test_clean.py downloadpdf 10 compsci unit1
+python test_clean.py downloadpdf 11 chemistry unit2
+python test_clean.py downloadpdf 12 physics unit3
+
+# This will:
+# ✓ Read textfortest.txt
+# ✓ Create a PDF with your custom name (e.g., "10-compsci-unit1.pdf")
+# ✓ Save it locally (no upload, no delete)
+# ✓ You can open it to verify the format
+
+# ============================================================
+# NORMAL USAGE (creates and uploads to S3)
+# ============================================================
+
+# 1. Edit textfortest.txt with your questions
+# 2. Run with grade, subject, and unit:
+python test_clean.py 11 chemistry unit1
+python test_clean.py 10 compsci unit2
+python test_clean.py 12 physics unit3
+
+# ============================================================
+# EXAMPLE WORKFLOW
+# ============================================================
+
+# Test first:
+python test_clean.py downloadpdf 11 chemistry unit1
+# Opens 11-chemistry-unit1.pdf to verify format
+
+# Then upload to S3:
+python test_clean.py 11 chemistry unit1
+
+# Repeat for all units:
+python test_clean.py downloadpdf 11 chemistry unit2
+python test_clean.py 11 chemistry unit2
+
+python test_clean.py downloadpdf 10 compsci unit1
+python test_clean.py 10 compsci unit1

@@ -5,8 +5,11 @@ body {
   background: url('../assets/contact-back.png') center center no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  overflow-y: auto;
-  overflow-x: hidden;
+  background-position-y: calc(100% + 40px);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
 
 /* Override content-layout max-width for contact page */

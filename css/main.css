@@ -6,7 +6,7 @@
 }
 
 body {
-  background: url('../assets/home-back.png') center center no-repeat;
+  background: url('../assets/main-back.png') center center no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position-y: calc(100% + 40px);

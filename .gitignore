@@ -1,0 +1,25 @@
+# Environment variables (contains sensitive AWS credentials)
+.env
+pdfservices-api-credentials.json
+
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE
+.vscode/
+.idea/
+
+# Generated PDFs
+*.pdf
+
+# OS files
+.DS_Store
+Thumbs.db

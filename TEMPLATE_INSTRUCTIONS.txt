@@ -1,0 +1,115 @@
+====================================================================
+TEXTFORTEST.TXT TEMPLATE INSTRUCTIONS FOR CHATGPT
+====================================================================
+
+Copy and paste this prompt to ChatGPT to generate tests in the correct format:
+
+====================================================================
+PROMPT START
+====================================================================
+
+Please create a test for [GRADE LEVEL] [SUBJECT] [UNIT TOPIC] using EXACTLY this format:
+
+STRUCTURE:
+- Section A - Knowledge (5 multiple choice questions)
+- Section B - Application (5 multiple choice questions)  
+- Section C - Thinking (5 written response questions)
+- Section D - Communication (5 written response questions)
+- Solutions section at the end
+
+FORMATTING RULES:
+1. Use "Section A - Knowledge" as the section header (not "Section A: Knowledge")
+2. Number each question as "1. Question text here"
+3. For multiple choice: Use a), b), c), d) format on separate lines
+4. For written response: Just the question, no options
+5. After all questions, add a blank line then "Solutions"
+6. Solutions should match the section names exactly
+7. Number solutions to match questions (1., 2., 3., etc.)
+8. For multiple choice solutions: "1. a) Explanation here"
+9. For written response solutions: "1. Full answer explanation here"
+
+EXACT TEMPLATE TO FOLLOW:
+
+Section A - Knowledge
+
+1. What is the primary characteristic of ionic bonds?
+a) Sharing of electrons between atoms
+b) Transfer of electrons from one atom to another
+c) Weak intermolecular forces
+d) Delocalized electron cloud
+
+2. Which of the following best describes electronegativity?
+a) The ability of an atom to lose electrons
+b) The ability of an atom to attract shared electrons in a bond
+c) The energy required to remove an electron
+d) The tendency of an atom to form positive ions
+
+[Continue with 3 more multiple choice questions...]
+
+Section B - Application
+
+1. If you were to predict the type of bond between sodium and chlorine, what would be the first step?
+a) Compare their atomic radii
+b) Calculate their electronegativity difference
+c) Determine their electron configurations
+d) Check their positions in the same period
+
+[Continue with 4 more multiple choice questions...]
+
+Section C - Thinking
+
+1. Why is the concept of electronegativity considered important in predicting bond type and molecular properties?
+
+2. What would be the consequence if there were no difference in electronegativity between two bonding atoms?
+
+[Continue with 3 more written response questions...]
+
+Section D - Communication
+
+1. How would you best explain the difference between ionic and covalent bonding to someone unfamiliar with chemistry?
+
+2. What is the most effective way to present data about periodic trends in a visual format?
+
+[Continue with 3 more written response questions...]
+
+Solutions
+
+Section A - Knowledge
+1. b) Transfer of electrons from one atom to another - Ionic bonds form when one atom donates electrons to another, creating oppositely charged ions that attract.
+2. b) The ability of an atom to attract shared electrons in a bond - Electronegativity measures how strongly an atom pulls on bonding electrons.
+[Continue with remaining solutions...]
+
+Section B - Application
+1. b) Calculate their electronegativity difference - A large electronegativity difference (>1.7) indicates an ionic bond will form.
+[Continue with remaining solutions...]
+
+Section C - Thinking
+1. Electronegativity is crucial because it allows us to predict bond type (ionic vs covalent vs polar covalent), molecular polarity, and resulting physical properties like solubility and boiling point. It explains why certain atoms share electrons while others transfer them completely.
+[Continue with remaining solutions...]
+
+Section D - Communication
+1. Ionic bonding is like a complete transfer - one atom gives electrons to another, like donating money. Covalent bonding is like sharing - atoms hold electrons together, like sharing a blanket. Ionic bonds form between metals and nonmetals, while covalent bonds typically form between nonmetals.
+[Continue with remaining solutions...]
+
+====================================================================
+PROMPT END
+====================================================================
+
+IMPORTANT NOTES:
+- Each section should have EXACTLY 5 questions
+- Total of 20 questions per test
+- Sections A & B are multiple choice (4 options each)
+- Sections C & D are written response (no options)
+- Solutions must be numbered to match questions (1-5 for each section)
+- Use "Section X - Name" format (with hyphen, not colon)
+- No extra blank lines between questions
+- Questions must be numbered 1-5 in each section
+
+AFTER GENERATING:
+1. Copy the entire test output from ChatGPT
+2. Paste it into textfortest.txt
+3. Save the file
+4. Run: python test_clean.py downloadpdf [grade] [subject] [unit]
+   Example: python test_clean.py downloadpdf 11 chemistry unit1
+
+====================================================================

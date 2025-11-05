@@ -320,7 +320,7 @@ if __name__ == "__main__":
         print("TEST MODE: Creating PDF locally (no S3 upload)")
         print("="*60 + "\n")
         
-        INPUT_FILE = "textfortest.txt"
+        INPUT_FILE = os.path.join(os.path.dirname(__file__), "textfortest.txt")
         
         # Check if custom naming is provided: grade subject unit
         if len(sys.argv) >= 5:
@@ -340,7 +340,7 @@ if __name__ == "__main__":
     
     else:
         # NORMAL MODE: Create PDF and upload to S3
-        INPUT_FILE = "textfortest.txt"
+        INPUT_FILE = os.path.join(os.path.dirname(__file__), "textfortest.txt")
         
         # Check if custom naming is provided: grade subject unit
         if len(sys.argv) >= 4:
@@ -349,7 +349,7 @@ if __name__ == "__main__":
             unit = sys.argv[3]
             OUTPUT_PDF = f"{grade}-{subject}-{unit}.pdf"
         else:
-            OUTPUT_PDF = "11-chemistry-unit1.pdf"
+            OUTPUT_PDF = "10-science-biology1.pdf"
         
         print(f"\nCreating PDF: {OUTPUT_PDF}")
         if create_pdf(INPUT_FILE, OUTPUT_PDF):

@@ -1,126 +1,89 @@
-
 Section A - Knowledge
-
-1. What is the primary characteristic of ionic bonds?
-a) Sharing of electrons between atoms
-b) Transfer of electrons from one atom to another
-c) Weak intermolecular forces
-d) Delocalized electron cloud
-
-2. Which of the following best describes electronegativity?
-a) The ability of an atom to lose electrons
-b) The ability of an atom to attract shared electrons in a bond
-c) The energy required to remove an electron
-d) The tendency of an atom to form positive ions
-
-3. In the periodic table, what trend does atomic radius follow?
-a) Increases from left to right, decreases down a group
-b) Decreases from left to right, increases down a group
-c) Increases in all directions
-d) Decreases in all directions
-
-4. What is the main function of valence electrons?
-a) Determine the element's atomic mass
-b) Participate in chemical bonding
-c) Shield inner electrons from the nucleus
-d) Define the element's position in the periodic table
-
-5. Which statement about ionic compounds is true?
-a) They have low melting points
-b) They conduct electricity when dissolved in water
-c) They are formed between two nonmetals
-d) They have weak crystal structures
-
+During which phase do chromosomes line up at the equator of the cell?
+a) Prophase
+b) Metaphase
+c) Anaphase
+d) Telophase
+Which of the following correctly matches PMAT phases with their main events?
+a) Prophase – chromosomes split
+b) Metaphase – chromosomes align
+c) Anaphase – nuclear envelope reforms
+d) Telophase – chromosomes condense
+What is the purpose of mitosis?
+a) Sexual reproduction
+b) Growth and repair of cells
+c) Production of gametes
+d) Energy production
+Which structure pulls chromosomes apart during mitosis?
+a) Ribosome
+b) Spindle fiber
+c) Nucleus
+d) Cytoplasm
+Cytokinesis refers to:
+a) Division of the nucleus
+b) Division of cytoplasm
+c) Formation of spindle fibers
+d) Replication of DNA
 Section B - Application
-
-1. If you were to predict the type of bond between sodium and chlorine, what would be the first step?
-a) Compare their atomic radii
-b) Calculate their electronegativity difference
-c) Determine their electron configurations
-d) Check their positions in the same period
-
-2. Given a situation involving the formation of calcium oxide, which approach would be most effective to explain the bonding?
-a) Electron transfer from calcium to oxygen
-b) Equal sharing of electrons
-c) Metallic bonding model
-d) Hydrogen bonding interactions
-
-3. How would you determine if a molecule is polar or nonpolar?
-a) Check the molecular mass
-b) Analyze the symmetry and electronegativity differences
-c) Count the total number of electrons
-d) Measure the boiling point
-
-4. In a practical application of Lewis structures, which tool would be most appropriate?
-a) The octet rule and valence electron counting
-b) The periodic table only
-c) Atomic mass calculations
-d) Nuclear charge measurements
-
-5. When applying knowledge of chemical trends, what is the expected outcome for ionization energy across a period?
-a) It decreases from left to right
-b) It remains constant
-c) It increases from left to right
-d) It fluctuates randomly
-
+A skin cell divides to produce two new cells. What can be said about the daughter cells?
+a) They are genetically identical to each other and the parent cell
+b) They contain half the DNA
+c) They are genetically different
+d) They contain no nucleus
+In which situation would mitosis occur most frequently?
+a) In a dormant seed
+b) In a healing wound
+c) In a mature nerve cell
+d) In a dry leaf
+If a cell begins mitosis with 46 chromosomes, how many will each daughter cell have?
+a) 23
+b) 46
+c) 92
+d) 12
+Which of the following is NOT part of mitosis?
+a) Interphase
+b) Anaphase
+c) Telophase
+d) Prophase
+Why is mitosis important for multicellular organisms?
+a) It produces energy
+b) It allows for growth and tissue repair
+c) It increases genetic diversity
+d) It removes waste
 Section C - Thinking
-
-1. Why is the concept of electronegativity considered important in predicting bond type and molecular properties?
-
-2. What would be the consequence if there were no difference in electronegativity between two bonding atoms?
-
-3. How does the periodic trend of atomic radius relate to ionization energy and explain the inverse relationship?
-
-4. What can be inferred from the high melting points of ionic compounds about the strength of electrostatic forces?
-
-5. Which hypothesis best explains why noble gases are unreactive compared to other elements?
-
+Why must DNA replicate before mitosis begins?
+How does mitosis ensure genetic continuity between generations of cells?
+Explain the difference between mitosis and meiosis in terms of genetic outcome.
+Describe what might happen if spindle fibers failed during anaphase.
+How do errors in mitosis relate to diseases such as cancer?
 Section D - Communication
-
-1. How would you best explain the difference between ionic and covalent bonding to someone unfamiliar with chemistry?
-
-2. What is the most effective way to present data about periodic trends in a visual format?
-
-3. Which format would best communicate the steps for drawing a Lewis structure for a complex molecule?
-
-4. When documenting the process of predicting molecular polarity, what should be included in your explanation?
-
-5. How should findings about the relationship between chemical bonding and physical properties be shared with a non-scientific audience?
-
+How would you explain PMAT to a younger student using an analogy?
+What is the best way to visually demonstrate mitosis in a classroom setting?
+How could you design a labeled diagram to show differences between plant and animal cytokinesis?
+How might you summarize mitosis in a short presentation for non-scientists?
+What analogy best describes the importance of accurate DNA division during cell reproduction?
 Solutions
-
 Section A - Knowledge
-1. b) Transfer of electrons from one atom to another - Ionic bonds form when one atom donates electrons to another, creating oppositely charged ions that attract.
-2. b) The ability of an atom to attract shared electrons in a bond - Electronegativity measures how strongly an atom pulls on bonding electrons.
-3. b) Decreases from left to right, increases down a group - Atomic radius decreases across a period due to increasing nuclear charge, and increases down a group as new electron shells are added.
-4. b) Participate in chemical bonding - Valence electrons are the outermost electrons that form bonds between atoms.
-5. b) They conduct electricity when dissolved in water - When dissolved, ionic compounds dissociate into ions that can carry electric current.
-
+b) Metaphase - Chromosomes align along the equator of the cell.
+b) Metaphase – chromosomes align - Correctly matches phase and event.
+b) Growth and repair of cells - Mitosis produces identical somatic cells.
+b) Spindle fiber - Pulls sister chromatids to opposite poles.
+b) Division of cytoplasm - Cytokinesis splits the cell’s contents into two.
 Section B - Application
-1. b) Calculate their electronegativity difference - A large electronegativity difference (>1.7) indicates an ionic bond will form.
-2. a) Electron transfer from calcium to oxygen - Calcium loses 2 electrons and oxygen gains 2 electrons to form Ca²⁺ and O²⁻ ions.
-3. b) Analyze the symmetry and electronegativity differences - A molecule is polar if it has polar bonds and an asymmetric shape.
-4. a) The octet rule and valence electron counting - Lewis structures are drawn by distributing valence electrons to satisfy the octet rule.
-5. c) It increases from left to right - Ionization energy increases across a period because atoms hold electrons more tightly as nuclear charge increases.
-
+a) They are genetically identical to each other and the parent cell - Mitosis preserves DNA.
+b) In a healing wound - Rapid cell division replaces damaged tissue.
+b) 46 - Each daughter cell receives a full set of chromosomes.
+a) Interphase - It precedes mitosis but is not part of it.
+b) It allows for growth and tissue repair - Mitosis maintains organism function.
 Section C - Thinking
-1. Electronegativity is crucial because it allows us to predict bond type (ionic vs covalent vs polar covalent), molecular polarity, and resulting physical properties like solubility and boiling point. It explains why certain atoms share electrons while others transfer them completely.
-
-2. If there were no electronegativity difference, the bond would be purely covalent with equal electron sharing. This occurs in diatomic molecules like H₂ or O₂, where both atoms have identical electronegativity values and pull equally on shared electrons.
-
-3. Atomic radius and ionization energy are inversely related because as atomic radius decreases (moving left to right), the valence electrons are closer to the nucleus and more strongly attracted. This makes them harder to remove, resulting in higher ionization energy.
-
-4. The high melting points of ionic compounds indicate very strong electrostatic attractions between oppositely charged ions. Large amounts of energy are required to overcome these forces and separate the ions in the crystal lattice.
-
-5. Noble gases are unreactive because they have complete valence electron shells (8 electrons, or 2 for helium), making them extremely stable. They have no tendency to gain, lose, or share electrons since they already satisfy the octet rule.
-
+DNA must duplicate so each daughter cell receives an exact copy of genetic material.
+By duplicating chromosomes and dividing evenly, mitosis maintains identical DNA in cells.
+Mitosis creates identical diploid cells; meiosis forms haploid cells with variation.
+Chromosomes would not separate properly, leading to unequal DNA distribution.
+Errors can cause uncontrolled cell growth or mutation, leading to cancer.
 Section D - Communication
-1. Ionic bonding is like a complete transfer - one atom gives electrons to another, like donating money. Covalent bonding is like sharing - atoms hold electrons together, like sharing a blanket. Ionic bonds form between metals and nonmetals, while covalent bonds typically form between nonmetals.
-
-2. A graph or chart showing trends across periods and down groups is most effective. Color-coded periodic tables or line graphs clearly demonstrate how properties like atomic radius, ionization energy, and electronegativity change in predictable patterns.
-
-3. A step-by-step flowchart or numbered procedure with diagrams would be best. Include: (1) count valence electrons, (2) arrange atoms with central atom, (3) form single bonds, (4) distribute remaining electrons, (5) check octet rule, (6) form multiple bonds if needed.
-
-4. Include: (1) the Lewis structure showing bond types, (2) determination of molecular geometry using VSEPR theory, (3) identification of polar bonds based on electronegativity, (4) analysis of molecular symmetry, and (5) final conclusion about overall polarity.
-
-5. Use everyday analogies and visual models. Compare strong ionic bonds to magnets attracting, covalent bonds to handshakes, and relate properties like melting point to real-world examples (salt vs sugar). Avoid technical jargon and use demonstrations or animations to show concepts visually.
+PMAT is like organizing a play: Prophase (setup), Metaphase (line-up), Anaphase (split-up), Telophase (cleanup).
+Use microscope slides or animations showing real mitotic stages.
+Use side-by-side diagrams showing cleavage furrow (animal) vs. cell plate (plant).
+Summarize that mitosis ensures identical cells for growth and repair—“copy and paste” for life.
+Like copying a blueprint—one mistake replicates across all new structures.

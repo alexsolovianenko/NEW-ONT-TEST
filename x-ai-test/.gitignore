@@ -1,2 +1,5 @@
 .env
 pdfservices-api-credentials.json
+RUN_COMMANDS.txt
+TEMPLATE_INSTRUCTIONS.txt
+textfortest.txt

@@ -55,14 +55,14 @@ function showGradeOptions(subject) {
     // Subject to allowed grades mapping
     const subjectGradeMap = {
         "geography": ["Grade 9"],
-        "accounting": ["Grade 11", "Grade 12"],
+        "chemistry": ["Grade 11", "Grade 12"],
         "biology": ["Grade 11", "Grade 12"],
         "functions": ["Grade 12"],
         "english": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
         "general science": ["Grade 9", "Grade 10"],
         "history": ["Grade 10"],
         "calculus": ["Grade 12"],
-        "math": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+        "math": ["Grade 9", "Grade 10"],
         "physics": ["Grade 11", "Grade 12"],
         "religion": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
         "computer science": ["Grade 10", "Grade 11"]
@@ -107,14 +107,14 @@ function showSubjects(subject, grade) {
     // Only allow topics for grades that are valid for the subject
     const subjectGradeMap = {
         "geography": ["Grade 9"],
-        "accounting": ["Grade 11", "Grade 12"],
         "biology": ["Grade 11", "Grade 12"],
         "chemistry": ["Grade 11", "Grade 12"],
+        "calculus": ["Grade 12"],
+        "functions": ["Grade 12"],
         "english": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
         "general science": ["Grade 9", "Grade 10"],
         "history": ["Grade 10"],
-        "marketing": ["Grade 10", "Grade 11", "Grade 12"],
-        "math": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+        "math": ["Grade 9", "Grade 10"],
         "physics": ["Grade 11", "Grade 12"],
         "religion": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
         "computer science": ["Grade 10", "Grade 11"]
@@ -147,12 +147,6 @@ function showSubjects(subject, grade) {
             subjects = ["All", "Cells", "Respiratory", "Circulatory", "Genetics", "Evolution", "Biodiversity"];
         } else if (grade === "Grade 12") {
             subjects = ["All", "Biochemistry", "Metabolic Processes", "Molecular Genetics", "Homeostasis", "Population Dynamics"];
-        }
-    } else if (subject === "accounting") {
-        if (grade === "Grade 11") {
-            subjects = ["All", "Accounting Cycle for a Service Business", "Internal and Cash Controls", "Business Structures and Accounting Implications", "Ethical Practices in Accounting", "Technology and Financial Statements"];
-        } else if (grade === "Grade 12") {
-            subjects = ["All", "Accounting for Merchandising Businesses", "Partnerships and Corporations", "Financial Analysis", "Accounting Software"];
         }
     } else if (subject === "english") {
         if (grade === "Grade 9") {
@@ -190,11 +184,15 @@ function showSubjects(subject, grade) {
         if (grade === "Grade 9") {
             subjects = ["All", "Number Sense", "Algebra", "Linear Relations", "Measurement", "Geometry"];
         } else if (grade === "Grade 10") {
-            subjects = ["All", "Quadratic Relations", "Trigonometry", "Analytic Geometry", "Measurement"];
-        } else if (grade === "Grade 11") {
-            subjects = ["All", "Algebra", "Trigonometry", "Calculus", "Statistics"];
-        } else if (grade === "Grade 12") {
-            subjects = ["All", "Advanced Functions", "Calculus", "Vectors", "Probability"];
+            subjects = ["All", "Quadratic Relations", "Trigonometry", "Exponents"];
+        }
+    } else if (subject === "calculus") {
+        if (grade === "Grade 12") {
+            subjects = ["All", "Limits", "Derivatives", "Applications of Derivatives", "Integrals", "Applications of Integrals"];
+        }
+    } else if (subject === "functions") {
+        if (grade === "Grade 12") {
+            subjects = ["All", "Polynomial Functions", "Rational Functions", "Trigonometry", "Exponential and Log Functions", "Combining Functions", "Rate of Change"];
         }
     } else if (subject === "chemistry") {
         if (grade === "Grade 11") {
@@ -205,15 +203,6 @@ function showSubjects(subject, grade) {
     } else if (subject === "geography") {
         if (grade === "Grade 9") {
             subjects = ["All", "Canadian Geography", "Changing Populations", "Environmental Issues", "Rocks, Soil, Terrain", "Liveable Communities"];
-        }
-
-    } else if (subject === "marketing") {
-        if (grade === "Grade 10") {
-            subjects = ["All", "Introduction to Marketing", "Consumer Behaviour", "Advertising", "Market Research"];
-        } else if (grade === "Grade 11") {
-            subjects = ["All", "Marketing Strategies", "Branding", "Sales Techniques", "Digital Marketing"];
-        } else if (grade === "Grade 12") {
-            subjects = ["All", "International Marketing", "E-Commerce", "Marketing Management"];
         }
     } else if (subject === "general science") {
         if (grade === "Grade 9") {
@@ -344,7 +333,6 @@ function submitAll() {
     const subjectUrlMap = {
         "biology": "biology",
         "computer science": "computerscience",
-        "accounting": "accounting",
         "religion": "religion",
         "physics": "physics",
         "math": "math",
@@ -353,7 +341,8 @@ function submitAll() {
         "history": "history",
         "geography": "geography",
         "chemistry": "chemistry",
-        "marketing": "marketing"
+        "calculus": "calculus",
+        "functions": "function"
     };
 
     const urlPath = subjectUrlMap[selectedSubject];

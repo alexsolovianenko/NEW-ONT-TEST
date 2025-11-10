@@ -9,16 +9,16 @@ function getSubjectJsonFile(subject) {
     return "/subject/computerscience/compsci.json";
   } else if (["math", "mathematics", "maths"].some(k => subject.includes(k))) {
     return "/subject/math/math.json";
-  } else if (["accounting"].some(k => subject.includes(k))) {
-    return "/subject/accounting/accounting.json";
+  } else if (["calculus", "calc"].some(k => subject.includes(k))) {
+    return "/subject/calculus/calculus.json";
+  } else if (["functions", "advanced functions", "adv. functions", "advancedfunctions"].some(k => subject.includes(k))) {
+    return "/subject/function/function.json";
   } else if (["religion"].some(k => subject.includes(k))) {
     return "/subject/religion/religion.json";
   } else if (["chemistry", "chem"].some(k => subject.includes(k))) {
     return "/subject/chemistry/chemistry.json";
   } else if (["physics"].some(k => subject.includes(k))) {
     return "/subject/physics/physics.json";
-  } else if (["function"].some(k => subject.includes(k))) {
-    return "/subject/function/function.json";
   } else if (["geography", "geo"].some(k => subject.includes(k))) {
     return "/subject/geography/geography.json";
   } else if (["general science", "generalsci", "science"].some(k => subject.includes(k))) {
@@ -89,13 +89,13 @@ function getAvailableGrades(subject) {
   // Get available grades for each subject - matching search.js logic
   const subjectGradeMap = {
     "geography": ["Grade 9"],
-    "calculus": ["Grade 12"],
     "biology": ["Grade 11", "Grade 12"],
     "chemistry": ["Grade 11", "Grade 12"],
+    "calculus": ["Grade 12"],
+    "functions": ["Grade 12"],
     "english": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
     "general science": ["Grade 9", "Grade 10"],
     "history": ["Grade 10"],
-    "function": ["Grade 12"],
     "math": ["Grade 9", "Grade 10"],
     "physics": ["Grade 11", "Grade 12"],
     "religion": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
@@ -108,6 +108,21 @@ function getAvailableTopics(subject, grade) {
   // autocomplete the words
   subject = (subject || "").toLowerCase();
   grade = (grade || "");
+  // Only allow topics for grades that are valid for the subject
+  const subjectGradeMap = {
+    "geography": ["Grade 9"],
+    "biology": ["Grade 11", "Grade 12"],
+    "chemistry": ["Grade 11", "Grade 12"],
+    "calculus": ["Grade 12"],
+    "functions": ["Grade 12"],
+    "english": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+    "general science": ["Grade 9", "Grade 10"],
+    "history": ["Grade 10"],
+    "math": ["Grade 9", "Grade 10"],
+    "physics": ["Grade 11", "Grade 12"],
+    "religion": ["Grade 9", "Grade 10", "Grade 11", "Grade 12"],
+    "computer science": ["Grade 10", "Grade 11"]
+  };
   if (!subjectGradeMap[subject] || !subjectGradeMap[subject].includes(grade)) {
     return [];
   }
@@ -117,10 +132,6 @@ function getAvailableTopics(subject, grade) {
       subjects = ["All", "Respiratory", "Circulatory", "Genetics", "Evolution", "Digestive"];
     } else if (grade === "Grade 12") {
       subjects = ["All", "Biochemistry", "Metabolic Processes", "Molecular Genetics", "Homeostasis", "Population Dynamics"];
-    }
-  } else if (subject === "calculus") {
-    if (grade === "Grade 12") {
-      subjects = ["All", "Development"];
     }
   } else if (subject === "english") {
     if (grade === "Grade 9") {
@@ -160,6 +171,14 @@ function getAvailableTopics(subject, grade) {
     } else if (grade === "Grade 10") {
       subjects = ["All", "Quadratic Relations", "Trigonometry", "Analytic Geometry", "Measurement"];
     }
+  } else if (subject === "calculus") {
+    if (grade === "Grade 12") {
+      subjects = ["All", "Limits", "Derivatives", "Applications of Derivatives", "Integrals", "Applications of Integrals"];
+    }
+  } else if (subject === "functions") {
+    if (grade === "Grade 12") {
+      subjects = ["All", "Polynomial Functions", "Rational Functions", "Trigonometry", "Exponential and Log Functions", "Combining Functions", "Rate of Change"];
+    }
   } else if (subject === "chemistry") {
     if (grade === "Grade 11") {
       subjects = ["All", "Matter, Chemical Trends, and Bonding", "Chemical Reactions", "Quantities in Chemical Reactions", "Solutions and Solubility", "Gases and Atmospheric Chemistry"];
@@ -169,10 +188,6 @@ function getAvailableTopics(subject, grade) {
   } else if (subject === "geography") {
     if (grade === "Grade 9") {
       subjects = ["All", "Canadian Geography", "Changing Populations", "Environmental Issues", "Physical Geography", "Liveable Communities"];
-    }
-  } else if (subject === "function") {
-    if (grade === "Grade 10") {
-      subjects = ["All", "Polynomial Functions", "Rational Functions", "Trigonometry", "Exp/Log", "Combining Functions"];
     }
   } else if (subject === "general science") {
     if (grade === "Grade 9") {
@@ -492,7 +507,8 @@ if (!subject && typeof window !== 'undefined' && window.location && window.locat
     // map some folder names to the readable subject strings used elsewhere
     const urlToSubjectMap = {
       'computerscience': 'computer science',
-      'generalscience': 'general science'
+      'generalscience': 'general science',
+      'function': 'functions'
     };
     subject = urlToSubjectMap[urlName] || urlName.replace(/[-_]/g, ' ');
     // store for consistency so other scripts can rely on sessionStorage

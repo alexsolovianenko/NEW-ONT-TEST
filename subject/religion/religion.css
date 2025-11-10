@@ -1,3 +1,4 @@
+
 body {
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
@@ -418,9 +419,6 @@ html {
     font-size: 1.1rem;
 }
 @media (max-width: 768px) {
-    .content-container {
-        padding: 20px;
-    }
     .filter-btn.active {
         background: linear-gradient(135deg, #546cb6, #6b82c9);
         color: white;

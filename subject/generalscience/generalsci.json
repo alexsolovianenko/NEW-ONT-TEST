@@ -1,72 +1,121 @@
 [
-  {
-    "name": "10-science-chemistry.pdf",
-    "displayName": "Chemistry - Test",
-    "topic": "Chemistry",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-chemistry.pdf"
-  },
-  {
-    "name": "10-science-climate.pdf",
-    "displayName": "Climate - Test",
-    "topic": "Climate",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-climate.pdf"
-  },
-  {
-    "name": "10-science-optics.pdf",
-    "displayName": "Optics - Test",
-    "topic": "Optics",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-optics.pdf"
-  },
-  {
+    {
     "name": "10-science-biology.pdf",
-    "displayName": "Biology - Test",
+    "displayName": "Biology - Test 3",
     "topic": "Biology",
     "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-optics.pdf"
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-biology.pdf"
+  },
+  {
+    "name": "10-science-biology2.pdf",
+      "displayName": "Biology - Test 2",
+    "topic": "Biology",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-biology2.pdf"
+  },
+  {
+    "name": "10-science-biology1.pdf",
+    "displayName": "Biology - Test 1",
+    "topic": "Biology",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-biology1.pdf"
+  },
+  {
+    "name": "9-science-chemistry.pdf",
+    "displayName": "Grade 9-Science-Chemistry",
+    "topic": "Chemistry",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-science-chemistry.pdf"
+  },
+  {
+    "name": "9-science-chemistry1.pdf",
+    "displayName": "Chemistry - Test",
+    "topic": "Chemistry",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-science-chemistry1.pdf"
+  },
+  {
+    "name": "9-science-electricity.pdf",
+    "displayName": "Electricity - Test",
+    "topic": "Physics",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-science-electricity.pdf"
+  },
+  {
+    "name": "9-science-physics1.pdf",
+    "displayName": "Physics - Test 1",
+    "topic": "Physics",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-science-physics1.pdf"
+  },
+  {
+    "name": "9-science-space.pdf",
+    "displayName": "Space - Test 1",
+    "topic": "Earth and Space Science",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-science-space.pdf"
+  },
+  {
+    "name": "9-science-space1.pdf",
+    "displayName": "Space - Test 2",
+    "topic": "Earth and Space Science",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-science-space1.pdf"
   },
   {
     "name": "10-science-chem2.pdf",
-    "displayName": "Chem - Test 2",
+    "displayName": "Chemistry - Test 1",
     "topic": "Chemistry",
     "grade": 10,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-chem2.pdf"
   },
   {
+    "name": "10-science-chemistry.pdf",
+    "displayName": "Chemistry - Test 2",
+    "topic": "Chemistry",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-chemistry.pdf"
+  },
+  {
+    "name": "10-science-chemistry1.pdf",
+    "displayName": "Chemistry - Test 3",
+    "topic": "Chemistry",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-chemistry1.pdf"
+  },
+  {
     "name": "10-science-chemistry2.pdf",
-    "displayName": "Chem - Test 1",
+    "displayName": "Chemistry - Test 4",
     "topic": "Chemistry",
     "grade": 10,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-chemistry2.pdf"
   },
   {
     "name": "10-science-climate (2).pdf",
-    "displayName": "Chem - Test 1",
-    "topic": "Chemistry",
-    "grade": 9,
+    "displayName": "Climate - Test 1",
+    "topic": "Climate",
+    "grade": 10,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-climate (2).pdf"
   },
   {
-    "name": "9-science-chemistry.pdf",
-    "displayName": "Chemistry - Test",
-    "topic": "Chemistry",
-    "grade": 9,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-science-chemistry.pdf"
+    "name": "10-science-climate.pdf",
+    "displayName": "Climate - Test 2",
+    "topic": "Climate",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-climate.pdf"
   },
   {
-    "name": "9-science-electricity.pdf",
-    "displayName": "Electricity - Test",
-    "topic": "Electricity",
-    "grade": 9,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-science-electricity.pdf"
+    "name": "10-science-climate1.pdf",
+    "displayName": "Climate - Test 3",
+    "topic": "Climate",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-climate1.pdf"
   },
   {
-    "name": "9-science-space.pdf",
-    "displayName": "Space - Test",
-    "topic": "Space",
-    "grade": 9,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-science-space.pdf"
+    "name": "10-science-optics.pdf",
+    "displayName": "Climate - Test 4",
+    "topic": "Climate",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-science-optics.pdf"
   }
 ]

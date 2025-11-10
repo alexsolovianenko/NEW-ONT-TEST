@@ -1,66 +1,21 @@
 [
   {
-    "name": "11-religion-worldviews.pdf",
-    "displayName": "Worldviews - Quiz",
-    "topic": "Intro to World Religions",
-    "grade": 11,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-religion-worldviews.pdf"
+    "name": "9-religion-oldtestament-sacraments.pdf",
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-religion-oldtestament-sacraments.pdf"
   },
   {
-    "name": "11-religion-introworldreligions.pdf",
-    "displayName": "Intro to World Religions - Test",
-    "topic": "Intro to World Religions",
-    "grade": 11,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-religion-introworldreligions.pdf"
+    "name": "9-religion-christianmortality.pdf",
+    "displayName": "Christian Mortality - Test",
+    "topic": "Christian Mortality",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-religion-christianmortality.pdf"
   },
   {
-    "name": "11-religion-indigenous.pdf",
-    "displayName": "Indigenous Spirituality - Test",
-    "topic": "Indigenous",
-    "grade": 11,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-religion-indigenous.pdf"
-  },
-  {
-    "name": "11-religion-judaism.pdf",
-    "displayName": "Judaism - Test",
-    "topic": "Judaism",
-    "grade": 11,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-religion-judaism.pdf"
-  },
-  {
-    "name": "11-religion-islam.pdf",
-    "displayName": "Islam - Test",
-    "topic": "Islam",
-    "grade": 11,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-religion-islam.pdf"
-  },
-  {
-    "name": "10-religion-Scripture&Jesus.pdf",
-    "displayName": "Scripture & Jesus - Test",
-    "topic": "Scriptures",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-religion-Scripture&Jesus.pdf"
-  },
-  {
-    "name": "10-religion-christian.pdf",
-    "displayName": "Christianity - Test",
-    "topic": "Christianity",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-religion-christian.pdf"
-  },
-  {
-    "name": "10-religion-professionoffaith.pdf",
-    "displayName": "Profession of Faith - Test",
-    "topic": "Profession of Faith",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-religion-professionoffaith.pdf"
-  },
-  {
-    "name": "10-religion-sacramentallife.pdf",
-    "displayName": "Sacramental Life - Test",
-    "topic": "Profession of Faith",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-religion-sacramentallife.pdf"
+    "name": "9-religion-newtestament.pdf",
+    "displayName": "New Testament - Test",
+    "topic": "New Testament",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-religion-newtestament.pdf"
   },
   {
     "name": "9-religion-oldtestament-genesis-deuteronomy.pdf",
@@ -105,21 +60,80 @@
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-religion-tencommandments.pdf"
   },
   {
-    "name": "9-religion-christianmortality.pdf",
-    "displayName": "Christian Mortality - Test",
-    "topic": "Christian Mortality",
-    "grade": 9,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-religion-christianmortality.pdf"
+    "name": "10-religion-Scripture&Jesus.pdf",
+    "displayName": "Scripture & Jesus - Test",
+    "topic": "Scriptures",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-religion-Scripture&Jesus.pdf"
   },
   {
-    "name": "9-religion-newtestament.pdf",
-    "displayName": "New Testament - Test",
-    "topic": "New Testament",
-    "grade": 9,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-religion-newtestament.pdf"
+    "name": "10-religion-christian.pdf",
+    "displayName": "Christianity - Test",
+    "topic": "Christianity",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-religion-christian.pdf"
   },
   {
-    "name": "9-religion-oldtestament-sacraments.pdf",
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-religion-oldtestament-sacraments.pdf"
+    "name": "10-religion-professionoffaith.pdf",
+    "displayName": "Profession of Faith - Test",
+    "topic": "Profession of Faith",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-religion-professionoffaith.pdf"
+  },
+  {
+    "name": "10-religion-sacramentallife.pdf",
+    "displayName": "Sacramental Life - Test",
+    "topic": "Profession of Faith",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-religion-sacramentallife.pdf"
+  },
+  {
+    "name": "11-religion-indigenous.pdf",
+    "displayName": "Indigenous Spirituality - Test",
+    "topic": "Indigenous",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-religion-indigenous.pdf"
+  },
+  {
+    "name": "11-religion-introworldreligions.pdf",
+    "displayName": "Intro to World Religions - Test",
+    "topic": "Intro to World Religions",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-religion-introworldreligions.pdf"
+  },
+  {
+    "name": "11-religion-islam.pdf",
+    "displayName": "Islam - Test",
+    "topic": "Islam",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-religion-islam.pdf"
+  },
+  {
+    "name": "11-religion-judaism.pdf",
+    "displayName": "Judaism - Test",
+    "topic": "Judaism",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-religion-judaism.pdf"
+  },
+  {
+    "name": "11-religion-worldviews.pdf",
+    "displayName": "Worldviews - Quiz",
+    "topic": "Intro to World Religions",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-religion-worldviews.pdf"
+  },
+  {
+    "name": "12-religion-ethics.pdf",
+    "displayName": "Ethics - Test",
+    "topic": "Ethics",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-religion-ethics.pdf"
+  },
+  {
+    "name": "12-religion-ethics1.pdf",
+    "displayName": "Ethics - Test 2",
+    "topic": "Ethics",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-religion-ethics1.pdf"
   }
 ]

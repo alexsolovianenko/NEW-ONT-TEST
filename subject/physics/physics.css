@@ -1,5 +1,3 @@
-/* Physics Subject Page CSS (copied from biology.css for full parity) */
-/* Remove conflicting body styles - use main.css instead */
 body {
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
@@ -11,14 +9,15 @@ html {
 }
 /* Main wrapper with flexbox layout - completely new approach */
 .main-wrapper {
-    min-height: calc(100vh - 90px);
+    height: 100vh;
     display: flex;
     flex-direction: column;
     background: url('../../1-assets/main-back.png') center center no-repeat;
     background-size: cover;
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-position-y: calc(100% + 40px);
-    margin-top: 90px;
+    overflow: hidden;
+    padding: 0;
 }
 .content-scroll::-webkit-scrollbar {
     width: 12px;

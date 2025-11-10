@@ -1,18 +1,93 @@
 [
   {
-    "name": "9-geography-changingpopulation.pdf",
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-geography-changingpopulation.pdf"
-  },
-  {
-    "name": "9-geography-environmentissues.pdf",
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-geography-environmentissues.pdf"
-  },
-  {
-    "name": "9-geography-rocks-soil.pdf",
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-geography-rocks-soil.pdf"
+    "name": "9-geography-canada-.pdf",
+    "displayName": "Canada Geography - Test 1",
+    "topic": "Canada Geography",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-geography-canada-.pdf"
   },
   {
     "name": "9-geography-canada.pdf",
+    "displayName": "Canada Geography - Test 2",
+    "topic": "Canada Geography",
+    "grade": 9,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-geography-canada.pdf"
+  },
+  {
+    "name": "9-geography-canada2-.pdf",
+    "displayName": "Canada Geography - Test 2",
+    "topic": "Canada Geography",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-geography-canada2-.pdf"
+  },
+  {
+    "name": "9-geography-changingpopulation.pdf",
+    "displayName": "Changing Populations - Test 2",
+    "topic": "Changing Populations",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-geography-changingpopulation.pdf"
+  },
+  {
+    "name": "9-geography-changingpopulations1.pdf",
+    "displayName": "Changing Populations - Test 1",
+    "topic": "Changing Populations",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-geography-changingpopulations1.pdf"
+  },
+  {
+    "name": "9-geography-env-issues.pdf",
+    "displayName": "Environmental Issues - Test 1 ",
+    "topic": "Environmental Issues",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-geography-env-issues.pdf"
+  },
+  {
+    "name": "9-geography-environmentissues.pdf",
+    "displayName": "Environmental Issues - Test 1 ",
+    "topic": "Environmental Issues",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-geography-environmentissues.pdf"
+  },
+  {
+    "name": "9-geography-liveablecommunities.pdf",
+    "displayName": "Liveable Communities - Test 1",
+    "topic": "Liveable Communities",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-geography-liveablecommunities.pdf"
+  },
+  {
+    "name": "9-geography-rocks,soil,terrain-.pdf",
+    "displayName": "Rocks, Soil, Terrain - Test 1",
+    "topic": "Rocks, Soil, Terrain",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-geography-rocks,soil,terrain-.pdf"
+  },
+  {
+    "name": "9-geography-rocks,soil,terrain2.pdf",
+    "displayName": "Rocks,Soil,Terrain - Test 1",
+    "topic": "Rocks, Soil, Terrain",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-geography-rocks,soil,terrain2.pdf"
+  },
+  {
+    "name": "9-geography-rocks-soil.pdf",
+    "displayName": "Rock types - Test 2",
+    "topic": "Rocks, Soil, Terrain",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-geography-rocks-soil.pdf"
+  },
+  {
+    "name": "9-math-geometry1.pdf",
+    "displayName": "Grade 9-Math-Geometry1",
+    "topic": "Geometry1",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-math-geometry1.pdf"
+  },
+  {
+    "name": "9-math-geometry2.pdf",
+    "displayName": "Grade 9-Math-Geometry2",
+    "topic": "Geometry2",
+    "grade": 9,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-math-geometry2.pdf"
   }
 ]

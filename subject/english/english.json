@@ -1,96 +1,5 @@
 [
   {
-    "name": "10-english-act1-2.pdf",
-    "displayName": "Macbeth Acts 1-2 - Quiz",
-    "topic": "Macbeth",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-act1-2.pdf"
-  },
-  {
-    "name": "10-english-act3.pdf",
-    "displayName": "Macbeth Acts 3 - Quiz",
-    "topic": "Macbeth",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-act3.pdf"
-  },
-  {
-    "name": "10-english-act4-5.pdf",
-    "displayName": "Macbeth Acts 4-5 - Quiz",
-    "topic": "Macbeth",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-act4-5.pdf"
-  },
-  {
-    "name": "10-english-macbeth.pdf",
-    "displayName": "Macbeth - Test",
-    "topic": "Macbeth",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-macbeth.pdf"
-  },
-  {
-    "name": "10-english-alchemist.pdf",
-    "displayName": "Alchemist - Test",
-    "topic": "Alchemist",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-alchemist.pdf"
-  },
-  {
-    "name": "10-english-alchemist1-50.pdf",
-    "displayName": "Alchemist Pages 1-50 - Quiz",
-    "topic": "Alchemist",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-alchemist1-50.pdf"
-  },
-  {
-    "name": "10-english-alchemist101-200.pdf",
-    "displayName": "Alchemist Pages 101-200 - Quiz",
-    "topic": "Alchemist",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-alchemist101-200.pdf"
-  },
-  {
-    "name": "10-english-alchemist51-100.pdf",
-    "displayName": "Alchemist Pages 51-100 - Quiz",
-    "topic": "Alchemist",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-alchemist51-100.pdf"
-  },
-  {
-    "name": "10-english-mythicvoices.pdf",
-    "displayName": "Mythic Voices - Test",
-    "topic": "Mythic Voices",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-mythicvoices.pdf"
-  },
-  {
-    "name": "10-english-romeojuliet1-2.pdf",
-    "displayName": "Romeo & Juliet Act 1-2 - Quiz",
-    "topic": "Romeo & Juliet",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-romeojuliet1-2.pdf"
-  },
-  {
-    "name": "10-english-romeojuliet3.pdf",
-    "displayName": "Romeo & Juliet Act 3 - Quiz",
-    "topic": "Romeo & Juliet",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-romeojuliet3.pdf"
-  },
-  {
-    "name": "10-english-romeojuliet4-5.pdf",
-    "displayName": "Romeo & Juliet Act 4-5 - Quiz",
-    "topic": "Romeo & Juliet",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-romeojuliet4-5.pdf"
-  },
-  {
-    "name": "10-english-advancedlanguage.pdf",
-    "displayName": "Avanced Language - Test",
-    "topic": "Avanced Language",
-    "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-advancedlanguage.pdf"
-  },
-  {
     "name": "9-english-romeojuliet-act1.pdf",
     "displayName": "Romeo & Juliet Act 1 - Test",
     "topic": "Romeo & Juliet",
@@ -196,11 +105,95 @@
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-wordsonbathroomwalls-chapter29-35.pdf"
   },
   {
-    "name": "9-english-wordsonbathroomwalls-chapter8-14.pdf",
-    "displayName": "1984 Part 1 - Test",
-    "topic": "1984",
-    "grade": 11,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-wordsonbathroomwalls-chapter8-14.pdf"
+    "name": "10-english-act1-2.pdf",
+    "displayName": "Macbeth Acts 1-2 - Quiz",
+    "topic": "Macbeth",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-act1-2.pdf"
+  },
+  {
+    "name": "10-english-act3.pdf",
+    "displayName": "Macbeth Acts 3 - Quiz",
+    "topic": "Macbeth",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-act3.pdf"
+  },
+  {
+    "name": "10-english-act4-5.pdf",
+    "displayName": "Macbeth Acts 4-5 - Quiz",
+    "topic": "Macbeth",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-act4-5.pdf"
+  },
+  {
+    "name": "10-english-advancedlanguage.pdf",
+    "displayName": "Avanced Language - Test",
+    "topic": "Avanced Language",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-advancedlanguage.pdf"
+  },
+  {
+    "name": "10-english-alchemist.pdf",
+    "displayName": "Alchemist - Test",
+    "topic": "Alchemist",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-alchemist.pdf"
+  },
+  {
+    "name": "10-english-alchemist1-50.pdf",
+    "displayName": "Alchemist Pages 1-50 - Quiz",
+    "topic": "Alchemist",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-alchemist1-50.pdf"
+  },
+  {
+    "name": "10-english-alchemist101-200.pdf",
+    "displayName": "Alchemist Pages 101-200 - Quiz",
+    "topic": "Alchemist",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-alchemist101-200.pdf"
+  },
+  {
+    "name": "10-english-alchemist51-100.pdf",
+    "displayName": "Alchemist Pages 51-100 - Quiz",
+    "topic": "Alchemist",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-alchemist51-100.pdf"
+  },
+  {
+    "name": "10-english-macbeth.pdf",
+    "displayName": "Macbeth - Test",
+    "topic": "Macbeth",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-macbeth.pdf"
+  },
+  {
+    "name": "10-english-mythicvoices.pdf",
+    "displayName": "Mythic Voices - Test",
+    "topic": "Mythic Voices",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-mythicvoices.pdf"
+  },
+  {
+    "name": "10-english-romeojuliet1-2.pdf",
+    "displayName": "Romeo & Juliet Act 1-2 - Quiz",
+    "topic": "Romeo & Juliet",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-romeojuliet1-2.pdf"
+  },
+  {
+    "name": "10-english-romeojuliet3.pdf",
+    "displayName": "Romeo & Juliet Act 3 - Quiz",
+    "topic": "Romeo & Juliet",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-romeojuliet3.pdf"
+  },
+  {
+    "name": "10-english-romeojuliet4-5.pdf",
+    "displayName": "Romeo & Juliet Act 4-5 - Quiz",
+    "topic": "Romeo & Juliet",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-english-romeojuliet4-5.pdf"
   },
   {
     "name": "11-english-1984-p2.pdf",
@@ -215,6 +208,13 @@
     "topic": "1984",
     "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-1984-p3.pdf"
+  },
+  {
+    "name": "11-english-1984-part1.pdf",
+    "displayName": "1984 Part 1 - Test",
+    "topic": "1984",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-1984-part1.pdf"
   },
   {
     "name": "11-english-hamlet-scene1-4.pdf",
@@ -266,10 +266,87 @@
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-rhetoric.pdf"
   },
   {
-    "name": "11-english-1984-part1.pdf",
+    "name": "9-english-wordsonbathroomwalls-chapter8-14.pdf",
     "displayName": "1984 Part 1 - Test",
     "topic": "1984",
     "grade": 11,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-english-1984-part1.pdf"
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/9-english-wordsonbathroomwalls-chapter8-14.pdf"
+  },
+  {
+    "name": "12-english-frye-giantsintime.pdf",
+    "displayName": "Frye - Giants in Time - Test",
+    "topic": "Frye",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-english-frye-giantsintime.pdf"
+  },
+  {
+    "name": "12-english-frye-keystodreamland.pdf",
+    "displayName": "Frye - Keys to dreamland - Test",
+    "topic": "Frye",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-english-frye-keystodreamland.pdf"
+  },
+  {
+    "name": "12-english-frye-motiveformetaphor.pdf",
+    "displayName": "Frye - Motive for Metaphor - Test",
+    "topic": "Frye",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-english-frye-motiveformetaphor.pdf"
+  },
+  {
+    "name": "12-english-frye-verticalsofadam.pdf",
+    "displayName": "Frye - Verticals of Adam - Test",
+    "topic": "Frye",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-english-frye-verticalsofadam.pdf"
+  },
+  {
+    "name": "12-english-frye-vocationofeloquence.pdf",
+    "displayName": "Frye - Vocation of Eloquence - Test",
+    "topic": "Frye",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-english-frye-vocationofeloquence.pdf"
+  },
+  {
+    "name": "12-english-kinglear-act1.pdf",
+    "displayName": "Kinglear - Act 1 Test",
+    "topic": "King lear",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-english-kinglear-act1.pdf"
+  },
+  {
+    "name": "12-english-kinglear-act2.pdf",
+    "displayName": "Kinglear - Act 2 Test",
+    "topic": "King lear",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-english-kinglear-act2.pdf"
+  },
+  {
+    "name": "12-english-kinglear-act3.pdf",
+    "displayName": "Kinglear - Act 3 Test",
+    "topic": "King lear",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-english-kinglear-act3.pdf"
+  },
+  {
+    "name": "12-english-kinglear-act4.pdf",
+    "displayName": "Kinglear - Act 4 Test",
+    "topic": "King lear",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-english-kinglear-act4.pdf"
+  },
+  {
+    "name": "12-english-kinglear-act5.pdf",
+    "displayName": "Kinglear - Act 5 Test",
+    "topic": "King lear",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-english-kinglear-act5.pdf"
+  },
+  {
+    "name": "12-english-rhetoric.pdf",
+    "displayName": "Rhetoric - Test",
+    "topic": "Rhetoric",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-english-rhetoric.pdf"
   }
 ]

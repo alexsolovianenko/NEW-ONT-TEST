@@ -7,11 +7,39 @@
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-1910.pdf"
   },
   {
+    "name": "10-history-1910WW1.pdf",
+    "displayName": "Grade 10-History-19Grade 10Ww1",
+    "topic": "1910Ww1",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-1910WW1.pdf"
+  },
+  {
     "name": "10-history-1920.pdf",
     "displayName": "History 1920 & Canada- Test",
     "topic": "1920-Canada",
     "grade": 10,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-1920.pdf"
+  },
+  {
+    "name": "10-history-1920cad.pdf",
+    "displayName": "Grade 10-History-1920Cad",
+    "topic": "1920Cad",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-1920cad.pdf"
+  },
+  {
+    "name": "10-history-1930-depression1.pdf",
+    "displayName": "Grade 10-History-1930-Depression1",
+    "topic": "1930",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-1930-depression1.pdf"
+  },
+  {
+    "name": "10-history-1930-depression2.pdf",
+    "displayName": "Grade 10-History-1930-Depression2",
+    "topic": "1930",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-1930-depression2.pdf"
   },
   {
     "name": "10-history-1930depression.pdf",
@@ -21,11 +49,53 @@
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-1930depression.pdf"
   },
   {
+    "name": "10-history-1940-ww2-cad1.pdf",
+    "displayName": "Grade 10-History-1940-Ww2-Cad1",
+    "topic": "1940",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-1940-ww2-cad1.pdf"
+  },
+  {
+    "name": "10-history-1940-ww2-cad2.pdf",
+    "displayName": "Grade 10-History-1940-Ww2-Cad2",
+    "topic": "1940",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-1940-ww2-cad2.pdf"
+  },
+  {
     "name": "10-history-1940WW2.pdf",
     "displayName": "Canada & World War 2- Test",
     "topic": "1940-Canada & World War I",
     "grade": 10,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-coldwar.pdf"
+  },
+  {
+    "name": "10-history-ColdWar.pdf",
+    "displayName": "Canada & The Cold War- Test 2",
+    "topic": "Canada and the Cold War",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-ColdWar.pdf"
+  },
+  {
+    "name": "10-history-canadian-identity.pdf",
+    "displayName": "Grade 10-History-Canadian-Identity",
+    "topic": "Canadian",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-canadian-identity.pdf"
+  },
+  {
+    "name": "10-history-civil-rights.pdf",
+    "displayName": "Grade 10-History-Civil-Rights",
+    "topic": "Civil",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-civil-rights.pdf"
+  },
+  {
+    "name": "10-history-cold-war.pdf",
+    "displayName": "Grade 10-History-Cold-War",
+    "topic": "Cold",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-cold-war.pdf"
   },
   {
     "name": "10-history-coldwar.pdf",
@@ -35,10 +105,59 @@
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-ColdWar.pdf"
   },
   {
-    "name": "10-history-ColdWar.pdf",
-    "displayName": "Canada & The Cold War- Test 2",
-    "topic": "Canada and the Cold War",
+    "name": "10-history-coldwar1-.pdf",
+    "displayName": "Grade 10-History-Coldwar1-",
+    "topic": "Cold War",
     "grade": 10,
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-ColdWar.pdf"
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-coldwar1-.pdf"
+  },
+  {
+    "name": "10-history-confederation.pdf",
+    "displayName": "Grade 10-History-Confederation",
+    "topic": "Confederation",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-confederation.pdf"
+  },
+  {
+    "name": "10-history-environmental-history.pdf",
+    "displayName": "Grade 10-History-Environmental-History",
+    "topic": "Environmental",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-environmental-history.pdf"
+  },
+  {
+    "name": "10-history-immigration.pdf",
+    "displayName": "Grade 10-History-Immigration",
+    "topic": "Immigration",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-immigration.pdf"
+  },
+  {
+    "name": "10-history-indigenous-history.pdf",
+    "displayName": "Grade 10-History-Indigenous-History",
+    "topic": "Indigenous",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-indigenous-history.pdf"
+  },
+  {
+    "name": "10-history-interwar-years.pdf",
+    "displayName": "Grade 10-History-Interwar-Years",
+    "topic": "Interwar",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-interwar-years.pdf"
+  },
+  {
+    "name": "10-history-world-war-1.pdf",
+    "displayName": "Grade 10-History-World-War-1",
+    "topic": "World",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-world-war-1.pdf"
+  },
+  {
+    "name": "10-history-world-war-2.pdf",
+    "displayName": "Grade 10-History-World-War-2",
+    "topic": "World",
+    "grade": 10,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/10-history-world-war-2.pdf"
   }
 ]

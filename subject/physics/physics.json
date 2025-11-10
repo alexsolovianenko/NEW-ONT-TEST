@@ -8,21 +8,21 @@
   },
   {
     "name": "11-physics-Energy&Work.pdf",
-    "displayName": "Energy and Work- Test",
+    "displayName": "Energy and Work - Test",
     "topic": "Energy and Society",
     "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-physics-Energy&Work.pdf"
   },
   {
     "name": "11-physics-Forces.pdf",
-    "displayName": "Forces- Test 2",
+    "displayName": "Forces - Test 2",
     "topic": "Forces",
     "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-physics-Forces.pdf"
   },
   {
     "name": "11-physics-Heat and Temperature.pdf",
-    "displayName": "Heat and Temperature- Test",
+    "displayName": "Heat and Temperature - Test",
     "topic": "Energy and Society",
     "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-physics-Heat and Temperature.pdf"
@@ -36,10 +36,43 @@
   },
   {
     "name": "11-physics-Mechanical Systems.pdf",
-    "displayName": "Mechanical Systems- Test",
+    "displayName": "Electricity and Magnetism",
     "topic": "Electricity and Magnetism",
     "grade": 11,
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-physics-Mechanical Systems.pdf"
+  },
+  {
+    "name": "11-physics-climate.pdf",
+    "displayName": "Climate - Test",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-physics-climate.pdf"
+  },
+  {
+    "name": "11-physics-dynamics.pdf",
+    "displayName": "Dynamics - Test",
+    "topic": "Kinematics",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-physics-dynamics.pdf"
+  },
+  {
+    "name": "11-physics-electricity.pdf",
+    "displayName": "Electricity - Test 1",
+    "topic": "Electricity and Magnetism",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-physics-electricity.pdf"
+  },
+  {
+    "name": "11-physics-energy-work-power.pdf",
+    "displayName": "Energy, Work, Power - Test 1",
+    "topic": "Energy and Society",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-physics-energy-work-power.pdf"
+  },
+  {
+    "name": "11-physics-fluids.pdf",
+    "displayName": "Fluids - Test 1",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-physics-fluids.pdf"
   },
   {
     "name": "11-physics-forces.pdf",
@@ -56,7 +89,105 @@
     "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-physics-kinematics.pdf"
   },
   {
-    "name": "11-physics-climate.pdf",
-    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-physics-climate.pdf"
+    "name": "11-physics-light-optics.pdf",
+    "displayName": "Light & Optics - Test 1",
+    "topic": "Light",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-physics-light-optics.pdf"
+  },
+  {
+    "name": "11-physics-magnetism.pdf",
+    "displayName": "Magnetism - Test 2",
+    "topic": "Electricity and Magnetism",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-physics-magnetism.pdf"
+  },
+  {
+    "name": "11-physics-nuclear-physics.pdf",
+    "displayName": "Nuclear Physics - Test 1",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-physics-nuclear-physics.pdf"
+  },
+  {
+    "name": "11-physics-thermodynamics.pdf",
+    "displayName": "Thermodynamics - Test 1",
+    "topic": "Thermodynamics",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-physics-thermodynamics.pdf"
+  },
+  {
+    "name": "11-physics-waves-sound.pdf",
+    "displayName": "Waves - Test 1",
+    "topic": "Waves and Sound",
+    "grade": 11,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/11-physics-waves-sound.pdf"
+  },
+  {
+    "name": "12-physics-electricity.pdf",
+    "displayName": "Electricity - Test 1",
+    "topic": "Electricity and Magnetism",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-physics-electricity.pdf"
+  },
+  {
+    "name": "12-physics-energy.pdf",
+    "displayName": "Energy - Test",
+    "topic": "Energy and Momentum",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-physics-energy.pdf"
+  },
+  {
+    "name": "12-physics-fields.pdf",
+    "displayName": "Fields - Test 3",
+    "topic": "Fields",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-physics-fields.pdf"
+  },
+  {
+    "name": "12-physics-forces.pdf",
+    "displayName": "Forces - Test",
+    "topic": "Dynamics",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-physics-forces.pdf"
+  },
+  {
+    "name": "12-physics-magnetism.pdf",
+    "displayName": "Magnetism - Test",
+    "topic": "Electricity and Magnetism",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-physics-magnetism.pdf"
+  },
+  {
+    "name": "12-physics-modern-physics.pdf",
+    "displayName": "Modern Physics - Test",
+    "topic": "Modern Physics",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-physics-modern-physics.pdf"
+  },
+  {
+    "name": "12-physics-motion.pdf",
+    "displayName": "Motion - Test 2",
+    "topic": "Motion",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-physics-motion.pdf"
+  },
+  {
+    "name": "12-physics-quantum-physics.pdf",
+    "displayName": "Quantum Physics - Test 1",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-physics-quantum-physics.pdf"
+  },
+  {
+    "name": "12-physics-relativity.pdf",
+    "displayName": "Relativity - Test 1",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-physics-relativity.pdf"
+  },
+  {
+    "name": "12-physics-waves.pdf",
+    "displayName": "Waves - Test 1",
+    "topic": "Waves",
+    "grade": 12,
+    "url": "https://rewritten-ontario-tests-bucket.s3.us-east-1.amazonaws.com/12-physics-waves.pdf"
   }
 ]

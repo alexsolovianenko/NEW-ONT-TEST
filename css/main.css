@@ -1,3 +1,4 @@
+/* ===== RESET & BASE STYLES ===== */
 * {
   margin: 0;
   padding: 0;
@@ -20,6 +21,7 @@ html {
   overflow: hidden;
 }
 
+/* ===== LAYOUT CONTAINERS ===== */
 .header-container {
   max-width: 1400px;
   margin: 0 auto;
@@ -33,21 +35,22 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 0.8rem;
   height: 100%;
   justify-content: center;
 }
 
 .main-wrapper {
-  height: calc(100vh - 120px);
+  height: calc(100vh - 90px);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  margin-top: 120px;
+  margin-top: 90px;
   overflow: hidden;
 }
 
+/* ===== HEADER & NAVIGATION ===== */
 .main-header {
   position: fixed;
   top: 0;
@@ -138,13 +141,14 @@ html {
   width: 60%;
 }
 
+/* ===== HERO SECTION ===== */
 .hero-section {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   max-width: 800px;
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
 }
 
 .hero-content {
@@ -191,6 +195,7 @@ html {
   font-weight: 400;
 }
 
+/* ===== FEATURES SECTION ===== */
 .content-layout {
   width: 100%;
   max-width: 1200px;
@@ -233,9 +238,9 @@ html {
 
 .features-grid-centered {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
-  align-items: stretch;
+  align-items: center;
   justify-items: center;
   max-width: 900px;
   margin: 0 auto;
@@ -243,18 +248,16 @@ html {
 
 .feature-item-large {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding: 1.5rem 1.5rem;
+  gap: 1.2rem;
+  padding: 1.5rem 2rem;
   background: rgba(52, 152, 219, 0.05);
   border-radius: 20px;
   transition: all 0.3s ease;
   border: 1px solid rgba(52, 152, 219, 0.1);
   width: 100%;
-  min-height: 120px;
-  justify-content: center;
-  text-align: center;
+  min-height: 80px;
+  justify-content: flex-start;
 }
 
 .feature-item-large:hover {
@@ -266,6 +269,7 @@ html {
 .feature-icon-large {
   font-size: clamp(2.2rem, 5vw, 3rem);
   color: #546cb6;
+  min-width: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -277,9 +281,10 @@ html {
   font-weight: 600;
   color: #2c3e50;
   line-height: 1.4;
-  text-align: center;
+  text-align: left;
 }
 
+/* Legacy grid for fallback */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -326,38 +331,7 @@ html {
   line-height: 1.4;
 }
 
-@media (min-width: 1200px) and (max-width: 1600px) {
-  .navbar-brand img {
-    width: clamp(75px, 8vw, 95px);
-  }
-
-  .nav-item .nav-link {
-    font-size: clamp(0.95rem, 1.8vw, 1.2rem);
-    padding: 0.65rem 1.4rem !important;
-  }
-
-  .hero-title {
-    font-size: clamp(1.9rem, 4.5vw, 2.6rem);
-  }
-
-  .hero-description {
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
-  }
-
-  .section-title {
-    font-size: clamp(1.4rem, 3.2vw, 1.85rem);
-    margin-bottom: 2rem;
-  }
-
-  .feature-icon-large {
-    font-size: clamp(2rem, 4vw, 2.4rem);
-  }
-
-  .feature-text-large {
-    font-size: clamp(1rem, 2vw, 1.15rem);
-  }
-}
-
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 992px) {
   .content-container {
     padding: 0 1.5rem;
@@ -368,7 +342,7 @@ html {
   }
   
   .features-grid-centered {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.2rem;
   }
   
@@ -378,7 +352,16 @@ html {
   
   .feature-item-large {
     padding: 1.2rem 1.5rem;
-    min-height: 100px;
+    min-height: 70px;
+  }
+  
+  .feature-icon-large {
+    font-size: clamp(2rem, 4.5vw, 2.5rem);
+    min-width: 60px;
+  }
+  
+  .feature-text-large {
+    font-size: clamp(1rem, 2.3vw, 1.2rem);
   }
 }
 
@@ -441,8 +424,10 @@ html {
   }
   
   .feature-item-large {
+    justify-content: center;
+    text-align: center;
     padding: 1.2rem;
-    min-height: 90px;
+    min-height: 60px;
   }
   
   .feature-item-large:hover {
@@ -473,8 +458,18 @@ html {
   }
   
   .feature-item-large {
+    flex-direction: column;
     gap: 0.8rem;
     padding: 1rem;
+    text-align: center;
+  }
+  
+  .feature-icon-large {
+    min-width: auto;
+  }
+  
+  .feature-text-large {
+    text-align: center;
   }
   
   .hero-section {
@@ -482,6 +477,7 @@ html {
   }
 }
 
+/* ===== ANIMATIONS ===== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -501,6 +497,7 @@ html {
   animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
+/* ===== MOBILE NAVIGATION TOGGLE ===== */
 .navbar-toggler {
   border: none;
   padding: 0.5rem;
@@ -539,6 +536,7 @@ html {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
+/* ===== UTILITY CLASSES ===== */
 .text-center {
   text-align: center;
 }

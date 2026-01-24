@@ -8,7 +8,7 @@
 body {
   background: url('../assets/hero-background.svg') no-repeat;
   background-size: cover;
-  background-position: center 190px;
+  background-position: center 182px;
   background-color: #0573E8;
   font-family: 'Poppins', sans-serif;
   min-height: 100vh;
@@ -53,7 +53,7 @@ html {
   display: flex;
   align-items: center;
   margin: 0;
-  top: 2rem;
+  top: 1.5rem;
   z-index: 1000;
 }
 
@@ -138,6 +138,39 @@ main {
   margin-left: 0;
   margin-top: -7rem;
   position: relative;
+  margin-bottom: 2rem;
+}
+
+.hero-search-button {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #0573E8;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hero-search-button:hover {
+  background: white;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  color: #0573E8;
+}
+
+.hero-search-button i {
+  font-size: 1.3em;
 }
 
 /* ===== RESPONSIVE DESIGN (HEADER) ===== */

@@ -53,7 +53,7 @@ html {
   display: flex;
   align-items: center;
   margin: 0;
-  top: 1rem;
+  top: 1.5rem;
   z-index: 1000;
 }
 

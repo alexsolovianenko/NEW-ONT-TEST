@@ -149,8 +149,7 @@ main {
   letter-spacing: 1.5px;
   padding: 1.5rem 4.5rem;
   border-radius: 50px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.2);
   color: white;
   border: none;
   cursor: pointer;
@@ -163,12 +162,28 @@ main {
   position: relative;
 }
 
+.hero-search-button::before {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
 .hero-search-button:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.3);
   transform: translateY(-3px);
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
   text-decoration: none;
   color: white;
+}
+
+.hero-search-button:hover::before {
+  width: 60%;
 }
 
 /* ===== RESPONSIVE DESIGN (HEADER) ===== */

@@ -8,7 +8,7 @@
 body {
   background: url('../assets/hero-background.svg') no-repeat;
   background-size: cover;
-  background-position: center 162px;
+  background-position: center 182px;
   background-color: #0573E8;
   font-family: 'Poppins', sans-serif;
   min-height: 100vh;
@@ -32,7 +32,7 @@ html {
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 0.5rem 0 2rem 0;
+  padding: 0.3rem 0 1rem 0;
   transition: all 0.3s ease;
 }
 
@@ -46,24 +46,24 @@ html {
 }
 
 .navbar-nav {
-  gap: 1.5rem;
+  gap: 1rem;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
   margin: 0;
-  top: 2rem;
+  top: 1rem;
   z-index: 1000;
 }
 
 .nav-item .nav-link {
   color: white !important;
-  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-size: clamp(0.95rem, 2.2vw, 1.3rem);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  padding: 0.8rem 1.8rem !important;
+  letter-spacing: 1.2px;
+  padding: 0.6rem 1.4rem !important;
   border-radius: 25px;
   transition: all 0.3s ease;
   position: relative;
@@ -82,6 +82,7 @@ html {
   background: rgba(255, 255, 255, 0.2) !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+  transition: none !important;
 }
 
 .nav-item .nav-link::before {

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="../assets/logo.png">
-  <title>Ontario Tests - FAQ</title>
+  <title>Ontario Tests | FAQ</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
@@ -16,9 +16,6 @@
   <header class="main-header">
     <div class="header-container">
       <nav class="navbar navbar-expand-lg main-nav">
-        <a class="navbar-brand" href="/">
-          <img src="../assets/logo.png" alt="Ontario Tests Logo">
-        </a>
         <div class="navbar-collapse" id="mainMenu">
           <ul class="navbar-nav ml-auto text-uppercase">
             <li class="nav-item">
@@ -60,7 +57,7 @@
                     </div>
                   </button>
                   <div class="faq-answer" id="answer-0">
-                    <p>Ontario Tests improves on regular studying by turning all material students could be tested on into a single practice exam. In the YCDSB system, teachers often expect students to know small, specific points. Since there are only so many concepts taught, our platform covers everything systematically recreating practice from actual school material. </p>
+                    <p>Ontario Tests converts all testable material into comprehensive practice exams. Our platform systematically covers every concept teachers expect you to know, eliminating the guesswork from quiz/test/exam prep. </p>
                   </div>
                 </div>
                 
@@ -72,36 +69,31 @@
                     </div>
                   </button>
                   <div class="faq-answer" id="answer-1">
-                    <p>Our system begins through students uploading test material to Ontario Tests. We begin by extracting text 
-                      from the uploaded files using an OCR API. Once the text is extracted, our custom LLM—built with Pandas, NumPy, 
-                      and Hugging Face Transformers—analyzes it; the model uses probability to determine the subject, difficulty level, 
-                      and key concepts. The LLM makes new questions-generating all possible question variations that could be studied throughout the unit-using the data set stored.
-                      Last, the questions are pasted into a PDF file. 
-                      Fun fact: our files are only 5KB each, and all Ontario Tests combined are under 3 megabytes</p>
+                    <p>Students upload test material, which our OCR API converts to text. Our custom LLM—built with Pandas, NumPy, and Hugging Face Transformers—analyzes the content to generate every possible question variation for the unit. Fun fact: each test is only 5KB, with all Ontario Tests combined under 3MB.</p>
                   </div>
                 </div>
                 
                 <div class="faq-item">
                   <button class="faq-question" onclick="toggleFAQ(2)">
-                    <span>Issues, feedback, concerns.</span>
-                    <div class="faq-icon">
-                      <i class="ri-add-line"></i>
-                    </div>
-                  </button>
-                  <div class="faq-answer" id="answer-2">
-                    <p>If you encounter any technical issues, please contact our support team through the Contact page or email us directly. Our technical support is available 24/7 to ensure your learning experience is seamless.</p>
-                  </div>
-
-                </div>
-                <div class="faq-item">
-                  <button class="faq-question" onclick="toggleFAQ(3)">
                     <span>Corrupted Tests.</span>
                     <div class="faq-icon">
                       <i class="ri-add-line"></i>
                     </div>
                   </button>
+                  <div class="faq-answer" id="answer-2">
+                    <p>Our LLM operates at ~90% accuracy, so occasional text errors may occur. Report any corrupted tests immediately so we can continue improving.</p>
+                  </div>
+
+                </div>
+                <div class="faq-item">
+                  <button class="faq-question" onclick="toggleFAQ(3)">
+                    <span>Corrupted Tests.  Issues, feedback, concerns</span>
+                    <div class="faq-icon">
+                      <i class="ri-add-line"></i>
+                    </div>
+                  </button>
                   <div class="faq-answer" id="answer-3">
-                    <p>If you encounter any corrupted tests in terms of text, please let us know ASAP. Our LLM is built to ~90% success rate, thus we are always improving.</p>
+                    <p>Contact our support team through the Contact page or email us directly.</p>
                   </div>
                 </div>
                 

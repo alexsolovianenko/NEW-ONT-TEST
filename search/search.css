@@ -2,10 +2,12 @@
 
 /* Ensure same background as homepage */
 body {
-  background: url('../assets/main-back.png') center center no-repeat;
+  background: url('../assets/search-back.svg') no-repeat;
+  background-position: center -70px;
+  background-color: #0573E8;
   background-size: cover;
-  background-attachment: fixed;
-  background-position-y: calc(100% + 40px);
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
   overflow: hidden;
 }
 
@@ -21,7 +23,7 @@ body {
     overflow-y: auto;
     width: 100%;
     max-width: 900px;
-    margin: 0 auto;
+    margin: 70px auto 0;
     transition: all 0.3s ease;
 }
 
@@ -29,6 +31,14 @@ body {
     text-align: center;
     padding: 2rem 1rem 3rem 1rem;
     position: relative;
+}
+
+.section-title {
+    text-align: center;
+    color: #0573e8;
+    font-size: 2.55rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
 }
 
 .search-icon-container {
@@ -40,7 +50,7 @@ body {
 
 .main-search-icon {
     font-size: 4rem;
-    color: #546cb6;
+    color: #1b7fea;
 }
 
 .stats-container {
@@ -73,13 +83,13 @@ body {
 
 .stat-item i {
     font-size: 1.8rem;
-    color: #546cb6;
+    color: #0573e8;
 }
 
 .stat-number {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #546cb6;
+    color: #0573e8;
 }
 
 .stat-label {
@@ -111,7 +121,7 @@ body {
     justify-content: center;
     gap: 0.75rem;
     padding: 1.5rem 3rem;
-    background: linear-gradient(135deg, #546cb6, #4a5fa3);
+    background: linear-gradient(135deg, #0573e8, #0573e8);
     color: white;
     border: none;
     border-radius: 20px;
@@ -126,7 +136,7 @@ body {
 }
 
 .main-option:hover {
-    background: #4a5fa3;
+    background: #2890ff;
     transform: translateY(-3px);
     box-shadow: 0 12px 30px rgba(84, 108, 182, 0.3);
 }
@@ -165,10 +175,10 @@ body {
 
 .grade-btn:hover, .topic-btn:hover {
     background: rgba(84, 108, 182, 0.1);
-    border-color: #546cb6;
+    border-color: #0573e8;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(84, 108, 182, 0.2);
-    color: #546cb6;
+    color: #0573e8;
 }
 
 .grade-btn:active, .topic-btn:active {
@@ -176,9 +186,9 @@ body {
 }
 
 .grade-btn.selected, .topic-btn.selected {
-    background: #546cb6;
+    background: #0573e8;
     color: white;
-    border-color: #546cb6;
+    border-color: #0573e8;
 }
 
 .grade-section, .topic-section {
@@ -238,10 +248,10 @@ body {
 
 .subject-btn:hover {
     background: rgba(84, 108, 182, 0.1);
-    border-color: #546cb6;
+    border-color: #0573e8;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(84, 108, 182, 0.2);
-    color: #546cb6;
+    color: #0573e8;
 }
 
 .subject-btn:active {
@@ -249,9 +259,9 @@ body {
 }
 
 .subject-btn.selected {
-    background: #546cb6;
+    background: #0573e8;
     color: white;
-    border-color: #546cb6;
+    border-color: #0573e8;
 }
 
 .subject-btn i {
@@ -292,7 +302,7 @@ body {
 }
 
 .info-note i {
-    color: #546cb6;
+    color: #0573e8;
     font-size: 1.1rem;
 }
 
@@ -328,7 +338,7 @@ body {
 
 .search-input:focus {
     outline: none;
-    border-color: #546cb6;
+    border-color: #0573e8;
     background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
@@ -347,7 +357,7 @@ body {
 }
 
 .search-hint i {
-    color: #546cb6;
+    color: #0573e8;
 }
 
 /* Button styling */
@@ -356,7 +366,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, #546cb6, #546cb6);
+    background: linear-gradient(135deg, #0573e8, #0573e8);
     color: white;
     border: none;
     border-radius: 15px;
@@ -416,7 +426,7 @@ body {
 }
 
 .test-result-header i {
-    color: #546cb6;
+    color: #0573e8;
 }
 
 .test-result-meta {
@@ -444,8 +454,8 @@ body {
     justify-content: center;
     padding: 0.5rem 1rem;
     background-color: transparent;
-    color: #546cb6;
-    border: 1px solid #546cb6;
+    color: #0573e8;
+    border: 1px solid #0573e8;
     border-radius: 8px;
     font-size: 0.9rem;
     font-weight: 500;
@@ -457,7 +467,7 @@ body {
 .btn-outline:hover {
     background-color: rgba(84, 108, 182, 0.1);
     text-decoration: none;
-    color: #546cb6;
+    color: #0573e8;
 }
 
 .btn-outline i {

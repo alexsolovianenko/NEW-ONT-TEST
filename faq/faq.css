@@ -1,13 +1,12 @@
 /* FAQ Page Specific Styling */
 body {
-  background: url('../assets/faq-back.png') center center no-repeat;
+  background: url('../assets/faq-back.svg') no-repeat;
+  background-position: center -110px;
+  background-color: #0573E8;
   background-size: cover;
-  background-attachment: fixed;
-  background-position-y: calc(100% + 40px);
   font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 
@@ -19,15 +18,10 @@ body {
     padding: 2rem;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    width: 98%;
+    width: calc(98% - 130px);
     max-width: 1400px;
-    margin: -2rem auto 0 auto;
+    margin: calc(-2rem + 110px) auto 0 auto;
     transition: all 0.3s ease;
-}
-
-.faq-unified-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
 }
 
 .faq-unified-content {
@@ -37,14 +31,11 @@ body {
 }
 
 .section-title {
-    font-size: clamp(1.5rem, 4vw, 2.2rem);
-    font-weight: 700;
     text-align: center;
-    margin-bottom: 2.5rem;
-    background: linear-gradient(135deg, #546cb6, #546cb6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #0573e8;
+    font-size: 2.55rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
 }
 
 /* FAQ Items Styling */
@@ -173,4 +164,9 @@ body {
     .faq-icon i {
         font-size: 1rem;
     }
+}
+
+/* Center text for answer 4 */
+#answer-4 {
+    text-align: center;
 }

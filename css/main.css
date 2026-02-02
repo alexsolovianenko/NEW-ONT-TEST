@@ -6,7 +6,6 @@
 }
 
 body {
-  background: url('../assets/hero-background.svg') no-repeat;
   background-size: cover;
   background-position: center 210px;
   background-color: #0573E8;

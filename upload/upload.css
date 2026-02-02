@@ -1,14 +1,13 @@
 /* Upload Page Styling */
 
 body {
-  background: url('../assets/upload-back.png') center center no-repeat;
+  background: url('../assets/upload-back.svg') no-repeat;
+  background-position: center;
+  background-color: #0573E8;
   background-size: cover;
-  background-attachment: fixed;
-  background-position-y: calc(100% + 40px);
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
+  font-family: 'Cormorant Garamond', serif;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .container {
@@ -51,8 +50,8 @@ body {
 
 .upload-card h2 {
   text-align: center;
-  color: #546cb6;
-  font-size: 2rem;
+  color: #0573e8;
+  font-size: 2.55rem;
   font-weight: 700;
   margin-bottom: 2rem;
 }
@@ -82,7 +81,7 @@ body {
 }
 
 .file-drop-area i {
-  color: #546cb6;
+  color: #0573e8;
   font-size: 2.5rem;
   margin-bottom: 0.75rem;
 }
@@ -102,7 +101,7 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-  border-color: #546cb6;
+  border-color: #0573e8;
   outline: none;
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
@@ -115,7 +114,7 @@ input[type="text"]:focus {
   width: 100%;
   padding: 1rem 2rem;
   background: rgba(52, 152, 219, 0.05);
-  color: #546cb6;
+  color: #0573e8;
   border: none;
   border-radius: 15px;
   font-size: 1.1rem;
@@ -128,27 +127,31 @@ input[type="text"]:focus {
   background: rgba(52, 152, 219, 0.1);
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(52, 152, 219, 0.15);
-  color: #546cb6;
+  color: #0573e8;
 }
 
 .btn-primary:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   background: rgba(52, 152, 219, 0.03);
-  color: #546cb6;
+  color: #0573e8;
 }
 
 .btn-primary.ready {
-  background: #546cb6 !important;
+  background: #0573e8 !important;
   color: white !important;
   box-shadow: 0 5px 20px rgba(84, 108, 182, 0.3);
   transform: translateY(-1px);
 }
 
 .btn-primary.ready:hover {
-  background: #4a5fa3 !important;
+  background: #0573e8 !important;
   box-shadow: 0 8px 25px rgba(84, 108, 182, 0.4);
   transform: translateY(-2px);
+}
+
+.btn-primary.ready i {
+  color: white !important;
 }
 
 .file-name {
@@ -160,7 +163,7 @@ input[type="text"]:focus {
 }
 
 .file-name i {
-  color: #546cb6;
+  color: #0573e8;
   margin-right: 0.25rem;
 }
 
@@ -171,7 +174,7 @@ input[type="text"]:focus {
 }
 
 .recent-uploads h3 {
-  color: #546cb6;
+  color: #0573e8;
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -190,7 +193,7 @@ input[type="text"]:focus {
 }
 
 .upload-item i {
-  color: #546cb6;
+  color: #0573e8;
   margin-right: 0.5rem;
 }
 
@@ -251,7 +254,7 @@ input[type="text"]:focus {
 
 .text-input:focus {
     outline: none;
-    border-color: #546cb6;
+    border-color: #0573e8;
     background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 0 0 3px rgba(84, 108, 182, 0.1);
 }
@@ -291,14 +294,14 @@ input[type="text"]:focus {
 
 .upload-icon {
     font-size: 4rem;
-    color: #546cb6;
+    color: white;
     margin-bottom: 1rem;
     transition: all 0.3s ease;
     display: block;
 }
 
 .file-drop-area:hover .upload-icon {
-    color: #4a5fa3;
+    color: #0573e8;
     transform: scale(1.1);
 }
 
@@ -310,7 +313,7 @@ input[type="text"]:focus {
 }
 
 .upload-subtext {
-    color: #546cb6;
+    color: #0573e8;
     font-size: 1rem;
     margin-bottom: 0.3rem;
 }
@@ -328,7 +331,7 @@ input[type="text"]:focus {
 
 .form-input:focus {
     outline: none;
-    border-color: #546cb6;
+    border-color: #0573e8;
     background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
@@ -340,7 +343,7 @@ input[type="text"]:focus {
 .upload-btn {
     width: 100%;
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, #546cb6, #546cb6);
+    background: linear-gradient(135deg, #0573e8, #0573e8);
     color: white;
     border: none;
     border-radius: 15px;
@@ -366,7 +369,7 @@ input[type="text"]:focus {
 
 .file-name {
     margin-top: 0.5rem;
-    color: #546cb6;
+    color: #0573e8;
     font-weight: 500;
 }
 
@@ -500,7 +503,7 @@ h3 {
 }
 
 .feature i {
-    color: #546cb6;
+    color: #0573e8;
     font-size: 1.25rem;
     margin-right: 0.5rem;
 }
@@ -512,7 +515,7 @@ h3 {
     width: auto;
     padding: 15px;
     background: rgba(52, 152, 219, 0.05);
-    color: #546cb6;
+    color: #ffffff;
     border: none;
     border-radius: 15px;
     font-size: 1.1rem;
@@ -528,7 +531,7 @@ h3 {
     background: rgba(52, 152, 219, 0.1);
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(52, 152, 219, 0.15);
-    color: #546cb6;
+    color: #0573e8;
 }
 
 .btn-primary:active {
@@ -544,7 +547,7 @@ h3 {
 
 .btn-primary i {
     margin-right: 0.5rem;
-    color: #546cb6;
+    color: #0573e8;
 }
 
 .upload-card {
@@ -582,7 +585,7 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-    border-color: #546cb6;
+    border-color: #0573e8;
     outline: none;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
@@ -595,7 +598,7 @@ input[type="text"]:focus {
     padding: 3rem 2rem;
     border: 1px solid rgba(52, 152, 219, 0.1);
     border-radius: 15px;
-    background: rgba(52, 152, 219, 0.05);
+    background-color: #c3d9f1;
     cursor: pointer;
     transition: all 0.3s ease;
     min-height: 200px;
@@ -608,7 +611,7 @@ input[type="text"]:focus {
 }
 
 .file-drop-area i {
-    color: #546cb6;
+    color: #0573e8;
     font-size: 2.5rem;
     margin-bottom: 0.75rem;
 }
@@ -630,7 +633,7 @@ input[type="text"]:focus {
 }
 
 .file-name i {
-    color: #546cb6;
+    color: #0573e8;
     margin-right: 0.5rem;
 }
 
@@ -647,7 +650,7 @@ input[type="text"]:focus {
     justify-content: center;
     padding: 1rem 2rem;
     background: rgba(52, 152, 219, 0.05);
-    color: #546cb6;
+    color: #0573e8;
     border: none;
     border-radius: 15px;
     font-size: 1.1rem;
@@ -664,20 +667,20 @@ input[type="text"]:focus {
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(52, 152, 219, 0.15);
     text-decoration: none;
-    color: #546cb6;
+    color: #0573e8;
 }
 
 .btn-primary:disabled {
-    opacity: 0.5;
+    opacity: 1;
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
-    background: rgba(52, 152, 219, 0.03);
+    background: #c3d9f1;
 }
 
 .btn-primary i {
     font-size: 1.2rem;
-    color: #546cb6;
+    color: #0573e8;
 }
 
 /* Recent uploads section */
@@ -714,7 +717,7 @@ input[type="text"]:focus {
 
 .no-uploads i {
     font-size: 1.5rem;
-    color: #546cb6;
+    color: #0573e8;
 }
 
 .upload-item {
@@ -734,7 +737,7 @@ input[type="text"]:focus {
 }
 
 .upload-item i {
-    color: #546cb6;
+    color: #0573e8;
     margin-right: 0.75rem;
     font-size: 1.2rem;
 }
@@ -804,7 +807,7 @@ div[class*="xl:w-3/4"] {
 
 /* Force upload card to match homepage size and positioning */
 .upload-card {
-  background: rgba(255, 255, 255, 0.9) !important;
+  background: #e0f0ff !important;
   backdrop-filter: blur(20px) !important;
   border-radius: 25px !important;
   padding: clamp(1.5rem, 3vw, 2rem) !important;
@@ -814,8 +817,9 @@ div[class*="xl:w-3/4"] {
   max-width: 770px !important;
   transition: all 0.3s ease !important;
   margin: 0 auto !important;
-  margin-top: 11.875rem !important;
+  margin-top: 2rem !important;
   margin-bottom: 5rem !important;
+  transform: translateX(250px) !important;
 }
 
 /* Center the upload button */

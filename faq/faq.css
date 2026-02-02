@@ -32,7 +32,7 @@ body {
 
 .section-title {
     text-align: center;
-    color: #0573e8;
+    color: #0573E8;
     font-size: 2.55rem;
     font-weight: 700;
     margin-bottom: 2rem;
@@ -85,7 +85,7 @@ body {
 
 .faq-question:hover {
     background: rgba(84, 108, 182, 0.05);
-    color: #546cb6;
+    color: #0573E8;
 }
 
 .faq-question span {
@@ -106,7 +106,7 @@ body {
 
 .faq-icon i {
     font-size: 1.2rem;
-    color: #546cb6;
+    color: #0573E8;
     transition: all 0.3s ease;
 }
 

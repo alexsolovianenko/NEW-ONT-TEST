@@ -6,8 +6,9 @@
 }
 
 body {
+  background: url('../assets/hero-background.svg') no-repeat;
   background-size: cover;
-  background-position: center 210px;
+  background-position: center 182px;
   background-color: #0573E8;
   font-family: 'Poppins', sans-serif;
   min-height: 100vh;
@@ -242,7 +243,7 @@ main {
   }
 }
 
-/* ===== MOBILE TOGGLE ===== */
+/* ===== MOBILE NAVIGATION TOGGLE ===== */
 .navbar-toggler {
   border: none;
   padding: 0.5rem;

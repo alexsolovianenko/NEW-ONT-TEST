@@ -5,7 +5,8 @@ body {
   background-position: center;
   background-color: #0573E8;
   background-size: cover;
-  font-family: 'Cormorant Garamond', serif;
+  background-attachment: fixed;
+  font-family: 'Poppins', sans-serif;
   min-height: 100vh;
   overflow: hidden;
 }
@@ -45,7 +46,7 @@ body {
   margin: 0 auto;
   max-width: 1800px;
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 0;
 }
 
 .upload-card h2 {
@@ -221,6 +222,50 @@ input[type="text"]:focus {
   
   .upload-card {
     padding: 1.5rem;
+    margin-top: 0.5rem;
+    max-width: 100%;
+  }
+
+  .upload-card h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+    font-size: 0.95rem;
+  }
+
+  .file-drop-area {
+    padding: 2rem 1rem;
+  }
+
+  .file-drop-area i {
+    font-size: 2rem;
+  }
+
+  .upload-button-container {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .upload-card {
+    padding: 1rem;
+    border-radius: 15px;
+    margin-top: 0.25rem;
+  }
+
+  .upload-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .file-drop-area {
+    padding: 1.5rem 1rem;
+    min-height: auto;
+  }
+
+  input[type="text"] {
+    font-size: 16px;
   }
 }
 

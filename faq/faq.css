@@ -1,17 +1,14 @@
 /* FAQ Page Specific Styling */
 body {
-  background: url('../assets/faq-back.svg') center center no-repeat;
-  background-size: cover;
+  background: url('../assets/faq-back.svg') no-repeat;
+  background-position: center -110px;
   background-color: #0573E8;
-
-  background-attachment: fixed;
-  background-position-y: calc(100% + 40px);
+  background-size: cover;
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* FAQ unified card layout */
@@ -19,16 +16,15 @@ body {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
     border-radius: 25px;
-    padding: 1rem 2rem 2rem 2rem;
+    padding: clamp(0.75rem, 2vw, 1.5rem) clamp(1.5rem, 4vw, 2rem);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     
-    /* CRITICAL FIX: Stable width that doesn't change */
-    width: min(75%, 1200px);
-    max-width: 1200px;
-    min-width: 300px;
+    /* Responsive width that scales with screen */
+    width: clamp(85%, 90vw, 900px);
+    max-width: 900px;
     
-    margin: 10px auto 2rem auto;
+    margin: clamp(10px, 3vh, 20px) auto clamp(0.5rem, 2vh, 1rem) auto;
     
     /* Remove hover transform that causes shifting */
     transition: box-shadow 0.3s ease;
@@ -42,7 +38,7 @@ body {
 .faq-unified-content {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: clamp(1rem, 2vh, 2rem);
 }
 
 .section-title {
@@ -58,7 +54,7 @@ body {
 .faq-items {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: clamp(0.25rem, 1vh, 1rem);
 }
 
 .faq-item {
@@ -80,14 +76,14 @@ body {
 
 .faq-question {
     width: 100%;
-    padding: 1.5rem 2rem;
+    padding: clamp(0.75rem, 1.5vw, 1.5rem) clamp(1rem, 2vw, 2rem);
     background: transparent;
     border: none;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
     font-weight: 600;
     color: #2c3e50;
     text-align: left;
@@ -96,7 +92,7 @@ body {
     box-shadow: none !important;
     
     /* CRITICAL FIX: Prevent text from wrapping unpredictably */
-    min-height: 60px;
+    min-height: clamp(45px, 5vh, 60px);
 }
 
 .faq-question:focus {
@@ -167,7 +163,7 @@ body {
 .faq-answer.open {
     /* CRITICAL FIX: Large enough for longest content, prevents cutting off */
     max-height: 800px;
-    padding: 1.5rem 2rem;
+    padding: clamp(0.75rem, 1.5vw, 1.5rem) clamp(1rem, 2vw, 2rem);
     border-top: 1px solid rgba(84, 108, 182, 0.1);
 }
 
@@ -175,7 +171,7 @@ body {
     margin: 0;
     color: #5a6c7d;
     line-height: 1.6;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
     font-weight: 400;
     
     /* CRITICAL FIX: Prevent text overflow */

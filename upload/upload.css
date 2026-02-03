@@ -856,12 +856,12 @@ div[class*="xl:w-3/4"] {
   padding: clamp(1.5rem, 3vw, 2rem) !important;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  width: calc(100% - 2rem) !important;
+  width: clamp(85%, 90vw, 770px) !important;
   max-width: 770px !important;
   transition: all 0.3s ease !important;
   position: fixed !important;
-  bottom: 40px !important;
-  right: 20px !important;
+  bottom: clamp(2rem, 8vh, 4rem) !important;
+  right: clamp(1rem, 3vw, 2rem) !important;
   margin: 0 !important;
 }
 

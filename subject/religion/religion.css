@@ -1,8 +1,10 @@
 
 body {
-    font-family: 'Poppins', sans-serif;
-    overflow: hidden;
-    height: 100vh;
+  background-size: cover;
+  background-position: center 182px;
+  background-color: #0573E8;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
 }
 html {
     overflow: hidden;
@@ -13,7 +15,6 @@ html {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: url('../../1-assets/main-back.png') center center no-repeat;
     background-size: cover;
     background-attachment: fixed;
     background-position-y: calc(100% + 40px);

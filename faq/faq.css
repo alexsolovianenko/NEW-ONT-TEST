@@ -1,27 +1,42 @@
 /* FAQ Page Specific Styling */
 body {
-  background: url('../assets/faq-back.svg') no-repeat;
-  background-position: center -110px;
-  background-color: #0573E8;
+  background: url('../assets/faq-back.svg') center center no-repeat;
   background-size: cover;
-  font-family: 'Poppins', sans-serif;
-  min-height: 100vh;
-  overflow: hidden;
-}
+  background-color: #0573E8;
 
+  background-attachment: fixed;
+  background-position-y: calc(100% + 40px);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 
 /* FAQ unified card layout */
 .faq-unified-card {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
     border-radius: 25px;
-    padding: 2rem;
+    padding: 1rem 2rem 2rem 2rem;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    width: calc(98% - 130px);
-    max-width: 1400px;
-    margin: calc(-2rem + 110px) auto 0 auto;
-    transition: all 0.3s ease;
+    
+    /* CRITICAL FIX: Stable width that doesn't change */
+    width: min(75%, 1200px);
+    max-width: 1200px;
+    min-width: 300px;
+    
+    margin: 10px auto 2rem auto;
+    
+    /* Remove hover transform that causes shifting */
+    transition: box-shadow 0.3s ease;
+}
+
+.faq-unified-card:hover {
+    /* Only change shadow, not position */
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
 }
 
 .faq-unified-content {
@@ -31,11 +46,12 @@ body {
 }
 
 .section-title {
-    text-align: center;
-    color: #0573E8;
-    font-size: 2.55rem;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
     font-weight: 700;
-    margin-bottom: 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    margin-top: 0.5rem;
+    color: #0573e8;
 }
 
 /* FAQ Items Styling */
@@ -52,11 +68,13 @@ body {
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    
+    /* CRITICAL FIX: Prevent item from expanding container */
+    transition: box-shadow 0.3s ease;
 }
 
 .faq-item:hover {
-    transform: translateY(-2px);
+    /* Remove transform that causes shifting */
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
 }
 
@@ -73,9 +91,12 @@ body {
     font-weight: 600;
     color: #2c3e50;
     text-align: left;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
     outline: none !important;
     box-shadow: none !important;
+    
+    /* CRITICAL FIX: Prevent text from wrapping unpredictably */
+    min-height: 60px;
 }
 
 .faq-question:focus {
@@ -85,12 +106,20 @@ body {
 
 .faq-question:hover {
     background: rgba(84, 108, 182, 0.05);
-    color: #0573E8;
+    color: #546cb6;
+}
+
+/* Keep question blue when open */
+.faq-item.active .faq-question {
+    color: #546cb6;
 }
 
 .faq-question span {
     flex: 1;
     margin-right: 1rem;
+    /* CRITICAL FIX: Control text wrapping */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .faq-icon {
@@ -99,6 +128,7 @@ body {
     justify-content: center;
     width: 30px;
     height: 30px;
+    flex-shrink: 0;
     border-radius: 50%;
     background: rgba(84, 108, 182, 0.1);
     transition: all 0.3s ease;
@@ -106,8 +136,8 @@ body {
 
 .faq-icon i {
     font-size: 1.2rem;
-    color: #0573E8;
-    transition: all 0.3s ease;
+    color: #546cb6;
+    transition: transform 0.3s ease;
 }
 
 .faq-icon i.rotated {
@@ -119,17 +149,26 @@ body {
     transform: scale(1.1);
 }
 
+/* CRITICAL FIX: Stable answer container */
 .faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: all 0.4s ease;
+    
+    /* Use max-height transition only, not 'all' */
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    
     background: rgba(84, 108, 182, 0.02);
-    border-top: 1px solid rgba(84, 108, 182, 0.1);
+    border-top: 1px solid transparent;
+    
+    /* Prevent content from causing jumps */
+    will-change: max-height;
 }
 
 .faq-answer.open {
-    max-height: 300px;
+    /* CRITICAL FIX: Large enough for longest content, prevents cutting off */
+    max-height: 800px;
     padding: 1.5rem 2rem;
+    border-top: 1px solid rgba(84, 108, 182, 0.1);
 }
 
 .faq-answer p {
@@ -138,18 +177,34 @@ body {
     line-height: 1.6;
     font-size: 1rem;
     font-weight: 400;
+    
+    /* CRITICAL FIX: Prevent text overflow */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Center text for answer 4 */
+#answer-4 {
+    text-align: center;
 }
 
 /* Responsive design */
+@media (max-width: 1024px) {
+    .faq-unified-card {
+        width: 80%;
+    }
+}
+
 @media (max-width: 768px) {
     .faq-unified-card {
-        width: 98%;
+        width: 90%;
         padding: 1.5rem;
     }
     
     .faq-question {
         padding: 1.25rem 1.5rem;
         font-size: 1rem;
+        min-height: 50px;
     }
     
     .faq-answer.open {
@@ -166,7 +221,18 @@ body {
     }
 }
 
-/* Center text for answer 4 */
-#answer-4 {
-    text-align: center;
+@media (max-width: 480px) {
+    .faq-unified-card {
+        width: 95%;
+        padding: 1.25rem;
+    }
+    
+    .faq-question {
+        padding: 1rem 1.25rem;
+        font-size: 0.95rem;
+    }
+    
+    .faq-answer.open {
+        padding: 1rem 1.25rem;
+    }
 }
